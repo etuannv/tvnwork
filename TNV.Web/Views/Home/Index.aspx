@@ -4,7 +4,7 @@
     <table width="100%" border="0px">
         <tr>
             <td width="71%" valign="top">
-                <% Html.RenderPartial("MainListNews", ViewData["MainListNews"]); %>
+                <%--<% Html.RenderPartial("MainListNews", ViewData["MainListNews"]); %>--%>
             </td>
             <td width="29%" valign="top" align="center">
                 <% Html.RenderPartial("LogOn"); %>

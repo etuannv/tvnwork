@@ -12,7 +12,7 @@
                 localChangeMonitorInterval="30"
                 remoteChangeMonitorInterval="60"
                 >
-    <resourceSet name="ToanThongMinhCSS" type="css" debugEnabled="false" ignorePipelineWhenDebug="false">
+    <resourceSet name="ToanThongMinhCSS" type="css" debugEnabled="true" ignorePipelineWhenDebug="false">
       <resource path="~/Content/WebStyle.css" />
       <resource path="~/Content/jquery.treeview.css" />
       <resource path="~/Content/ui.core.css" />
@@ -20,7 +20,7 @@
       <resource path="~/Content/ui.theme.css" />
       <resource path="~/Content/TopMenuStyle.css" />
     </resourceSet>
-    <resourceSet name="ToanThongMinhJS" type="js" debugEnabled="false" ignorePipelineWhenDebug="false">
+    <resourceSet name="ToanThongMinhJS" type="js" debugEnabled="true" ignorePipelineWhenDebug="false">
       <resource path="~/scripts/jquery-1.4.1.js" />
       <resource path="~/scripts/jquery.treeview.js" />
       <resource path="~/scripts/jquery.validate.js" />

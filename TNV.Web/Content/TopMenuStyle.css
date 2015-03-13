@@ -1,6 +1,7 @@
 ﻿/* menu style */
 .menu{ 
-	background: url("Image/menu_bg.png") repeat-x scroll 0 0 transparent;
+	/*background: url("Image/menu_bg.png") repeat-x scroll 0 0 transparent;*/
+	background-color:Gray;
     float: left;
     height: 34px;
     margin-bottom: 5px;

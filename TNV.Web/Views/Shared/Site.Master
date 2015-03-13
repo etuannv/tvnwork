@@ -9,9 +9,27 @@
     <meta content="Toán học việt nam, Toán học, Thông minh, Toán học thông minh, Thông minh toán học, Làm toán thông minh, Toán cấp 1 thông minh, Toán lớp 1, Toán lớp 2, Toán lớp 3, Toán lớp 4, Toán lớp 5,  Bài tập toán lớp 1, Bài tập toán lớp 2, Bài tập toán lớp 3, Bài tập toán lớp 4, Bài tập toán lớp 5, Làm toán nhanh, Làm toán thông minh, Bài tập thông minh, Toan hoc viet nam, Toan hoc, Thong minh, Toan hoc thong minh, Thong minh toan hoc, Lam toan thong minh, Toan cap 1 thong minh, Toan lop 1, Toan lop 2, Toan lop 3, Toan lop 4, Toan lop 5,  Bai tap toan lop 1, Bai tap toan lop 2, Bai tap toan lop 3, Bai tap toan lop 4, Bai tap toan lop 5, Lam toan nhanh, Lam toan thong minh, Bai tap thong minh,..." name="keywords"/>
     <meta content="1800" http-equiv="REFRESH"/>
     <title>Chuyên trang toán học thông minh</title>
-    <%= Html.CombresLink("ToanThongMinhCSS")%>
-    <%= Html.CombresLink("ToanThongMinhJS")%>
+    <%--<%= Html.CombresLink("ToanThongMinhCSS")%>
+    <%= Html.CombresLink("ToanThongMinhJS")%>--%>
     <link href="~/Content/Image/pi_math.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet"  href="~/Content/WebStyle.css"  type="text/css"/>
+    <link rel="stylesheet"  href="~/Content/jquery.treeview.css"  type="text/css"/>
+    <link rel="stylesheet"  href="~/Content/ui.core.css"  type="text/css"/>
+    <link rel="stylesheet"  href="~/Content/ui.datepicker.css"  type="text/css"/>
+    <link rel="stylesheet"  href="~/Content/ui.theme.css"  type="text/css"/>
+    <link rel="stylesheet"  href="~/Content/TopMenuStyle.css" type="text/css" />
+    
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.treeview.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.validate.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/MicrosoftMvcAjax.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/ScripByHan.js"></script>
+    <script language="javascript" type="text/javascript" src="/Content/FckEditior/fckeditor/fckeditor.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/ui.core.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/ui.datepicker.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/NewTopMenu.js"></script>
 </head>
 
 <body>
@@ -39,7 +57,7 @@
             <div id="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
-
+<%--
             <div id="footer">
 				<div class="footer-i">
 				    <b>TOÁN DÀNH CHO HỌC SINH TIỂU HỌC</b><br />
@@ -50,7 +68,7 @@
                     Điện thoại: 0211.3.256.789, Email: daotaotructuyen@gmail.com<br /></p>
                     <img class="foot_logo" src="/Content/Image/logo.png" />
 				</div>
-            </div>
+            </div>--%>
         </div>
     </form>
 </body>

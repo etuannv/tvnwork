@@ -23,7 +23,7 @@
                     <li><a href="#"><span>Bài tập toán lớp 5</span></a></li>
                 </ul>
             </li>
-            <li><a href="#" class="parent"><span>Luyện toán thông minh</span></a>
+            <%--<li><a href="#" class="parent"><span>Luyện toán thông minh</span></a>
                 <ul class="icesubMenu">
                     <li><a href="#"><span>Toán thông minh lớp 1</span></a></li>
                     <li><a href="#"><span>Toán thông minh lớp 2</span></a></li>
@@ -52,7 +52,7 @@
                     <li><a href="#"><span>Tạo bài tập toán</span></a></li>
                     <li><a href="#"><span>Tạo đề thi môn toán</span></a></li>
                 </ul>
-            </li>
+            </li>--%>
 
         </ul>
     </div>

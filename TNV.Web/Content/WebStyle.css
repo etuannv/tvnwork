@@ -66,12 +66,12 @@ a:active
 }
 .Banner
 {
-    background: url("Image/top.png") repeat-y scroll left top #FFFFFF; 
+    /*background: url("Image/top.png") repeat-y scroll left top #FFFFFF; */
 	overflow: hidden;	
 }
 .Banner-i
 {
-    background: url("Image/logo.png") no-repeat scroll left top transparent;
+    /*background: url("Image/logo.png") no-repeat scroll left top transparent;*/
     height: 48px;
     margin: 10px;
     width: 100%;
