@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<combres xmlns='urn:combres'>
+  <filters>
+    <filter type="Combres.Filters.FixUrlsInCssFilter, Combres" />
+    <filter type="Combres.Filters.DotLessCssFilter, Combres" acceptedResourceSets="dotLessCss" />
+  </filters>
+  <resourceSets url="~/combres.axd"
+                defaultDuration="30"
+                defaultVersion="auto"
+                defaultDebugEnabled="false"
+                defaultIgnorePipelineWhenDebug="false"
+                localChangeMonitorInterval="30"
+                remoteChangeMonitorInterval="60"
+                >
+    <resourceSet name="ToanThongMinhCSS" type="css" debugEnabled="false" ignorePipelineWhenDebug="false">
+      <resource path="~/Content/WebStyle.css" />
+      <resource path="~/Content/jquery.treeview.css" />
+      <resource path="~/Content/ui.core.css" />
+      <resource path="~/Content/ui.datepicker.css" />
+      <resource path="~/Content/ui.theme.css" />
+      <resource path="~/Content/TopMenuStyle.css" />
+    </resourceSet>
+    <resourceSet name="ToanThongMinhJS" type="js" debugEnabled="false" ignorePipelineWhenDebug="false">
+      <resource path="~/scripts/jquery-1.4.1.js" />
+      <resource path="~/scripts/jquery.treeview.js" />
+      <resource path="~/scripts/jquery.validate.js" />
+      <resource path="~/scripts/MicrosoftAjax.js" />
+      <resource path="~/scripts/MicrosoftMvcAjax.js" />
+      <resource path="~/scripts/MicrosoftMvcValidation.js" />
+      <resource path="~/scripts/ScripByHan.js" />
+      <resource path="~/Content/FckEditior/fckeditor/fckeditor.js" />
+      <resource path="~/scripts/ui.core.js" />
+      <resource path="~/scripts/ui.datepicker.js" />
+      <resource path="~/scripts/NewTopMenu.js" />
+    </resourceSet>
+  </resourceSets>
+</combres>

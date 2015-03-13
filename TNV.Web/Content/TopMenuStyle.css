@@ -1,0 +1,110 @@
+﻿/* menu style */
+.menu{ 
+	background: url("Image/menu_bg.png") repeat-x scroll 0 0 transparent;
+    float: left;
+    height: 34px;
+    margin-bottom: 5px;
+    margin-top: 0;
+    width: 100%;
+}
+#nav {    
+    display: inline-block;
+    margin: 0 15px auto;
+    padding: 0;
+}
+#nav li {
+    background: url("Image/menu_spc.png") no-repeat scroll left 1px transparent;
+    float: left;
+    list-style: none outside none;
+    position: relative;
+}
+#nav li.home {
+	background: none; /*url("Image/home.png") no-repeat scroll left center transparent; */
+}
+#nav li.home a{
+	padding-left: 10px;
+}
+#nav li li 
+{
+    background: none;}
+#nav a {
+	color: #FFF;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 12px;
+    text-decoration: none;
+}
+
+.menu_item 
+{
+    float: left;
+    width: 205px;
+}
+/* selected menu element */
+#nav .current a, #nav li:hover > a {
+    /*background:url("Image/menu-h_bg.png") repeat-x scroll 0 0 transparent;/* màu nền menu cấp 1*/
+    background-color: #0ebde2;
+}
+
+#nav li li:hover > a 
+{
+    color:#FF6E02;  
+}
+
+/* sublevels */
+#nav ul li:hover a, #nav li:hover li a {
+    background:none;
+}
+#nav ul li a:hover {
+    color: #FF6E02 !important;
+}
+
+/* menu xổ suống */
+#nav li:hover > ul {
+    opacity:1;
+    visibility:visible;
+}
+#nav ul {
+    opacity:0;
+    visibility:hidden;
+    padding:0;
+    width:200px;
+    position:absolute;
+    background:none repeat scroll 0 0 #0a9fe2;/* khi di chuột và qua thành phần khác có màu nền trên ul*/
+    transition:opacity .25s linear, visibility .1s linear .1s;    
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 5px solid #0089CF;
+    border-top: 1px solid #CCCCCC;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 5px #333333;
+}
+.icesubMenu {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 5px #333333;
+    z-index:5000;
+}
+#nav ul li {
+    float:none;
+    margin:0;
+    padding-left: 16px;
+}
+#nav ul a {
+    border-bottom: 1px dotted #CCCCCC;
+    color: #0089CF;
+    display: block;
+    font-weight: normal;
+    height: 18px;
+    line-height: 18px;
+    padding: 6px 2px;
+}
+#nav ul ul {
+    left:205px;
+    top:0px;
+    z-index: 99;
+}

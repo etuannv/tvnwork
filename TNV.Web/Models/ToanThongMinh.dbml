@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ToanThongMinh" Class="ToanThongMinhDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=ToanThongMinh;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ToanThongMinhConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.aspnet_Applications" Member="aspnet_Applications">
+    <Type Name="aspnet_Application">
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="aspnet_Application_aspnet_Membership" Member="aspnet_Memberships" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Membership" />
+      <Association Name="aspnet_Application_aspnet_Path" Member="aspnet_Paths" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Path" />
+      <Association Name="aspnet_Application_aspnet_Role" Member="aspnet_Roles" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Role" />
+      <Association Name="aspnet_Application_aspnet_User" Member="aspnet_Users" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserProperty" Member="UserProperties">
+    <Type Name="UserProperty">
+      <Column Name="UserFullName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MaTinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaHuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LoginNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpiredDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Prevent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SchoolId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Membership" Member="aspnet_Memberships">
+    <Type Name="aspnet_Membership">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="aspnet_Application_aspnet_Membership" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Paths" Member="aspnet_Paths">
+    <Type Name="aspnet_Path">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredPath" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationAllUser" Member="aspnet_PersonalizationAllUser" ThisKey="PathId" OtherKey="PathId" Type="aspnet_PersonalizationAllUser" Cardinality="One" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationPerUser" Member="aspnet_PersonalizationPerUsers" ThisKey="PathId" OtherKey="PathId" Type="aspnet_PersonalizationPerUser" />
+      <Association Name="aspnet_Application_aspnet_Path" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_PersonalizationAllUsers" Member="aspnet_PersonalizationAllUsers">
+    <Type Name="aspnet_PersonalizationAllUser">
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PageSettings" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationAllUser" Member="aspnet_Path" ThisKey="PathId" OtherKey="PathId" Type="aspnet_Path" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_PersonalizationPerUser" Member="aspnet_PersonalizationPerUsers">
+    <Type Name="aspnet_PersonalizationPerUser">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PageSettings" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_Path_aspnet_PersonalizationPerUser" Member="aspnet_Path" ThisKey="PathId" OtherKey="PathId" Type="aspnet_Path" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_PersonalizationPerUser" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Profile" Member="aspnet_Profiles">
+    <Type Name="aspnet_Profile">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyNames" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PropertyValuesString" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PropertyValuesBinary" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_aspnet_Profile" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Roles" Member="aspnet_Roles">
+    <Type Name="aspnet_Role">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredRoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_UsersInRole" />
+      <Association Name="aspnet_Application_aspnet_Role" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_SchemaVersions" Member="aspnet_SchemaVersions">
+    <Type Name="aspnet_SchemaVersion">
+      <Column Name="Feature" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompatibleSchemaVersion" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsCurrentVersion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_Membership" ThisKey="UserId" OtherKey="UserId" Type="aspnet_Membership" Cardinality="One" />
+      <Association Name="aspnet_User_aspnet_PersonalizationPerUser" Member="aspnet_PersonalizationPerUsers" ThisKey="UserId" OtherKey="UserId" Type="aspnet_PersonalizationPerUser" />
+      <Association Name="aspnet_User_aspnet_Profile" Member="aspnet_Profile" ThisKey="UserId" OtherKey="UserId" Type="aspnet_Profile" Cardinality="One" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="aspnet_UsersInRole" />
+      <Association Name="aspnet_Application_aspnet_User" Member="aspnet_Application" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="aspnet_Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_UsersInRoles" Member="aspnet_UsersInRoles">
+    <Type Name="aspnet_UsersInRole">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_Role" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_Role" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_WebEvent_Events" Member="aspnet_WebEvent_Events">
+    <Type Name="aspnet_WebEvent_Event">
+      <Column Name="EventId" Type="System.String" DbType="Char(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EventTimeUtc" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EventTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EventType" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="EventSequence" Type="System.Decimal" DbType="Decimal(19,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EventOccurrence" Type="System.Decimal" DbType="Decimal(19,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EventCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventDetailCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="ApplicationPath" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ApplicationVirtualPath" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="MachineName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="RequestUrl" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="ExceptionType" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HuyenThanhThi" Member="HuyenThanhThis">
+    <Type Name="HuyenThanhThi">
+      <Column Name="MaHuyenThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenHuyenThi" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MaTinhTP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsCategory" Member="NewsCategories">
+    <Type Name="NewsCategory">
+      <Column Name="NewsCategoryId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NewsCategoryTitle" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NewsCategoryOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NewsCategory_NewsContent" Member="NewsContents" ThisKey="NewsCategoryId" OtherKey="NewsCatId" Type="NewsContent" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SchoolList" Member="SchoolLists">
+    <Type Name="SchoolList">
+      <Column Name="SchoolOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SchoolId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SchoolName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DistrictId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TinhThanhPho" Member="TinhThanhPhos">
+    <Type Name="TinhThanhPho">
+      <Column Name="MaTinhTP" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTinhTP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsContent" Member="NewsContents">
+    <Type Name="NewsContent">
+      <Column Name="NewsId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NewsCatId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewsAuthor" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="NewsNarration" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NewsTitle" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NewsContents" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NewsImage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="NewsOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NewsCategory_NewsContent" Member="NewsCategory" ThisKey="NewsCatId" OtherKey="NewsCategoryId" Type="NewsCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MathKindList" Member="MathKindLists">
+    <Type Name="MathKindList">
+      <Column Name="MathKindListId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MathKindListName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MathKindListInfor" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MathKindListOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExerKind" Member="ExerKinds">
+    <Type Name="ExerKind">
+      <Column Name="ExerKindId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ExerKindName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ExerKindInfor" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ExerKindOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeListId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MathKindListId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassListId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CleverExerKind" Member="CleverExerKinds">
+    <Type Name="CleverExerKind">
+      <Column Name="CleverExerKindId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CleverExerKindName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CleverExerKindInfor" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CleverExerKindOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CleverMathKindId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CleverExerKind_CleverRange" Member="CleverRanges" ThisKey="CleverExerKindId" OtherKey="CleverExerKindId" Type="CleverRange" />
+      <Association Name="CleverMathKind_CleverExerKind" Member="CleverMathKind" ThisKey="CleverMathKindId" OtherKey="CleverMathKindId" Type="CleverMathKind" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CleverMathKind" Member="CleverMathKinds">
+    <Type Name="CleverMathKind">
+      <Column Name="CleverMathKindId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CleverMathKindName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CleverMathKindInfor" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClassListId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CleverMathKindOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CleverMathKind_CleverExerKind" Member="CleverExerKinds" ThisKey="CleverMathKindId" OtherKey="CleverMathKindId" Type="CleverExerKind" />
+      <Association Name="ClassList_CleverMathKind" Member="ClassList" ThisKey="ClassListId" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CleverRange" Member="CleverRanges">
+    <Type Name="CleverRange">
+      <Column Name="CleverRangeId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CleverRangeValue" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CleverAnswers" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CleverExerKindId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CleverRangeOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CleverRangeLever" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CleverRangeHelp" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CleverExerKind_CleverRange" Member="CleverExerKind" ThisKey="CleverExerKindId" OtherKey="CleverExerKindId" Type="CleverExerKind" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClassList" Member="ClassLists">
+    <Type Name="ClassList">
+      <Column Name="ClassListId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClassListName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ClassListInfor" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClassListOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ClassList_CleverMathKind" Member="CleverMathKinds" ThisKey="ClassListId" OtherKey="ClassListId" Type="CleverMathKind" />
+      <Association Name="ClassList_MotPhepToan" Member="MotPhepToans" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="MotPhepToan" />
+      <Association Name="ClassList_PhepToanBaSoHang" Member="PhepToanBaSoHangs" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="PhepToanBaSoHang" />
+      <Association Name="ClassList_DoiTuongHonKemNhau" Member="DoiTuongHonKemNhaus" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="DoiTuongHonKemNhau" />
+      <Association Name="ClassList_BaiToanDaySo" Member="BaiToanDaySos" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanDaySo" />
+      <Association Name="ClassList_BaiToanThoiGian" Member="BaiToanThoiGians" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanThoiGian" />
+      <Association Name="ClassList_BaiToanGhepO" Member="BaiToanGhepOs" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanGhepO" />
+      <Association Name="ClassList_BaiToanTimSo" Member="BaiToanTimSos" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanTimSo" />
+      <Association Name="ClassList_BaiToanDemHinh" Member="BaiToanDemHinhs" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanDemHinh" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MotPhepToan" Member="MotPhepToans">
+    <Type Name="MotPhepToan">
+      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoHangThuNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoHangThuHai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DauQuanHe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KetQuaPhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DapAn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SapXepThuTu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhamViPhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="ClassList_MotPhepToan" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhepToanBaSoHang" Member="PhepToanBaSoHangs">
+    <Type Name="PhepToanBaSoHang">
+      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SapXepThuTu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhamViPhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoHangThuNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhepToanThuNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoHangThuHai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhepToanThuHai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoHangThuBa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QuanHePhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KetQuaPhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DapAnThuNhat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DapAnThuHai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="ClassList_PhepToanBaSoHang" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DanhSachTen" Member="DanhSachTens">
+    <Type Name="DanhSachTen">
+      <Column Name="Ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MaHoTen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DoiTuongHonKemNhau" Member="DoiTuongHonKemNhaus">
+    <Type Name="DoiTuongHonKemNhau">
+      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDungCauHoi" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DapAnCauHoi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SapXepThuTu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoiGiaiCauHoi" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="KetLuanCauHoi" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SoLuongDapAn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuongDoiTuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhamViPhepToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LoaiCauHoi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhPhanCauHoi" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="ClassList_DoiTuongHonKemNhau" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DanhSachDoiTuong" Member="DanhSachDoiTuongs">
+    <Type Name="DanhSachDoiTuong">
+      <Column Name="MaDoiTuong" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenDoiTuong" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DonViTinh" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="HinhAnh" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ThaoTacDoiTuong" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="TienToChuNgu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ThuocVeTuNhien" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SoHuu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaiToanDaySo" Member="BaiToanDaySos">
+    <Type Name="BaiToanDaySo">
+      <Column Name="MaDaySo" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDungDaySo" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuongPhanTu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoiDungDapAn" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuongDapAn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhanLoaiDaySo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SapXepThuTu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhamViPhepToan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CauHoiHienThi" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="LoiGiaiCauHoi" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="KetLuanCauHoi" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="GoiYTraLoi" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ClassList_BaiToanDaySo" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaiToanThoiGian" Member="BaiToanThoiGians">
+    <Type Name="BaiToanThoiGian">
+      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Gio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Phut" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Giay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DapAn" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="SoDapAn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ClassList_BaiToanThoiGian" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaiToanGhepO" Member="BaiToanGhepOs">
+    <Type Name="BaiToanGhepO">
+      <Column Name="MaBaiToan" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDungBaiToan" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="NoiDungDapAn" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ChieuNgang" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChieuDoc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhamViPhepToan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoiDungGiaTri" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="LoaiBaiToan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="ClassList_BaiToanGhepO" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaiToanTimSo" Member="BaiToanTimSos">
+    <Type Name="BaiToanTimSo">
+      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ChuoiSoHienThi" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="DapAn" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PhamViPhepToan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhanLoaiBaiToan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserControlName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoiGiaiBaiToan" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ClassList_BaiToanTimSo" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaiToanDemHinh" Member="BaiToanDemHinhs">
+    <Type Name="BaiToanDemHinh">
+      <Column Name="MaBaiToan" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDungBaiToan" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LoiGiaiBaiToan" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhanLoaiBaiToan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SapXepThuTu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DapAnBaiToan" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="ClassList_BaiToanDemHinh" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

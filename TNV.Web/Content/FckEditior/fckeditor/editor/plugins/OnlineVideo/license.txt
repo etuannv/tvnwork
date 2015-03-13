@@ -1,0 +1,6 @@
+
+	* FCKEditor OnlineVideo Plugin
+	* Publisher Host (c) Creative Commons 2008
+	* http://creativecommons.org/licenses/by-sa/3.0/
+	* Author: Michael James | http://www.mjjames.co.uk
+	* Reference: http://blog.mjjames.co.uk/2009/06/flickvimtube-fckeditor-plugin.html

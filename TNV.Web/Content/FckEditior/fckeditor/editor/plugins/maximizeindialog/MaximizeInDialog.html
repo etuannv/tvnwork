@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html>
+	<head>
+		<title>MaximizeInDialog</title>
+		<meta name="robots" content="noindex, nofollow">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script language="JavaScript" type="text/javascript" src="../../../fckeditor.js"></script>
+		<script type="text/javascript">
+		var oEditor = window.parent.InnerDialogLoaded() ;
+
+		function setDefaults()
+		{
+			// First of all, translates the dialog box texts.
+			oEditor.FCKLanguageManager.TranslatePage(document) ;
+		
+			window.parent.SetOkButton( true ) ;	
+			window.parent.SetAutoSize( true ) ;	
+		}
+
+		function Ok()
+		{
+			var oFCKEditorMaximizeInDialog = FCKeditorAPI.GetInstance('editorMaximizeInDialog');
+			oFCKEditor.SetHTML( oFCKEditorMaximizeInDialog.GetXHTML(oFCKConfig.FormatSource) ) ;
+			return true ;
+		}
+
+		</script>
+	</head>
+
+	<body onload="setDefaults()" scroll="no">
+		<script type="text/javascript">	
+			var oFCKEditor = oEditor.FCK;
+			var oFCKLang = oEditor.FCKLang;
+			var oFCKConfig = oEditor.FCKConfig;
+			var oEditorMaximizeInDialog = new FCKeditor('editorMaximizeInDialog');
+			oEditorMaximizeInDialog.BasePath = '../../../';
+			oEditorMaximizeInDialog.Width = '100%';
+			oEditorMaximizeInDialog.Height = '100%';
+			oEditorMaximizeInDialog.FCKLang = oFCKLang;
+			oEditorMaximizeInDialog.CheckBrowser = oFCKEditor.CheckBrowser;
+			oEditorMaximizeInDialog.DisplayErrors = oFCKEditor.DisplayErrors;
+			var toolbarSet = oFCKConfig.MaximizeInDialog_ToolbarSet;
+			if (toolbarSet=='' || toolbarSet=='null' || toolbarSet=='undefined' || toolbarSet==null) {
+				toolbarSet = oFCKEditor.ToolbarSet.Name ;
+			}
+			oEditorMaximizeInDialog.ToolbarSet = toolbarSet;
+			var loadConfig = new Array('EditorAreaCSS', 'StylesXmlPath', 'AutoDetectLanguage', 'DefaultLanguage', 'LinkBrowserURL', 'ImageBrowserURL', 'SkinPath', 'BaseHref');
+			for(var i = 0; i < loadConfig.length; i++) {
+				eval("oEditorMaximizeInDialog.Config['"+loadConfig[i]+"'] = oFCKConfig."+loadConfig[i]+";");
+			}
+
+			// EnableXHTML and EnableSourceXHTML has been deprecated
+			//oEditorMaximizeInDialog.Value = ( oFCKConfig.EnableXHTML && oFCKConfig.EnableSourceXHTML ? oFCKEditor.GetXHTML( oFCKConfig.FormatSource ) : oFCKEditor.GetHTML( oFCKConfig.FormatSource ) );
+			oEditorMaximizeInDialog.Value = oFCKEditor.GetXHTML( oFCKConfig.FormatSource );
+			oEditorMaximizeInDialog.Create();
+		
+		</script>
+	</body>
+</html>

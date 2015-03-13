@@ -1,0 +1,24 @@
+// Formula Editor Dialog
+FCKLang["DlgFEditFormulaName"] = "Name der Formel";
+FCKLang["DlgFEditTitle"] = "Formeleditor";
+FCKLang["DlgFEditFormula"] = "Formel in LaTeX Syntax" ;
+FCKLang["DlgFEditBtnRecalc"]    = "Vorschau" ;
+FCKLang["DlgFEditBlack"]    = "Schwarz" ;
+FCKLang["DlgFEditRed"]    = "Rot" ;
+FCKLang["DlgFEditBlue"]    = "Blau" ;
+FCKLang["DlgFEditYellow"]    = "Gelb" ;
+FCKLang["DlgFEditOrange"]    = "Orange" ;
+FCKLang["DlgFEditPink"]    = "Pink" ;
+FCKLang["DlgFEditPurple"]    = "Purpur" ;
+FCKLang["DlgFEditTeal"]    = "Blaugr&uuml;n" ;
+FCKLang["DlgFEditNavy"]    = "Marineblau" ;
+FCKLang["DlgFEditAqua"]    = "Hellblau" ;
+FCKLang["DlgFEditLime"]    = "Gelbgr&uuml;n" ;
+FCKLang["DlgFEditGreen"]    = "Gr&uuml;n" ;
+FCKLang["DlgFEditOlive"]    = "Oliv" ;
+FCKLang["DlgFEditMaroon"]    = "Kastanienbraun" ;
+FCKLang["DlgFEditBrown"]    = "Braun" ;
+FCKLang["DlgFEditGray"]    = "Grau" ;
+FCKLang["DlgFEditSilver"]    = "Hellgrau" ;
+FCKLang["DlgFEditWhite"]    = "Wei&szlig;" ;
+FCKLang["DlgFEditColor"]      = "Farbe"

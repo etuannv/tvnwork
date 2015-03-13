@@ -1,0 +1,1482 @@
+﻿/* Thiết kế Style Website */
+body
+{
+    background: url("Image/plaid.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-family: Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+    font-size:12px;
+}
+.page
+{
+    margin: 0 auto;
+    width: 1000px;
+    background: none repeat scroll 0 0 #F5F5F5;
+    -moz-box-shadow: 0px 2px 17px #444444;
+    -webkit-box-shadow: 0px 2px 17px #444444;
+    box-shadow: 0 1px 3px #444444;
+}
+#logindisplay
+{
+    color: #007E9E;
+    display: block;
+    font-size: 11px;
+    padding-bottom: 2px;
+    padding-right: 25px;
+    padding-top: 18px;
+    text-align: right;
+    vertical-align: middle;
+}
+#logindisplay a {
+	color: #ff6600;
+}
+a:link
+{
+    color: #444444;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #2D90A8;
+}
+a:hover
+{
+    color: #2D90A8;
+    text-decoration: none;
+}
+a:active
+{
+    color: #2D90A8;
+}
+#header
+{
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+	background:#FFFFFF;
+}
+
+#title
+{
+	background:url(Image/Banner.png) no-repeat;
+    padding-left: 12px ;
+    color:#444444;
+    height:140px;
+}
+.Banner
+{
+    background: url("Image/top.png") repeat-y scroll left top #FFFFFF; 
+	overflow: hidden;	
+}
+.Banner-i
+{
+    background: url("Image/logo.png") no-repeat scroll left top transparent;
+    height: 48px;
+    margin: 10px;
+    width: 100%;
+}
+#header h1
+{
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px !important;
+}
+
+#main
+{
+    padding: 5px 10px 10px 10px;
+    background-color: #F5F5F5;
+    min-height:600px;
+}
+
+#ToolBar
+{
+    height:28px;
+    background-color: #C3D1EC;
+}
+#Toolbartext
+{
+	padding:5px 0px 0px 20px;
+    color: #5C87B2;
+    font-weight:bold;
+}
+
+#footer {
+	background: url("Image/footer_bg.png") repeat-x scroll left top #D6D6D6;
+    border-top: 1px solid #0086c6;
+    margin-top: 3px;
+    padding-bottom: 8px;
+    padding-left: 2px;
+    padding-top: 0;
+	position: relative;
+}
+.footer-i {
+	color: #434545;
+    margin-left: 15px;
+    margin-top: 10px;
+    font-size:12px;
+}
+#footer h3 {
+	margin: 8px 0;
+}
+#footer p {
+	margin: 4px 0;
+}
+
+.foot_logo {
+	bottom: 15px;
+    position: absolute;
+    right: 16px;
+}
+
+.validation-summary-errors
+{
+	font:none 11px Arial, Helvetica, sans-serif;
+    color: #ff0000;
+    text-align:center;
+}
+
+.ThongBao
+{
+	font:none 13px Arial, Helvetica, sans-serif;
+    color: #ff0000;
+    text-align:center;
+    width:500px;
+    background:#E0E3E4;
+    border:3px solid #D2D3D3;
+    padding:30px;
+    margin-left:50px;
+}
+.TestIQ
+{
+	width:300px;
+	height:300px;
+}
+.Left250
+{
+	width:250px;
+	color:#444444;
+}
+.right730
+{
+	width:700px;
+	color:#444444;	
+}
+.TitleNomal 
+{
+	color:#308FBD;
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+	padding:10px 0px 10px 0px
+}
+.SmallTitleNomal 
+{
+	color:#444444;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+}
+.FoodTitle 
+{
+	color:#444444;
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+	text-transform:uppercase;
+}
+
+.TitleNomal1 
+{
+	color:Blue;
+	font-size:15px;
+	font-weight:bold;
+	text-align:center;
+}
+.TitleNomal2 
+{
+	color:#000000;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+}
+.TitleNomal3 
+{
+	color:#444444;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+}
+.TitleNomal4 
+{
+	color:#444444;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+}
+.TitleNomal5
+{
+	color:#444444;
+	font-size:14px;
+	font-weight:bold;
+	text-align:left;
+	text-decoration:underline;
+}
+.TitleNomal6
+{
+	color:#444444;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+	font-style:italic;
+}
+.ImageButton
+{
+	border:0px;
+	padding-top:2px;
+	cursor:pointer;
+}
+.divbutton
+{
+	padding:10px;
+}
+.divbuttonNutri
+{
+	padding:10px;
+	width:880px;
+}
+.Div640
+{
+	padding:10px;
+	width:640px;
+}
+#login
+{
+    background:url(Image/Login.png) no-repeat;
+    height:31px;
+    width:98px;
+    border:0px;
+    cursor:pointer;
+    background-position:center;
+}
+
+#login:hover
+{
+    opacity: 0.5;
+}
+#login_button
+{
+    background:url(Image/DangKy.png) no-repeat;
+    height:31px;
+    width:98px;
+    border:0px;
+    cursor:pointer;
+    background-position:center;
+}
+
+#login_button:hover
+{
+    opacity: 0.5;
+}
+
+#login_button_Update
+{
+    background:url(Image/CapNhat.png) no-repeat;
+    height:31px;
+    width:108px;
+    border:0px;
+    cursor:pointer;
+    background-position:center;
+}
+
+#login_button_Update:hover
+{
+	opacity: 0.5;
+}
+#login_button_Save
+{
+    background:url(Image/GhiDuLieu.png) no-repeat;
+    height:22px;
+    width:79px;
+    border:0px;
+    cursor:pointer;
+    background-position:center;
+}
+
+#login_button_Save:hover
+{
+    background:url(Image/GhiDuLieuHover.png) no-repeat;
+    height:22px;
+    width:79px;
+    border:0px;
+    cursor:pointer;
+    background-position:center;
+}
+
+#FoodForMeal
+{
+  height: 310px;
+  overflow:auto;
+  width:700px; 
+  margin:0px;
+}
+.OutStock
+{
+  height: 800px;
+  overflow:auto;
+  width:520px; 
+  display:auto;
+  margin:0px;
+}
+
+.SelectFoodInput
+{
+  height: 550px;
+  overflow:auto;
+  width:295px; 
+  display:auto;
+  margin:0px;
+}
+.SelectFoodinStock
+{
+  height: 550px;
+  overflow:auto;
+  width:320px; 
+  display:auto;
+  margin:0px;
+}
+.SelectedFoodPrice
+{
+  height: 450px;
+  overflow:auto;
+  width:490px; 
+  display:auto;
+  margin:0px;
+}
+.SelectedFood
+{
+  height: 450px;
+  overflow:auto;
+  width:520px; 
+  display:auto;
+  margin:0px;
+}
+.SelectedFoodinStock
+{
+  height: 450px;
+  overflow:auto;
+  width:420px; 
+  display:auto;
+  margin:0px;
+}
+#help
+{
+  height: 740px;
+  overflow:auto;
+  width: 236px; 
+  margin: 1em 0;
+}
+.CacBuoc
+{
+	text-decoration: underline; font-style: italic; font-size:12px; font-weight:bold
+}
+.huongdan
+{
+	font-size:12px; text-align:justify
+}
+.chuy
+{
+	font-size:12px; color:#308FBD
+}
+.bottombarleft{
+	top : 250px;
+	left:50px;
+	position : fixed;
+}
+
+.bottombarright
+{
+	text-align:right;
+	top : 250px;
+	right:50px;
+	position : fixed;
+}
+
+.bottombarCenter
+{
+	text-align:center;
+	bottom:0px;
+	position : fixed;
+}
+
+.NewsCat{border:1px solid #F2F2F2; background:#F2F2F2; padding-left:10px; padding-right:10px; padding-top:3px; width:35%; height:20px; color:#0595BE; font:bold 14px Arial, Helvetica, sans-serif; text-shadow:1px 1px #F2F2F2; text-align:justify;}
+.NewsDetail{border-left:1px solid #F2F2F2; border-right:1px solid #F2F2F2; border-bottom:1px solid #F2F2F2; border-top:4px solid #308FBD; background:#FFFFFF; padding-left:10px; padding-right:10px;  width:96%}
+.NewsDetail .Title{padding:10px 4px 2px 4px; display:block; color:#074899; font:bold 14px Arial, Helvetica, sans-serif; text-shadow:1px 1px #F2F2F2; text-align:justify;}
+.NewsDetail .Author{padding:10px 4px 2px 4px; display:block; color:#5B5B5B; font:none 12px Arial, Helvetica, sans-serif; font-style:italic; text-align:right;}
+.NewsDetail .Description{padding:10px 4px 2px 4px; display:block; color:#5B5B5B; font:bold 13px Arial, Helvetica, sans-serif; font-style:italic;  text-align:justify;}
+.NewsDetail .ContentDetail{padding:10px 4px 2px 4px; display:block; color:#000000; font:none 12px Arial, Helvetica, sans-serif;  text-align:justify;}
+
+/* Định dạng bài viết mới trang chủ */
+.Hot-new{float:left; width:703px; height:415px; overflow:hidden; text-align:left}
+.Hot-new .new-boder{float:left; width:698px; height:405px; overflow:hidden; border-top:4px solid #308FBD; border-left:1px solid #efefef; border-bottom:1px solid #efefef; border-right:1px solid #efefef;}
+.Hot-new .MostNew{float:left; width:430px; height:405px; margin:15px 0px 0px 15px; overflow:hidden;}
+.Hot-new .MostNew .img{float:left; width:420px; height:260px; margin:0px; overflow:hidden; border:0px solid #CFCFCF; box-shadow: 2px 2px 10px #B7B7B7; }
+.Hot-new .MostNew .title a {float:left; width:420px; height:auto; line-height:20px; margin-top:8px; overflow:hidden; color:#444444; font-weight:bold; font-size:12px; text-decoration:none}
+.Hot-new .MostNew .title a:hover {float:left; width:420px; height:auto; line-height:20px; margin-top:8px; overflow:hidden; color:#308FBD; font-weight:bold; font-size:12px}
+.Hot-new .MostNew .Narration{float:left; width:420px; height:auto; line-height:18px; margin:0px; overflow:hidden; text-align:justify;}
+.Hot-new .MostNew .detail a{float:left; width:420px; height:30px; line-height:30px; margin:0px; padding-left:15px; color:#444444; font-style:italic; background:url(Image/detail-icon.png) no-repeat left; text-decoration:none}
+
+.SomeHotNews{position:relative; top:-406px; left:460px; width:243px; height:409px; margin:0px; overflow:hidden; background:url(Image/veo-top-right.png) no-repeat right top;}
+.SomeHotNews .rem-cua{float:left; width:240px; height:409px; margin:0px; background:url(Image/dem-cua.png) no-repeat center bottom;}
+.SomeHotNews .center{float:left; width:238px; height:400px; margin:0px 0px 9px 0px; border-left:1px solid #a3a3a3; border-right:1px solid #a3a3a3; background:#efefef; overflow:hidden; }
+.SomeHotNews .center .title{float:left; width:218px; padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px; color:#444444; font-size:14px; font-weight:bold;
+background-image: -moz-linear-gradient(top,white 0,#efefef 100%);
+background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,white),color-stop(1,#efefef));
+                        }                
+.SomeHotNews .center .item{float:left; width:218px; height:80px; padding:5px 10px 10px 10px; border-top:1px solid #CFCFCF;}     
+.SomeHotNews .center .item a{ max-height:30px; overflow:hidden; color:#444444; font-weight:bold; font-size:11px; text-decoration:none}       
+.SomeHotNews .center .item a:hover{ max-height:30px; overflow:hidden; color:#308FBD; font-weight:bold; font-size:11px}                
+           
+.SomeHotNews .center .info{float:left; width:218px; height:45px; line-height:16px; margin-top:5px; overflow:hidden; text-align:justify;}   
+
+/*Dinh dang box LogOn trong cột phải trang chủ*/
+.uc_wapper{text-align:left; width:95%; padding:10px; margin:0px 0 5px 0; border-left:1px solid #cfcfcf; border-right:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf; border-top:4px solid #308FBD;}
+.uc_title{background:#efefef ;height:30px; width:100%; border-bottom:1px solid #CFCFCF;}
+.uc_title h2{color:#308FBD; font-size:12px; font-weight:bold; margin:0 0 0 5px; text-transform:uppercase; line-height:34px; text-shadow:1px 1px #eee;}
+.uc_content{padding-top:20px; width:100%; color:#444444; font:none 12px Arial, Helvetica, sans-serif;}
+
+.BoxNotice{text-align:left; width:400px; background:#FFFFFF; margin-top:100px; border:1px solid #CFCFCF;}
+.BoxNoticeTitle{background:#2B84A2 url(Image/Warning.png) 5px 5px no-repeat; height:25px; width:365px; border-bottom:1px solid #CBC9C9; color:#FFFF00; font-size:12px; font-weight:bold; text-transform:uppercase; padding-top:10px; padding-left:35px}
+.BoxNoticeContent{padding-top:20px; padding-bottom:30px; width:100%; color:#444444; font:none 12px Arial, Helvetica, sans-serif;}
+
+.LabelInput{padding:3px 5px 3px 5px; display:block; font:none 11px Arial, Helvetica, sans-serif; border-bottom:1px dotted #ccc;}
+.LabelInput1{padding:3px 5px 3px 5px; display:block; font:none 11px Arial, Helvetica, sans-serif;}
+
+/*Dinh dang the tab*/
+.box-Tab {padding:1px; width:100%;}
+.box-Tab .title {padding-bottom:2px; padding-top:0px; background:#FFFFFF; height:24px; display:block; clear:both; width:100%;}
+.box-Tab .title ul {width:100%; background:#FFFFFF; display:inline-block; margin-top:0px; margin-bottom:2px; padding-left:0px}
+.box-Tab .title li {float:left; padding:0px 1px; list-style:none;}
+.box-Tab .title li a, .box-Tab .title li a:link, .box-Tab .title li a:visited {display:block; padding:5px; background:#EFEFEF; color:#444444; font:none 11px Tahoma,Helvetica,sans-serif; }
+.box-Tab .title li a:hover, .box-Tab .title li a.acvited {background:#DDDBDB; color:#444444; text-decoration:none}
+.box-Tab .content {border-left:1px solid #F2F2F2; border-right:1px solid #F2F2F2;border-bottom:1px solid #F2F2F2; border-top:4px solid #308FBD;}
+.box-Tab .content ul {padding:5px; }
+
+.HelpGroup{margin:0;padding:0;width:100%}
+ul.HelpBody{text-align:left}
+ul.HelpBody li{border-bottom:1px dotted #ccc; padding:0px; line-height:25px; text-align:left}
+ul.HelpBody li a{color:#444444}
+ul.HelpBody li a:hover{color:#308FBD}
+.GroupLabel{color:#308FBD; font:none 13px Arial, Helvetica, sans-serif; text-transform:uppercase;  text-align:justify;}
+.HelpLabel {color:#444444; font:none 12px Arial, Helvetica, sans-serif;  text-align:justify;}
+
+.TextLabel{color:#444444; font:none 12px Arial, Helvetica, sans-serif;  text-align:justify; border-bottom:1px dotted #ccc; padding:0px 5px 0px 5px}
+
+/*Dinh dang box danh sách thực phẩm trong trang chủ*/
+.ListFoodBox {float:left; width:250px; padding:0; margin:0px 0 5px 0; border-left:1px solid #cfcfcf; border-right:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf; border-top:4px solid #308FBD;}
+.ListFoodBoxTitle {float:left; background:#efefef ;height:30px; width:250px; border-bottom:1px solid #CBC9C9; }
+.ListFoodBoxTitle h2 {color:#308FBD; font-size:12px; font-weight:bold; margin:0 0 0 10px; padding:0; text-transform:uppercase; line-height:34px; text-shadow:1px 1px #eee;}
+.ListFoodBoxContent {float:left; width:250px; overflow:scroll; height:350px; text-align:left}
+.ListFoodBoxContent li {border-bottom:1px dotted #ccc; line-height:25px; text-align:left}
+.ListFoodBoxContent li a {color:#444444; padding-left:5px;}
+.ListFoodBoxContent li a:hover {color:#308FBD}
+.FoodGroup {color:#308FBD; font:bold 12px Tahoma,Helvetica,sans-serif; text-decoration:underline; line-height:30px; padding-left:5px;  text-align:justify;}
+
+.LienHe {color:#444444; font:none 12px Tahoma,Helvetica,sans-serif; line-height:25px; padding:5px;  text-align:justify;}
+
+/*Dinh dang các box trong trang chủ*/
+.NewsGroup {padding:1px; margin-top:5px; width:100%; text-align:left}
+.NewsGroup .title {padding:5px; background:#EFEFEF; border-top:1px solid #CCCCCC; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; display:block; clear:both; width:28%; font:bold 12px Tahoma,Helvetica,sans-serif;  }
+.NewsGroup .content {border-left:1px solid #F2F2F2; border-right:1px solid #F2F2F2;border-bottom:1px solid #F2F2F2; border-top:4px solid #308FBD;}
+.NewsGroup .content .ItemGroup {border:1px solid #F2F2F2; margin:5px; height:100px}
+.NewsGroup .content .ItemGroup img{border:1px solid #F2F2F2; padding:1px; float:left; margin-right:5px}
+.NewsGroup .content .ItemGroup .Description{margin-top:3px; display:block; color:#5B5B5B; font:none 12px Arial, Helvetica, sans-serif; font-style:italic;  text-align:justify;}
+.NewsGroup .content .ItemGroup li {line-height:25px; text-align:left; display:block;}
+.NewsGroup .content .ItemGroup li a {color:#444444; padding-left:5px; display:block; font:bold 12px Tahoma,Helvetica,sans-serif;}
+.NewsGroup .content .ItemGroup li a:hover {color:#308FBD}
+.NewsGroup .content  li {line-height:25px; text-align:left; display:inline-block; width:100%}
+.NewsGroup .content  li a {color:#444444; padding-left:5px; font:none 12px Tahoma,Helvetica,sans-serif;}
+.NewsGroup .content  li a:hover {color:#308FBD}
+
+.FoodDetail {padding:1px; margin-top:5px; width:100%; text-align:left}
+.FoodDetail .Foodtitle {padding:5px; background:#EFEFEF; border-top:1px solid #CCCCCC; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; display:block; clear:both; font:bold 12px Tahoma,Helvetica,sans-serif; width:60%}
+.FoodDetail .Foodcontent {border-left:1px solid #F2F2F2; border-right:1px solid #F2F2F2;border-bottom:1px solid #F2F2F2; border-top:4px solid #308FBD; padding:5px;}
+
+.Input {width:250px; text-align:left; color:#444444; border:1px solid #7B7A7A; padding:2px;}
+.Input1 {width:400px; text-align:left; color:#000000; border:1px solid #7B7A7A; padding:2px;}
+
+.Status {
+	background: none repeat scroll 0 0 #E2E2E2;
+    border-left: 5px solid #F5F5F5;
+	border-right: 7px solid #F5F5F5;
+    color: #444444;
+    height: 25px;
+    padding: 10px 0 0 7px;
+    text-align: left;
+    vertical-align: middle;
+}
+.Status img { margin: 0 5px; } 
+
+.Explanation{text-align:left; color:#67B0D1; font-style:italic; text-align:justify; font:normal 12px Tahoma,Helvetica,sans-serif;}
+
+.Security{letter-spacing:10px; color:#000000; font-style:italic; text-align:center; font:bold 15px Tahoma,Helvetica,sans-serif; border:1px solid #7B7A7A; background:#D5D2D2}
+
+.Note{text-align:left; color:#FF0000; font:bold 15px Tahoma,Helvetica,sans-serif;}
+
+.NoiQuy{text-align:left; width:100%; background:#FFFFFF; height:150px; overflow:scroll; border:1px solid #7B7A7A; color:#444444; padding-left:5px; padding-right:5px; text-align:justify; font:normal 13px Tahoma,Helvetica,sans-serif;}
+
+.Table1
+{
+  border: solid 1px #A5CEF7;
+  border-collapse: collapse;
+  padding:20px;
+}
+
+.Table1 th
+{
+  padding: 6px 5px;
+  text-align: Center;
+  background-color: #DCE9F6; 
+  color:#444444;
+  border: solid 1px #A5CEF7;   
+}
+
+.Table1 tr
+{
+  padding: 6px 5px;
+  text-align: Center;
+  background-color: #FFFFFF; 
+  color:#444444;
+  border: solid 1px #A5CEF7;   
+}
+
+.Table1 tr:hover
+{
+  background-color: #F3F8FB; 
+}
+
+
+.Table1 td 
+{
+  padding: 5px;   
+  border: solid 1px #A5CEF7;
+  vertical-align:middle;
+}
+
+.Table2
+{
+  border: solid 1px #A5CEF7;
+  border-collapse: collapse;
+  padding:20px;
+}
+
+.Table2 th
+{
+  padding: 6px 5px;
+  text-align: Center;
+  background-color: #DCE9F6; 
+  color:#444444;
+  border: solid 0px #A5CEF7;   
+}
+
+.Table2 tr
+{
+  padding: 6px 5px;
+  text-align: Center;
+  background-color: #FFFFFF; 
+  color:#444444;
+  border: solid px #A5CEF7;   
+}
+
+.Table2 tr:hover
+{
+  background-color: #F3F8FB; 
+}
+
+
+.Table2 td 
+{
+  padding: 5px;   
+  border: solid 0px #A5CEF7;
+  vertical-align:middle;
+  text-align:left
+}
+
+
+.Button {width:96%; text-align:right;}
+
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+	margin:5px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/*Phân trang*/
+.paging {padding:5px;}
+.paging span {display:block; padding: 4px; float:left; margin-right:5px;}
+.paging { margin: 5px 0px 20px 0px;}
+.paging a {display:block; padding: 4px 8px; float:left; margin-right:5px;-moz-border-radius:3px;background:-moz-linear-gradient(center top , #FFFFFF, #EFEFEF) repeat scroll 0 0 #F6F6F6;border:1px solid #CCCCCC;cursor:pointer; text-decoration: none; color:#555555;}
+.paging a:hover, .paging a.current{overflow:visible;background-color:#CCC; background:-moz-linear-gradient(center top , #FFFFFF, #CCC) repeat scroll 0 0 #CCC; color:#222; border:1px solid #888;}
+.paging-header {padding:5px; background: none; width: auto;}
+
+table.MathHelp {background-color: #012F2E; border-color: #1C7DAE; border-style: inset; border-width: 5px; font-family: Verdana; padding: 5px; text-align: justify; width:90%}
+.HelpTitle{ text-align:left; padding-left:5px; font:Bold 14px Arial, Helvetica, sans-serif; color:#FFFC00; font-style:italic; text-decoration:underline}
+.HelpContent{ text-align:left; padding-left:10px; font:normal 14px Arial, Helvetica, sans-serif; color:#FFFFFF; word-spacing:3px; line-height:25px;}
+.HelpReturn{ text-align:left; padding-left:10px; font:normal 14px Arial, Helvetica, sans-serif; color:#FFFFFF;  word-spacing:3px; line-height:25px;}
+.AllHelpReturn{ text-align:left; padding-left:10px; font:normal 14px Arial, Helvetica, sans-serif; color:#FFFFFF;  word-spacing:3px; line-height:25px;}
+
+.cssColTable
+{
+	 border:1px solid #DFDFDF;
+	 min-height:600px;
+	 background:#FFFFFF;
+}
+.Dong1{background:#E9F7F9; }
+.Dong2{background:#F9E3C1; }
+
+.TableInput
+{
+	background:#FFFFFF;
+	border:2px solid #DFDFDF;
+	padding:5px;
+	margin-top:20px;
+}
+
+.HopBaiToan
+{
+	background: none repeat scroll 0 0 #F7F7F7;
+    -moz-box-shadow: 0px -1px 3px #888888;
+    -webkit-box-shadow: 0px -1px 3px #888888;
+    box-shadow: 0px -1px 3px #888888;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    width: 670px;
+}
+
+.NoiDungHopBaiToan
+{
+	margin-left: auto;
+    margin-right: auto;
+    text-align:justify;
+    padding:10px;
+    width: 650px;
+}
+
+.TieuDeHoBaiToan
+{
+	border-bottom: 1px solid #CCCCCC;
+	background: none repeat scroll 0 0 #E6E4E4;
+	padding:2px;
+    color: #444444;
+    font-size: 13px;
+    text-align:right;
+    width: 666px;
+}
+
+.CauSo
+{
+	padding-left:5px; font-size:13px; color:#444444; text-decoration:underline; font-weight:bold;
+}
+.TieuDeLoiGiai
+{
+	text-align:left; text-decoration:underline; font-size:13px; font-weight:bold; padding-left:10px;
+}
+.LoiGiaiBaiToan
+{
+    color: #444444;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:justify;
+    padding: 5px;
+    width: 630px;
+}
+
+.DapSoBaiToan
+{
+    color: #444444;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:left;
+    padding: 5px;
+    width: 630px;
+    font-size:13px; 
+}
+
+.DaySo
+{
+	font-size:20px;
+	color:#444444;
+}
+.DapAn
+{
+	font-weight:bold;
+	text-decoration:underline
+}
+.LogonRegistry
+{
+	color: rgb(255, 255, 255);
+	font-size: 12px;
+	padding: 5px;
+	text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.5);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: rgb(43, 132, 162);
+	background: -moz-linear-gradient(4deg, rgb(43, 132, 162) 30%, rgb(43, 132, 162) 78%);
+	background: -webkit-linear-gradient(4deg, rgb(43, 132, 162) 30%, rgb(43, 132, 162) 78%);
+	background: -o-linear-gradient(4deg, rgb(43, 132, 162) 30%, rgb(43, 132, 162) 78%);
+	background: -ms-linear-gradient(4deg, rgb(43, 132, 162) 30%, rgb(43, 132, 162) 78%);
+	background: linear-gradient(274deg, rgb(43, 132, 162) 30%, rgb(43, 132, 162) 78%);
+	-webkit-box-shadow: 0px 0px 3px rgba(68, 68, 68, 0.6);
+	-moz-box-shadow:    0px 0px 3px rgba(68, 68, 68, 0.6);
+	box-shadow:         0px 0px 3px rgba(68, 68, 68, 0.6);
+	cursor:pointer;
+}
+.LogonRegistry:hover
+{
+	color: rgb(255, 255, 0);
+	font-size: 12px;
+	padding: 4px;
+	text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.5);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: rgb(134, 196, 254);
+	background: -moz-linear-gradient(4deg, rgb(134, 196, 254) 100%, rgb(52, 157, 192) 100%);
+	background: -webkit-linear-gradient(4deg, rgb(134, 196, 254) 100%, rgb(52, 157, 192) 100%);
+	background: -o-linear-gradient(4deg, rgb(134, 196, 254) 100%, rgb(52, 157, 192) 100%);
+	background: -ms-linear-gradient(4deg, rgb(134, 196, 254) 100%, rgb(52, 157, 192) 100%);
+	background: linear-gradient(274deg, rgb(134, 196, 254) 100%, rgb(52, 157, 192) 100%);
+	-webkit-box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.7);
+	-moz-box-shadow:    0px 0px 3px rgba(255, 255, 255, 0.7);
+	box-shadow:         0px 0px 3px rgba(255, 255, 255, 0.7);
+}
+
+.divClook 
+{
+	width:200px;
+	height:200px;
+	text-align:center;
+}
+.clock 
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: url(image/clockface.png) no-repeat;
+    list-style: none;
+}
+.sec, .min, .hour 
+{
+    position: absolute;
+    width: 10px;
+    height: 200px;
+    top: 0px;
+    left: 95px;
+}
+.sec 
+{
+    background: url(image/sechand.png);
+    z-index: 3;
+}
+           
+.min 
+{
+    background: url(image/minhand.png);
+    z-index: 2;
+}
+           
+.hour 
+{
+	background: url(image/hourhand.png);
+	z-index: 1;
+}
+
+.HopBieuThuc
+{
+	border: 1px solid #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px #444444;
+    -webkit-box-shadow: 1px 1px 2px #444444;
+    box-shadow: 1px 1px 2px #444444;
+    -webkit-border-radius: 10px;
+	border-radius: 10px; 
+    width:95px;
+    height:60px;
+    cursor:pointer
+}
+
+.HopBieuThuc:hover
+{
+	background:#E5E4E4;
+}
+
+.STTHop
+{
+	-webkit-border-radius: 10px;
+	border-radius: 10px; 
+	border: 1px solid #CCCCCC;
+    font-size:9px;
+    float:left;
+    width:15px;
+    height:15px;
+    background:#E9E9E9;
+}
+
+.BieuThuc
+{
+    text-align:center;
+    vertical-align:bottom;
+    font-size:12px;
+    font-weight:bold;
+    padding-top:20px;
+}
+
+.HopDapAn
+{
+	border: 1px solid #CCCCCC; 
+    width:40px;
+    height:20px;
+    display:inline-block;
+}
+
+.HinhTronBaSo 
+{
+    background: url(image/BaiToanTimSo/HinhTronBaSo.png) no-repeat;
+    width:100px;
+    height:102px;
+}
+
+.HinhTronBaSo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 18px;
+    padding-top: 27px;
+    text-align: left;
+}
+.HinhTronBaSo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 21px;
+    padding-top: 26px;
+    text-align: left;
+}
+
+.HinhTronBaSo_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    padding-left: 43px;
+    padding-top: 66px;
+    text-align: left;
+}
+
+.HinhVuongTamGiac 
+{
+    background: url(image/BaiToanTimSo/HinhVuongTamGiac.png) no-repeat;
+    width:100px;
+    height:99px;
+}
+
+.HinhVuongTamGiac_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 9px;
+    padding-top: 18px;
+    text-align: left;
+}
+.HinhVuongTamGiac_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 14px;
+    padding-top: 17px;
+    text-align: left;
+}
+
+.HinhVuongTamGiac_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    padding-left: 44px;
+    padding-top: 57px;
+    text-align: left;
+}
+
+.BonSoHinhVuong
+{
+    background: url(image/BaiToanTimSo/BonSoHinhVuong.png) no-repeat;
+    width:100px;
+    height:101px;
+}
+
+.BonSoHinhVuong_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-top: 14px;
+    text-align: left;
+}
+.BonSoHinhVuong_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 14px;
+    padding-top: 14px;
+    text-align: left;
+}
+
+.BonSoHinhVuong_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    margin-left: 68px;
+    padding-top: 61px;
+    text-align: left;
+}
+
+.BonSoHinhVuong_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -18px;
+    padding-left: 19px;
+    text-align: left;
+}
+
+.BonSoHinhVuong1
+{
+    background: url(image/BaiToanTimSo/BonSoHinhVuong1.png) no-repeat;
+    width:100px;
+    height:106px;
+}
+
+.BonSoHinhVuong1_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 11px;
+    padding-top: 45px;
+    text-align: left;
+}
+.BonSoHinhVuong1_So2
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 13px;
+    padding-top: 14px;
+    text-align: left;
+}
+
+.BonSoHinhVuong1_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    padding-left: 66px;
+    padding-top: 44px;
+    text-align: left;
+}
+
+.BonSoHinhVuong1_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-left: 16px;
+    text-align: left;
+}
+
+.HinhTronBonSo
+{
+    background: url(image/BaiToanTimSo/HinhTronBonSo.png) no-repeat;
+    width:100px;
+    height:103px;
+}
+
+.HinhTronBonSo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 24px;
+    padding-left: 12px;
+    padding-top: 0;
+    text-align: left;
+}
+.HinhTronBonSo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 18px;
+    padding-top: 23px;
+    text-align: right;
+}
+
+.HinhTronBonSo_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    padding-left: 38px;
+    padding-top: 71px;
+    text-align: left;
+}
+
+.HinhTronBonSo_So4
+{
+	font-size: 14px;
+    font-weight: bold;
+    margin-left: 39px;
+    margin-top: -45px;
+    text-align: left;
+}
+
+
+.HinhTronBonSoChiaTu
+{
+    background: url(image/BaiToanTimSo/HinhTronBonSoChiaTu.png) no-repeat;
+    width:100px;
+    height:96px;
+}
+
+.HinhTronBonSoChiaTu_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 18px;
+    padding-left: 21px;
+    padding-top: 0;
+    text-align: left;
+}
+.HinhTronBonSoChiaTu_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 30px;
+    padding-top: 18px;
+    text-align: right;
+}
+
+.HinhTronBonSoChiaTu_So3
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 21px;
+    padding-right: 29px;
+    padding-top: 0;
+    text-align: left;
+}
+
+.HinhTronBonSoChiaTu_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-left: 21px;
+    padding-top: 0;
+    text-align: left;
+}
+
+
+.TamGiacHinhTronBonSo
+{
+    background: url(image/BaiToanTimSo/TamGiacHinhTronBonSo.png) no-repeat;
+    width:100px;
+    height:95px;
+}
+
+.TamGiacHinhTronBonSo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 9px;
+    margin-left: 40px;
+    text-align: left;
+}
+.TamGiacHinhTronBonSo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 66px;
+    margin-right: 9px;
+    text-align: right;
+}
+
+.TamGiacHinhTronBonSo_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    margin-left: 9px;
+    margin-top: 0;
+    padding-top: 67px;
+    text-align: left;
+}
+
+.TamGiacHinhTronBonSo_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 40px;
+    margin-top: -38px;
+    text-align: left;
+}
+
+.TamGiacNoiTiepBonSo
+{
+    background: url(image/BaiToanTimSo/TamGiacNoiTiepBonSo.png) no-repeat;
+    width:100px;
+    height:103px;
+}
+
+.TamGiacNoiTiepBonSo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 27px;
+    padding-left: 10px;
+    padding-top: 0;
+    text-align: left;
+}
+.TamGiacNoiTiepBonSo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 12px;
+    padding-top: 25px;
+    text-align: right;
+}
+
+.TamGiacNoiTiepBonSo_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+    padding-left: 43px;
+    padding-top: 79px;
+    text-align: left;
+}
+
+.TamGiacNoiTiepBonSo_So4
+{
+	font-size: 14px;
+    font-weight: bold;
+    margin-left: 41px;
+    margin-top: -49px;
+    text-align: left;
+}
+
+.HinhVuongNamSo
+{
+    background: url(image/BaiToanTimSo/HinhVuongNamSo.png) no-repeat;
+    width:100px;
+    height:99px;
+}
+
+.HinhVuongNamSo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-left: 9px;
+    padding-top: 0;
+    text-align: left;
+}
+.HinhVuongNamSo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    padding-right: 9px;
+    padding-top: 9px;
+    text-align: right;
+}
+
+.HinhVuongNamSo_So3
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 46px;
+    padding-left: 74px;
+    padding-top: 0;
+    text-align: left;
+}
+
+.HinhVuongNamSo_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -17px;
+    padding-left: 11px;
+    text-align: left;
+}
+
+.HinhVuongNamSo_So5
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -52px;
+    padding-left: 22px;
+    text-align: right;
+}
+
+.ElipNamSo
+{
+    background: url(image/BaiToanTimSo/ElipNamSo.png) no-repeat;
+    width:100px;
+    height:98px;
+}
+
+.ElipNamSo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 41px;
+    text-align: left;
+}
+.ElipNamSo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 12px;
+    padding-top: 39px;
+    text-align: right;
+}
+
+.ElipNamSo_So3
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 37px;
+    padding-left: 41px;
+    text-align: left;
+}
+
+.ElipNamSo_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: -47px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.ElipNamSo_So5
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -45px;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.LucGiacBaySo
+{
+    background: url(image/BaiToanTimSo/LucGiacBaySo.png) no-repeat;
+    width:159px;
+    height:160px;
+}
+
+.LucGiacBaySo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 29px;
+    padding-left: 54px;
+    text-align: left;
+}
+.LucGiacBaySo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 48px;
+    padding-top: 29px;
+    text-align: right;
+}
+
+.LucGiacBaySo_So3
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 23px;
+    padding-left: 124px;
+    text-align: left;
+}
+
+.LucGiacBaySo_So4
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 100px;
+    margin-top: 23px;
+    text-align: right;
+}
+
+.LucGiacBaySo_So5
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -18px;
+    padding-left: 54px;
+    text-align: left;
+}
+
+.LucGiacBaySo_So6
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 26px;
+    margin-top: -59px;
+    text-align: left;
+}
+
+.LucGiacBaySo_So7
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -58px;
+    padding-left: 72px;
+    text-align: right;
+}
+
+.VongTronLucGiacBaySo
+{
+    background: url(image/BaiToanTimSo/VongTronLucGiacBaySo.png) no-repeat;
+    width:160px;
+    height:149px;
+}
+
+.VongTronLucGiacBaySo_So1
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 14px;
+    padding-left: 43px;
+    text-align: left;
+}
+.VongTronLucGiacBaySo_So2
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 38px;
+    padding-top: 13px;
+    text-align: left;
+}
+
+.VongTronLucGiacBaySo_So3
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 131px;
+    margin-top: 35px;
+    text-align: left;
+}
+
+.VongTronLucGiacBaySo_So4
+{
+	float: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 41px;
+    margin-top: 33px;
+    text-align: right;
+}
+
+.VongTronLucGiacBaySo_So5
+{
+	font-size: 14px;
+    font-weight: bold;
+    padding-left: 41px;
+    padding-top: 118px;
+    text-align: left;
+}
+
+.VongTronLucGiacBaySo_So6
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 11px;
+    margin-top: -70px;
+    text-align: left;
+}
+
+.VongTronLucGiacBaySo_So7
+{
+	float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -69px;
+    padding-left: 72px;
+    text-align: right;
+}

@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="Combres.Mvc" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="INDEX,FOLLOW" name="robots"/>
+    <meta content="Toán học việt nam, Toán học, Thông minh, Toán học thông minh, Thông minh toán học, Làm toán thông minh, Toán cấp 1 thông minh, Toán lớp 1, Toán lớp 2, Toán lớp 3, Toán lớp 4, Toán lớp 5,  Bài tập toán lớp 1, Bài tập toán lớp 2, Bài tập toán lớp 3, Bài tập toán lớp 4, Bài tập toán lớp 5, Làm toán nhanh, Làm toán thông minh, Bài tập thông minh,... " name="description"/>
+    <meta content="Toán học việt nam, Toán học, Thông minh, Toán học thông minh, Thông minh toán học, Làm toán thông minh, Toán cấp 1 thông minh, Toán lớp 1, Toán lớp 2, Toán lớp 3, Toán lớp 4, Toán lớp 5,  Bài tập toán lớp 1, Bài tập toán lớp 2, Bài tập toán lớp 3, Bài tập toán lớp 4, Bài tập toán lớp 5, Làm toán nhanh, Làm toán thông minh, Bài tập thông minh, Toan hoc viet nam, Toan hoc, Thong minh, Toan hoc thong minh, Thong minh toan hoc, Lam toan thong minh, Toan cap 1 thong minh, Toan lop 1, Toan lop 2, Toan lop 3, Toan lop 4, Toan lop 5,  Bai tap toan lop 1, Bai tap toan lop 2, Bai tap toan lop 3, Bai tap toan lop 4, Bai tap toan lop 5, Lam toan nhanh, Lam toan thong minh, Bai tap thong minh,..." name="keywords"/>
+    <meta content="1800" http-equiv="REFRESH"/>
+    <title>Chuyên trang toán học thông minh</title>
+    <%= Html.CombresLink("ToanThongMinhCSS")%>
+    <%= Html.CombresLink("ToanThongMinhJS")%>
+    <link href="~/Content/Image/pi_math.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+<body>
+    <form name="QuanTriHeThong" action="Account/LogOn" enctype="multipart/form-data">
+        <div class="page">
+            <div class="Banner">
+				<div class="Banner-i">
+					<div id="logindisplay">
+						<% Html.RenderPartial("LogOnUserControl"); %>
+					</div>
+				</div>
+            </div>
+            
+            <div id="header">
+                <% if (ViewData["KindMenu"].ToString().Trim() == "1")
+                   {
+                       Html.RenderPartial("MenuQuanTri"); 
+                   }
+                   else
+                   {
+                       Html.RenderPartial("TopMenu");
+                   }%>
+            </div>
+
+            <div id="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+
+            <div id="footer">
+				<div class="footer-i">
+				    <b>TOÁN DÀNH CHO HỌC SINH TIỂU HỌC</b><br />
+                    <p>
+                    Giấy phép xuất bản số: 158/GP-TTĐT ngày 12/09/2013 của Cục Quản lý Phát thanh, truyền hình và thông tin điện tử<br />
+                    Đơn vị chủ quản: Trung tâm đào tạo trực tuyến Vĩnh Phúc<br />
+                    Địa chỉ: Số 123, đường Mê Linh, phường Liên Bảo - thành phố Vĩnh Yên - tỉnh Vĩnh Phúc<br />
+                    Điện thoại: 0211.3.256.789, Email: daotaotructuyen@gmail.com<br /></p>
+                    <img class="foot_logo" src="/Content/Image/logo.png" />
+				</div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="insertVariable.aspx.cs" Inherits="MvcFCKEditorDemo.Content.Javascript.fckeditor.editor.plugins.insertVariable.insertVariable" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html><head>
+<script language="javascript">
+<!--
+var variable = null;
+var FCK = window.opener.FCK;
+function ok() {
+var ans = document.DragMath.getMathExpression();
+if(ans != null) {
+FCK.Focus();
+FCK.InsertHtml("<img src='http://www.sitmo.com/gg/latex/latex2png.2.php?z=100&eq="+ans+"' border='0'/>");
+}
+window.close();
+}
+
+//-->
+</script>
+<link href="" rel="stylesheet" type="text/css">
+</head>
+<body><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td align="center"><applet width="540" height="333" archive="Project.jar,AbsoluteLayout.jar,swing-layout-1.0.jar,jdom.jar,jep.jar" code="Display.MainApplet.class" codebase="applet/classes" name="DragMath"><param value="en" name="language" />To use this page you need a Java-enabled browser. Download the latest Java plug-in from <a href="http://www.java.com/">Java.com</a></applet></td>
+</tr>
+<tr>
+<td align="center"><input type="button" value="Render Formula" class="textbox" onClick="variable='this is a test'; ok();"></td>
+</tr>
+</table>
+</body>
+</html>
+

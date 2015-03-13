@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Online Video Properties</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta content="noindex, nofollow" name="robots">
+
+	<script src="../../dialog/common/fck_dialog_common.js" type="text/javascript"></script>
+
+	<script src="onlinevideo.js" type="text/javascript"></script>
+
+	<link href="../../dialog/common/fck_dialog_common.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		document.write(FCKTools.GetStyleHtml(GetCommonDialogCss()));
+	</script>
+
+</head>
+<body scroll="no" style="overflow: hidden">
+	<div id="divInfo">
+		<table cellspacing="1" cellpadding="1" width="100%" border="0">
+			<tr>
+				<td>
+					<table cellspacing="0" cellpadding="0" width="100%" border="0">
+						<tr>
+							<td width="100%">
+								<span fcklang="DlgOnlineVideoURL">URL</span>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<input id="txtUrl" style="width: 100%" type="text" onchange="UpdatePreview();">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td nowrap>
+								<span fcklang="DlgOnlineVideoWidth">Width</span><br>
+								<input id="txtWidth" onkeypress="return IsDigit(event);" type="text" size="3" value="360">
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								<span fcklang="DlgOnlineVideoHeight">Height</span><br>
+								<input id="txtHeight" onkeypress="return IsDigit(event);" type="text" size="3" value="150">
+							</td>
+							<td>
+								<span fcklang="DlgOnlineVideoQuality">Quality</span>
+								<table cellspacing="0" cellpadding="0" border="0">
+									<tr>
+										<td nowrap>
+											<input type="radio" id="radioLow" name="qlty" value="low" checked>
+											<span fcklang="DlgOnlineVideoLow">Low</span>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td>
+											<input type="radio" id="radioHigh" name="qlty" value="high">
+											<span fcklang="DlgOnlineVideoHigh">High (If available)</span>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<table cellspacing="0" cellpadding="0" width="100%" border="0">
+						<tr>
+							<td valign="top" width="100%">
+								<table cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td>
+											<span fcklang="DlgImgPreview">Preview</span>
+										</td>
+									</tr>
+									<tr>
+										<td id="ePreviewCell" valign="top" class="FlashPreviewArea">
+											<iframe src="/admin/fckeditor/editor/dialog/fck_flash/fck_flash_preview.html" frameborder="0"
+												marginheight="0" marginwidth="0" width="100%" height="100%"></iframe>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
