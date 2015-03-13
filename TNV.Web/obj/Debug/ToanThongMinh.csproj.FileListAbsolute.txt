@@ -1,0 +1,10 @@
+E:\ToanThongMinh\ToanThongminh\bin\ToanThongMinh.dll
+E:\ToanThongMinh\ToanThongminh\bin\ToanThongMinh.pdb
+E:\ToanThongMinh\ToanThongminh\obj\Debug\ToanThongMinh.dll
+E:\ToanThongMinh\ToanThongminh\obj\Debug\ToanThongMinh.pdb
+E:\ToanThongMinh\ToanThongminh\obj\Debug\ToanThongMinh.csprojResolveAssemblyReference.cache
+E:\MicrosoftCloud\OneDrive\TaiLieuHan\ToanThongMinh\ToanThongminh\bin\ToanThongMinh.dll
+E:\MicrosoftCloud\OneDrive\TaiLieuHan\ToanThongMinh\ToanThongminh\bin\ToanThongMinh.pdb
+E:\MicrosoftCloud\OneDrive\TaiLieuHan\ToanThongMinh\ToanThongminh\obj\Debug\ToanThongMinh.csprojResolveAssemblyReference.cache
+E:\MicrosoftCloud\OneDrive\TaiLieuHan\ToanThongMinh\ToanThongminh\obj\Debug\ToanThongMinh.dll
+E:\MicrosoftCloud\OneDrive\TaiLieuHan\ToanThongMinh\ToanThongminh\obj\Debug\ToanThongMinh.pdb

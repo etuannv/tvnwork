@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNV.Web", "TNV.Web\TNV.Web.csproj", "{FAB66617-E3A6-46A9-BC7C-E59B464E0ADC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAB66617-E3A6-46A9-BC7C-E59B464E0ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAB66617-E3A6-46A9-BC7C-E59B464E0ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAB66617-E3A6-46A9-BC7C-E59B464E0ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAB66617-E3A6-46A9-BC7C-E59B464E0ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
