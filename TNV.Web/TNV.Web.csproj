@@ -88,6 +88,7 @@
     <Compile Include="Controllers\BaiToanTimSoController.cs" />
     <Compile Include="Controllers\BaiToanDemHinhController.cs" />
     <Compile Include="Controllers\DoiTuongHonKemNhauController.cs" />
+    <Compile Include="Controllers\FLuyenToanLopMotController.cs" />
     <Compile Include="Controllers\PhepToanBaSoHangController.cs" />
     <Compile Include="Controllers\ToanCoBanLopMotController.cs" />
     <Compile Include="Controllers\PhepToanHaiSoHangController.cs" />
@@ -955,10 +956,14 @@
     <Content Include="Views\BaiToanTimSo\HinhVuongTamGiac.ascx" />
     <Content Include="Views\BaiToanTimSo\HinhTronBaSo.ascx" />
     <Content Include="Views\DoiTuongHonKemNhau\DanhSachCauHoi.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\FDanhSachToanLopMot.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\HienThiCauHoi.ascx" />
+    <Content Include="Views\FLuyenToanLopMot\PhepToanHaiSoHang.aspx" />
     <Content Include="Views\PhepToanBaSoHang\index.aspx" />
     <Content Include="Views\PhepToanBaSoHang\PhepToanBaSoHang.aspx" />
     <Content Include="Views\PhepToanBaSoHang\ThemPhepToanBaSoHang.aspx" />
     <Content Include="Views\PhepToanHaiSoHang\ThemPhepToanHaiSoHang.aspx" />
+    <Content Include="Views\Shared\FCacDangToanLopMot.ascx" />
     <Content Include="Views\Shared\ViewError.aspx" />
     <Content Include="Views\Shared\NewPage.ascx" />
     <Content Include="Views\Shared\MenuQuanTriToanLopMot.ascx" />
@@ -1160,6 +1165,7 @@
       <LastGenOutput>ToanThongMinh.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\FontEnd.Master" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

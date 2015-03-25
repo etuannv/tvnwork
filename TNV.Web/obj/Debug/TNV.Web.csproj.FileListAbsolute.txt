@@ -8,3 +8,8 @@ D:\Working\coding\TNVWORK\TNV.Web\bin\TNV.Web.pdb
 D:\Working\coding\TNVWORK\TNV.Web\obj\Debug\TNV.Web.csprojResolveAssemblyReference.cache
 D:\Working\coding\TNVWORK\TNV.Web\obj\Debug\TNV.Web.dll
 D:\Working\coding\TNVWORK\TNV.Web\obj\Debug\TNV.Web.pdb
+D:\Working\coding\Github\tvnwork\TNV.Web\bin\TNV.Web.dll
+D:\Working\coding\Github\tvnwork\TNV.Web\bin\TNV.Web.pdb
+D:\Working\coding\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.dll
+D:\Working\coding\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.pdb
+D:\Working\coding\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.csprojResolveAssemblyReference.cache

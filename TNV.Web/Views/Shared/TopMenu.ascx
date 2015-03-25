@@ -16,7 +16,7 @@
 
             <li><a href="#" class="parent"><span>Luyện bài tập toán</span></a>
                 <ul class="icesubMenu">
-                    <li><a href="/ToanLopMot/"><span>Bài tập toán lớp 1</span></a></li>
+                    <li><a href="/FLuyenToanLopMot/FDanhSachToanLopMot"><span>Bài tập toán lớp 1</span></a></li>
                     <li><a href="#"><span>Bài tập toán lớp 2</span></a></li>
                     <li><a href="#"><span>Bài tập toán lớp 3</span></a></li>
                     <li><a href="#"><span>Bài tập toán lớp 4</span></a></li>

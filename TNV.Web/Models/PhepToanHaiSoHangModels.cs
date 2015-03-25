@@ -59,6 +59,7 @@ namespace TNV.Web.Models
         #region Quản trị danh sách các câu hỏi tính toán chứa một phép toán
         List<PhepToanHaiSoHangModel> ListQuesOneOperator(string ThuocKhoiLop, string PhamViPhepToan);
         PhepToanHaiSoHangModel FirstQuesOneOperator(string ThuocKhoiLop, string PhamViPhepToan);
+        PhepToanHaiSoHangModel RandomQuesOneOperator(string ThuocKhoiLop, string PhamViPhepToan);
         PhepToanHaiSoHangModel OneQuesOneOperator(string MaCauHoi);
         string SaveAddQuesOneOperator(PhepToanHaiSoHangModel model);
         string SaveEditQuesOneOperator(PhepToanHaiSoHangModel model);
@@ -139,6 +140,36 @@ namespace TNV.Web.Models
                                                              PhamViPhepToan = OneOperator.PhamViPhepToan
                                                          }).FirstOrDefault<PhepToanHaiSoHangModel>();
             return FirstQuestionOneOperator;
+        }
+
+        /// <summary>
+        /// Đọc câu hỏi ngẫu nhiên
+        /// </summary>
+        /// <param name="NewsCatId"></param>
+        /// <returns></returns>
+        public PhepToanHaiSoHangModel RandomQuesOneOperator(string ThuocKhoiLop, string PhamViPhepToan)
+        {
+            
+            
+            
+            //int index = new Random().Next(count);
+            IEnumerable<PhepToanHaiSoHangModel> ResultList = (from OneOperator in LinqContext.MotPhepToans
+                                                               where OneOperator.ThuocKhoiLop == ThuocKhoiLop && OneOperator.PhamViPhepToan == PhamViPhepToan
+                                                               select new PhepToanHaiSoHangModel
+                                                               {
+                                                                   MaCauHoi = OneOperator.MaCauHoi,
+                                                                   SoHangThuNhat = OneOperator.SoHangThuNhat,
+                                                                   PhepToan = OneOperator.PhepToan,
+                                                                   SoHangThuHai = OneOperator.SoHangThuHai,
+                                                                   DauQuanHe = OneOperator.DauQuanHe,
+                                                                   KetQuaPhepToan = OneOperator.KetQuaPhepToan,
+                                                                   DapAn = OneOperator.DapAn,
+                                                                   SapXepThuTu = OneOperator.SapXepThuTu != null ? (int)OneOperator.SapXepThuTu : 0,
+                                                                   ThuocKhoiLop = OneOperator.ThuocKhoiLop,
+                                                                   PhamViPhepToan = OneOperator.PhamViPhepToan
+                                                               });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
         }
 
         /// <summary>
