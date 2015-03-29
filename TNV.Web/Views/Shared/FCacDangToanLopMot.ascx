@@ -34,36 +34,36 @@
                     <div class="hitarea unselect-hitarea expandable-hitarea"></div>
                     <span class="folder"><a href="#" class="">PHẠM VI 20</a></span>
                     <ul style="display: none;">
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/CongPhamVi20/CLS1847290691" class="">Phép cộng</a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/TruPhamVi20/CLS1847290691" class="">Phép trừ </a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/CongSoSanhPhamVi20/CLS1847290691" class="">Phép cộng so sánh</a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/TruSoSanhPhamVi20/CLS1847290691" class="">Phép trừ so sánh</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/CongPhamVi20/CLS1847290691" class="">Phép cộng</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/TruPhamVi20/CLS1847290691" class="">Phép trừ </a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/CongSoSanhPhamVi20/CLS1847290691" class="">Phép cộng so sánh</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/TruSoSanhPhamVi20/CLS1847290691" class="">Phép trừ so sánh</a></span></li>
                     </ul>
                 </li>
                 <li id="Li3" class="unselect expandable">
                     <div class="hitarea unselect-hitarea expandable-hitarea"></div>
                     <span class="folder"><a href="#" class="">PHẠM VI 30</a></span>
                     <ul style="display: none;">
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/CongPhamVi30/CLS1847290691" class="">Phép cộng</a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/TruPhamVi30/CLS1847290691" class="">Phép trừ </a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/CongSoSanhPhamVi30/CLS1847290691" class="">Phép cộng so sánh</a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/TruSoSanhPhamVi30/CLS1847290691" class="">Phép trừ so sánh</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/CongPhamVi30/CLS1847290691" class="">Phép cộng</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/TruPhamVi30/CLS1847290691" class="">Phép trừ </a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/CongSoSanhPhamVi30/CLS1847290691" class="">Phép cộng so sánh</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/TruSoSanhPhamVi30/CLS1847290691" class="">Phép trừ so sánh</a></span></li>
                     </ul>
                 </li>
                 <li id="Li4" class="unselect expandable">
                     <div class="hitarea unselect-hitarea expandable-hitarea"></div>
                     <span class="folder"><a href="#" class="">PHÉP CỘNG TRỪ KHÔNG NHỚ</a></span>
                     <ul style="display: none;">
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/CongKhongNho/CLS1847290691" class="">Phép cộng không nhớ</a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/TruKhongNho/CLS1847290691" class="">Phép trừ không nhớ</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/CongKhongNho/CLS1847290691" class="">Phép cộng không nhớ</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/TruKhongNho/CLS1847290691" class="">Phép trừ không nhớ</a></span></li>
                     </ul>
                 </li>
                 <li id="Li5" class="unselect expandable">
                     <div class="hitarea unselect-hitarea expandable-hitarea"></div>
                     <span class="folder"><a href="#" class="">PHÉP CỘNG TRỪ CÓ NHỚ</a></span>
                     <ul style="display: none;">
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/CongCoNho/CLS1847290691" class="">Phép cộng có nhớ</a></span></li>
-                        <li class="unselect"><span class="file"><a href="/PhepToanHaiSoHang/PhepToanHaiSoHang/TruCoNho/CLS1847290691" class="">Phép trừ có nhớ</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/CongCoNho/CLS1847290691" class="">Phép cộng có nhớ</a></span></li>
+                        <li class="unselect"><span class="file"><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/TruCoNho/CLS1847290691" class="">Phép trừ có nhớ</a></span></li>
                     </ul>
                 </li>
             </ul>

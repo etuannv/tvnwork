@@ -1,0 +1,153 @@
+.grade{
+	position: relative;
+	z-index: 1;
+	height: 160px;
+	border-radius: 16px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,.3), inset 0px 0px 1px rgba(255,255,255,.66);
+	background: #ddd;
+	cursor: pointer;
+}
+a.grade{display: block;}
+.grade:hover{
+	box-shadow: 0px 1px 8px #f3f;
+	transition: box-shadow .3s;
+	transition-timing-function: linear, linear;
+}
+
+.grade-lop{
+	font-size: 24px;
+	line-height: 30px;
+	text-align: center;
+	display: block;
+	padding-top: 5px;
+}
+
+
+.grade:after{
+	content: "";
+	height: 160px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	border-radius: 16px;
+	background: -webkit-linear-gradient(rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 50%, transparent 50%, transparent 100%);
+	background: linear-gradient(rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.15) 50%, transparent 50%, transparent 100%);
+}
+.grade-number{
+	font-size: 120px;
+	font-weight: bold;
+	right: 55px;
+	top: 5px;
+	line-height: 150px;
+	font-family: "Calibri","Open sans",Tahoma,sans-serif;
+	position: absolute;
+}
+
+/* Gradient */
+.grad-green{
+	background-color: #B5FFBC;
+	background: -webkit-linear-gradient(bottom, #25EB0C 0%,#E8FFE2 100%);
+	background: linear-gradient(to top, #25EB0C 0%,#E8FFE2 100%);
+	border: solid 1px #13c013;
+}
+
+.grad-green a, .grad-green{ color: #136D13; }
+.grad-green a:hover, .grad-green:hover{ color: #136D13; }
+
+.grad-red{
+	background-color: #fed0c5;
+	background: -webkit-linear-gradient(bottom, #FF7171 0%,#FFD8C8 100%);
+	background: linear-gradient(to top, #FF7171 0%,#FFD8C8 100%);
+	border: solid 1px #df694c;
+}
+.grad-red a, .grad-red{ color: #885027; }
+.grad-red a:hover, a.grad-red:hover{ color: #885027; }
+
+.grad-blue{
+	background-color: #0077A7;
+	background: -webkit-linear-gradient(bottom, #62D5FF 0%,#CDEFFF 100%);
+	background: linear-gradient(to top, #62D5FF 0%,#CDEFFF 100%);
+	color: #0077A7;
+	border: solid 1px #339fe6;
+}
+
+.grad-orange{
+	background-color: #fceeb6;
+	background: -webkit-linear-gradient(bottom, #FFDB49 0%,#FDF5CC 100%);
+	background: linear-gradient(to top, #FFDB49 0%,#FDF5CC 100%);	
+	border: solid 1px #d39f33;
+}
+.grad-orange a, .grad-orange{ color: #B36500;}
+.grad-orange a:hover, a.grad-orange:hover{ color: #8D3504;}
+
+.grad-pink{
+	background-color: #fed8ef;
+	background: -webkit-linear-gradient(bottom, #FF80D6 0%,#FFE8F6 100%);
+	background: linear-gradient(to top, #FF80D6 0%,#FFE8F6 100%);	
+	border: solid 1px  #DC2290;
+}
+.grad-pink a, .grad-pink{ color: #D10080; }
+
+.grad-pink a:hover, a.grad-pink:hover{ color: #910058; }
+
+.grad-green2{
+	background-color: #dbf799;
+	background: -webkit-linear-gradient(bottom, #99FA09 0%,#EFFFC7 100%);
+	background: linear-gradient(to top, #99FA09 0%,#EFFFC7 100%);
+	
+	border: solid 1px #93d013;
+}
+.grad-green2 a, .grad-green2{color: #4F8601;}
+
+.grad-green2 a:hover, a.grad-green2:hover{color: #365C00;}
+
+.grad-light{
+	background-color: #dbf799;
+	background: -webkit-linear-gradient(to top, #CDFFFB 0%,#FFFFFF 100%);
+	background: linear-gradient(to top, #CDFFFB 0%,#FFFFFF 100%);
+	color:#CDFFFB;
+}
+
+@media (max-width: 767px) {
+	.grade{
+		height: 60px;
+		margin-top: 10px;
+		border-radius: 10px;
+	}
+	.grade-lop{
+		text-align: left;
+		padding: 10px;
+	}
+	.grade-number{
+		font-size: 60px;
+		line-height: 60px;
+		top: 0px;
+		right: 10px;
+	}
+	.grade:after{
+	content: "";
+	height: 60px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	.grade{
+		height: 110px;
+	}
+	.grade-lop{
+		font-size: 18px;
+		
+	}
+	.grade-number{
+		font-size: 72px;
+		line-height: 60px;
+		top: 30px;
+		right: 30px;
+	}
+	.grade:after{
+	content: "";
+	height: 110px;
+	}
+
+}

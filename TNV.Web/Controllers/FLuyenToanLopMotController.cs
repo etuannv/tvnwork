@@ -87,7 +87,9 @@ namespace TNV.Web.Controllers
         public ActionResult PhepToanHaiSoHang(string memvar1, string memvar2)
         {
             //Gán thuộc khối lớp sang view
+            ViewData["PhamVi"] = memvar1;
             ViewData["ThuocKhoiLop"] = memvar2;
+            
 
             //Đọc danh sách các phép toán hai số hạng
             PhepToanHaiSoHangModel PhepToan = ToolPhepToanHaiSoHang.FirstQuesOneOperator(memvar2, memvar1);
@@ -101,7 +103,7 @@ namespace TNV.Web.Controllers
         /// <param name="memvar1">Phạm vi phép toán</param>
         /// <param name="memvar2">Thuộc khối lớp</param>
         /// <returns></returns>
-        public ActionResult GetNextQuestion(string memvar1, string memvar2)
+        public PartialViewResult GetNextQuestion(string memvar1, string memvar2)
         {
             PhepToanHaiSoHangModel BaiToan = ToolPhepToanHaiSoHang.RandomQuesOneOperator(memvar2, memvar1);
             return PartialView("HienThiCauHoi", BaiToan);

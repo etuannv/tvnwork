@@ -10,10 +10,12 @@
                 <h4>Luyện phép toán 2 số hạng</h4>
                 <table>
                     <thead><tr><td>Điền dấu thích hợp vào ô trống</td></tr></thead>
-                    <tbody id="question-content"></tbody>
+                    <tbody id="question-content">
+                        <% Html.RenderAction("GetNextQuestion", new { memvar1 = ViewData["PhamVi"], memvar2 = ViewData["ThuocKhoiLop"] }); %>
+                    </tbody>
                 </table>
-                <%= Ajax.ActionLink("Gửi kết quả", "GetNextQuestion", new { memvar1 = "CongPhamVi10", memvar2 = "CLS1847290691" }, new AjaxOptions { UpdateTargetId = "question-content" })%>
-                <%= Ajax.ActionLink("Bài khác", "GetNextQuestion", new { memvar1 = "CongPhamVi10", memvar2 = "CLS1847290691" }, new AjaxOptions { UpdateTargetId = "question-content" })%>
+                <%= Ajax.ActionLink("Gửi kết quả", "GetNextQuestion", new { memvar1 = ViewData["PhamVi"], memvar2 = ViewData["ThuocKhoiLop"] }, new AjaxOptions { UpdateTargetId = "question-content" })%>
+                <%= Ajax.ActionLink("Bài khác", "GetNextQuestion", new { memvar1 = ViewData["PhamVi"], memvar2 = ViewData["ThuocKhoiLop"] }, new AjaxOptions { UpdateTargetId = "question-content" })%>
                 
             </td>
 
