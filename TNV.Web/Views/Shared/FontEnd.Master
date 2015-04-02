@@ -38,17 +38,31 @@
     <script language="javascript" type="text/javascript" src="/Scripts/ui.core.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/ui.datepicker.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/NewTopMenu.js"></script>--%>
-    <link href="~/Content/font-end/css/bootstrap.css" rel="stylesheet" type="text/css"
-        media="all" />
-    <link href="~/Content/font-end/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"
-        media="all" />
-    <link href="~/Content/font-end/css/page.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/font-end/css/home.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/font-end/css/grade.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="/Content/font-end/js/jquery.js"></script>
+
+    <script src="<%= Url.Content("~/Scripts/MicrosoftAjax.debug.js") %>" type="text/javascript"></script>
+    <script src="<%= Url.Content("~/Scripts/MicrosoftMvcAjax.debug.js") %>" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="/Content/font-end/js/bootstrap.js"></script>
+    
+    <script type="text/javascript" src="/Content/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/Content/jquery-ui/jquery-ui.css"/>
+
+    <link href="/Content/font-end/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/font-end/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/font-end/css/page.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/font-end/css/home.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/font-end/css/grade.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/font-end/css/math.css" rel="stylesheet" type="text/css" media="all" />
+    
+    
+
+    <script type="text/javascript" src="/Content/font-end/js/timer.jquery.js"></script>
     <script type="text/javascript" src="/Content/font-end/js/olm.js"></script>
     <script type="text/javascript" src="/Content/font-end/js/sdk.js"></script>
+    
+
+
 </head>
 <body>
     <!--------------Header----------------->
@@ -59,8 +73,7 @@
                     data-toggle="collapse" data-target=".nav-collapse">
                     <b style="margin-top: 2px;" class="icon icon-list icon-white"></b>Danh mục
                 </button>
-                <a href="/">
-                    <img style="float: left;" src="/Content/font-end/img/olm-logo.png"></a>
+                <a href="/"> <img style="float: left;" src="/Content/font-end/img/olm-logo.png"></a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li class="mn-item" item-id="7"><a href="/">HỌC TOÁN</a></li>

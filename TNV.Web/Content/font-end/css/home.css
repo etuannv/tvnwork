@@ -1,3 +1,60 @@
+.ui-accordion h3
+{
+	line-height:20px;
+}
+
+.skill-tree-skills {
+    margin: 10px 0;
+}
+
+.skill-tree-skill-node {
+    line-height: 15px;
+    margin: 8px 0;
+	list-style: outside none none;
+}
+
+.skill-tree-skill-link {
+    display: table-row;
+}
+
+.skill-tree-skill-link, .skill-tree-skill-link:hover {
+	color: #00659e;
+    text-decoration: none;
+}
+
+
+.skill-tree-skill-name, .skill-tree-skill-number {
+    display: table-cell;
+}
+.skill-tree-skill-number {
+    color: #000;
+    font-weight: 700;
+    padding: 0 4px 0 0;
+    text-decoration: none;
+}
+
+.skill-tree-skill-name {
+    color: #3b6715;
+}
+.skill-tree-skill-name:hover
+{
+text-decoration:underline;
+}
+
+
+.question-content
+{
+	line-height:20px;
+	font-size: 20px;
+	margin-top: 20px;
+}
+.question-content input
+{
+	width: 25px;
+	margin-top: 1px;
+}
+
+
 .feature h2{
             font-size: 22px;
             color: #090;

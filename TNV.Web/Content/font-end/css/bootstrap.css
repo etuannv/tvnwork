@@ -1711,9 +1711,13 @@ legend + .control-group {
   box-shadow: none;
 }
 .btn-large {
-  padding: 11px 19px;
-  font-size: 17.5px;
+  padding: 11px 17px;
+  font-size: 16.5px;
   border-radius: 6px;
+}
+.btn-float-right
+{
+	float:right;
 }
 .btn-large [class^="icon-"],
 .btn-large [class*=" icon-"] {

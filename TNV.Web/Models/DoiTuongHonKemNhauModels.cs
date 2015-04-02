@@ -99,6 +99,7 @@ namespace TNV.Web.Models
         #region Quản trị danh sách các câu hỏi đối tượng hơn kém nhau
         List<DoiTuongHonKemNhauModel> DanhSachCauHoi(string ThuocKhoiLop, int SoLuongDoiTuong, string PhamViPhepToan, string LoaiCauHoi);
         DoiTuongHonKemNhauModel DocCauHoiDauTien(string ThuocKhoiLop, int SoLuongDoiTuong, string PhamViPhepToan, string LoaiCauHoi);
+        DoiTuongHonKemNhauModel GetOneBaiToanThemBot(string ThuocKhoiLop, int SoLuongDoiTuong, string PhamViPhepToan, string LoaiCauHoi);
         DoiTuongHonKemNhauModel DocMotCauHoi(string MaCauHoi);
         string ThemMoiMotCauHoi(DoiTuongHonKemNhauModel model);
         string SuaCauHoi(DoiTuongHonKemNhauModel model);
@@ -159,6 +160,35 @@ namespace TNV.Web.Models
                                                                     ThanhPhanCauHoi = DanhSachCauHoi.ThanhPhanCauHoi
                                                                 }).ToList<DoiTuongHonKemNhauModel>();
             return TatCaDanhSachCauHoi;
+        }
+
+
+        
+        /// <summary>
+        /// Đọc câu hỏi đối tượng hơn kém
+        /// </summary>
+        /// <param name="NewsCatId"></param>
+        /// <returns></returns>
+        public DoiTuongHonKemNhauModel GetOneBaiToanThemBot(string ThuocKhoiLop, int SoLuongDoiTuong, string PhamViPhepToan, string LoaiCauHoi)
+        {
+            IEnumerable<DoiTuongHonKemNhauModel> ResultList = (from CauHoiDauTien in LinqContext.DoiTuongHonKemNhaus
+                                                        where CauHoiDauTien.ThuocKhoiLop == ThuocKhoiLop && CauHoiDauTien.SoLuongDoiTuong == SoLuongDoiTuong && CauHoiDauTien.PhamViPhepToan == PhamViPhepToan && CauHoiDauTien.LoaiCauHoi == LoaiCauHoi
+                                                         orderby CauHoiDauTien.SapXepThuTu ascending
+                                                         select new DoiTuongHonKemNhauModel
+                                                         {
+                                                             MaCauHoi = CauHoiDauTien.MaCauHoi,
+                                                             NoiDungCauHoi = CauHoiDauTien.NoiDungCauHoi,
+                                                             DapAnCauHoi = CauHoiDauTien.DapAnCauHoi,
+                                                             LoiGiaiCauHoi = CauHoiDauTien.LoiGiaiCauHoi,
+                                                             SoLuongDapAn = CauHoiDauTien.SoLuongDapAn != null ? (int)CauHoiDauTien.SoLuongDapAn : 0,
+                                                             SoLuongDoiTuong = CauHoiDauTien.SoLuongDoiTuong != null ? (int)CauHoiDauTien.SoLuongDoiTuong : 0,
+                                                             KetLuanCauHoi = CauHoiDauTien.KetLuanCauHoi,
+                                                             SapXepThuTu = CauHoiDauTien.SapXepThuTu != null ? (int)CauHoiDauTien.SapXepThuTu : 0,
+                                                             ThuocKhoiLop = CauHoiDauTien.ThuocKhoiLop,
+                                                             ThanhPhanCauHoi = CauHoiDauTien.ThanhPhanCauHoi
+                                                         });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
         }
 
         /// <summary>

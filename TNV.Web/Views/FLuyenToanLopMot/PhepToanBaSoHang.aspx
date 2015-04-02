@@ -8,7 +8,7 @@
                     <div style="margin-bottom: 10px;" class="bc bc-math">
                         <span class="bc-item bc-first"><a href="/"><img class="bc-logo" src="/Content/font-end/img/bc-olm.png">Học toán</a></span>
                         <span class="bc-item"><a href="/FLuyenToanLopMot/FDanhSachToanLopMot">Lớp một</a></span>
-                        <span class="bc-item"><b><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/<%=ViewData["PhamVi"] %>/<%=ViewData["ThuocKhoiLop"] %>">Phép toán 2 số hạng</a></b></span>
+                        <span class="bc-item"><b><a href="/FLuyenToanLopMot/PhepToanBaSoHang/<%=ViewData["PhamVi"] %>/<%=ViewData["ThuocKhoiLop"] %>">Phép toán 3 số hạng</a></b></span>
                     </div>
                     <div>
                         <div class="question" id="question">
@@ -27,35 +27,44 @@
                         <input id="btnOtherQuestion" name="btnResult" type="button" class="btn btn-danger btn-large btn-float-right"
                             value="Câu hỏi khác" />
                     </div>
-                    <div id="result-dialog" class="dialog-message" title="Kết quả">
+                    <div id="result-dialog" class="dialog-message  question" title="Kết quả">
+                        
                     </div>
+
+                    <div id="incorrect-dialog" class="dialog-message answer question" title="Chưa chính xác">
+
+                    </div>
+
                     <script type="text/javascript">
                         // Ready function - get data
                         jQuery(document).ready(function () {
                             var phamvi = $('#hdfPhamVi').val();
                             var thuockhoilop = $('#hdfKhoiLop').val();
-                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan2SoHang/' + phamvi + '/' + thuockhoilop;
-                            ajaxGet(RequestUrl, $('#question-content'));
+                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan3SoHang/' + phamvi + '/' + thuockhoilop;
+                            ajaxGetPhepToan3SoHang(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                         });
+
 
                         $('#btnOtherQuestion').click(function () {
                             var phamvi = $('#hdfPhamVi').val();
                             var thuockhoilop = $('#hdfKhoiLop').val();
-                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan2SoHang/' + phamvi + '/' + thuockhoilop;
+                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan3SoHang/' + phamvi + '/' + thuockhoilop;
                             //Increase question number
                             increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                            ajaxGet(RequestUrl, $('#question-content'));
+                            ajaxGetPhepToan3SoHang(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                         });
                         // Button send result click
                         $('#btnResult').click(function () {
                             var phamvi = $('#hdfPhamVi').val();
                             var thuockhoilop = $('#hdfKhoiLop').val();
-                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan2SoHang/' + phamvi + '/' + thuockhoilop;
+                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan3SoHang/' + phamvi + '/' + thuockhoilop;
                             var resultdialog = $("#result-dialog");
                             resultdialog.empty();
-                            var dapan = $('#hdfDapAn').val();
-                            var dapso = $('#txtDapSo').val();
-                            if (dapso == '') {
+                            var dapan1 = $('#hdfDapAn1').val();
+                            var dapan2 = $('#hdfDapAn2').val();
+                            var dapso1 = $('#txtDapSo1').val();
+                            var dapso2 = $('#txtDapSo2').val();
+                            if (dapso1 == '' || dapso2 == '') {
                                 resultdialog.append('<h3>Bạn chưa trả lời ?<h3>');
                                 resultdialog.dialog({
                                     position: {
@@ -70,22 +79,22 @@
                                     buttons: {
                                         "Đóng lại và tiếp tục": function () {
                                             $(this).dialog("close");
-                                            $("#txtDapSo").focus();
+                                            $("#txtDapSo1").focus();
                                         },
                                         "Bỏ qua câu này": function () {
                                             $(this).dialog("close");
                                             //Increase question number
                                             increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                                            ajaxGet(RequestUrl, $('#question-content'));
+                                            ajaxGetPhepToan3SoHang(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                                         }
                                     }
                                 });
 
                                 return;
                             }
-
-                            if (dapan != dapso) {
-                                resultdialog.append('<h3>Chưa chính xác</h3><p style="color:red;">Đáp án là: ' + dapan + '</p>');
+                            if (KiemTraKetQua() == 0)
+                            {
+                                resultdialog = $('#incorrect-dialog');
                             }
                             else {
                                 resultdialog.append('<h3>Đúng</h3>');
@@ -104,7 +113,7 @@
                                 buttons: {
                                     Ok: function () {
                                         $(this).dialog("close");
-                                        ajaxGet(RequestUrl, $('#question-content'));
+                                        ajaxGetPhepToan3SoHang(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                                     }
                                 }
                             });
@@ -112,7 +121,14 @@
                             increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
                         });
 
-
+                        function KiemTraKetQua() {
+                            var dapan1 = $('#hdfDapAn1').val();
+                            var dapan2 = $('#hdfDapAn2').val();
+                            var dapso1 = $('#txtDapSo1').val();
+                            var dapso2 = $('#txtDapSo2').val();
+                            if ((dapan1 == dapso1) && (dapan2 == dapso2)) return 1
+                            else return 0;
+                        }
                         
                     </script>
                 </div>

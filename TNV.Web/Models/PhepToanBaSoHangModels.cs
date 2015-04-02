@@ -71,6 +71,7 @@ namespace TNV.Web.Models
         #region Quản trị danh sách các câu hỏi tính toán chứa một phép toán
         List<PhepToanBaSoHangModel> ListQuesTwoOperator(string ThuocKhoiLop, string PhamViPhepToan);
         PhepToanBaSoHangModel FirstQuesTwoOperator(string ThuocKhoiLop, string PhamViPhepToan);
+        PhepToanBaSoHangModel RandomQuesTwoOperator(string ThuocKhoiLop, string PhamViPhepToan);
         PhepToanBaSoHangModel TwoQuesTwoOperator(string MaCauHoi);
         string SaveAddQuesTwoOperator(PhepToanBaSoHangModel model);
         string SaveEditQuesTwoOperator(PhepToanBaSoHangModel model);
@@ -158,6 +159,38 @@ namespace TNV.Web.Models
                                                          }).FirstOrDefault<PhepToanBaSoHangModel>();
             return FirstQuestionTwoOperator;
         }
+
+
+                /// <summary>
+        /// Đọc câu hỏi tính toán random
+        /// </summary>
+        /// <param name="NewsCatId"></param>
+        /// <returns></returns>
+        public PhepToanBaSoHangModel RandomQuesTwoOperator(string ThuocKhoiLop, string PhamViPhepToan)
+        {
+            IEnumerable<PhepToanBaSoHangModel> ResultList = (from TwoOperator in LinqContext.PhepToanBaSoHangs
+                                                         where TwoOperator.ThuocKhoiLop == ThuocKhoiLop && TwoOperator.PhamViPhepToan == PhamViPhepToan
+                                                         orderby TwoOperator.SapXepThuTu ascending
+                                                         select new PhepToanBaSoHangModel
+                                                         {
+                                                             MaCauHoi = TwoOperator.MaCauHoi,
+                                                             SoHangThuNhat = TwoOperator.SoHangThuNhat,
+                                                             PhepToanThuNhat = TwoOperator.PhepToanThuNhat,
+                                                             SoHangThuHai = TwoOperator.SoHangThuHai,
+                                                             PhepToanThuHai = TwoOperator.PhepToanThuHai,
+                                                             SoHangThuBa = TwoOperator.SoHangThuBa,
+                                                             QuanHePhepToan = TwoOperator.QuanHePhepToan,
+                                                             KetQuaPhepToan = TwoOperator.KetQuaPhepToan,
+                                                             DapAnThuNhat = TwoOperator.DapAnThuNhat,
+                                                             DapAnThuHai = TwoOperator.DapAnThuHai,
+                                                             SapXepThuTu = TwoOperator.SapXepThuTu != null ? (int)TwoOperator.SapXepThuTu : 0,
+                                                             ThuocKhoiLop = TwoOperator.ThuocKhoiLop,
+                                                             PhamViPhepToan = TwoOperator.PhamViPhepToan
+                                                         });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
+        }
+
 
         /// <summary>
         /// Đọc một câu hỏi tính toán một phép toán

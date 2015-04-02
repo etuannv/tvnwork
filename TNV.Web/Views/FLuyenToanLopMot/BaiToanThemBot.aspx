@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/FontEnd.Master" Inherits="System.Web.Mvc.ViewPage<TNV.Web.Models.PhepToanHaiSoHangModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/FontEnd.Master" Inherits="System.Web.Mvc.ViewPage<TNV.Web.Models.DoiTuongHonKemNhauModel>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container action">
@@ -8,16 +8,23 @@
                     <div style="margin-bottom: 10px;" class="bc bc-math">
                         <span class="bc-item bc-first"><a href="/"><img class="bc-logo" src="/Content/font-end/img/bc-olm.png">Học toán</a></span>
                         <span class="bc-item"><a href="/FLuyenToanLopMot/FDanhSachToanLopMot">Lớp một</a></span>
-                        <span class="bc-item"><b><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/<%=ViewData["PhamVi"] %>/<%=ViewData["ThuocKhoiLop"] %>">Phép toán 2 số hạng</a></b></span>
+                        <span class="bc-item"><b><a href="/FLuyenToanLopMot/PhepToanHaiSoHang/<%=ViewData["PhamVi"] %>/<%=ViewData["ThuocKhoiLop"] %>">Bài toán đối tượng hơn kém nhau</a></b></span>
                     </div>
                     <div>
                         <div class="question" id="question">
-                            <input type="hidden" id="hdfPhamVi" value="<%=ViewData["PhamVi"] %>" />
                             <input type="hidden" id="hdfKhoiLop" value="<%=ViewData["ThuocKhoiLop"] %>" />
-                            <h3>
-                                Điền số hoặc dấu thích hợp vào ô trống ?</h3>
+                            <input type="hidden" id="hdfSoLuongDoiTuong" value="<%=ViewData["SoLuongDoiTuong"] %>" />
+                            <input type="hidden" id="hdfPhamVi" value="<%=ViewData["PhamVi"] %>" />
+                            <input type="hidden" id="hdfLoaiCauHoi" value="<%=ViewData["LoaiCauHoi"] %>" />
                             <div id="question-content" class="question-content">
                             </div>
+
+                            <div id="questionctrl">
+		                        <label id="questionctrllabel_0" class="qradio">
+			                        <input type="radio" id="questionctrlinput_0" name="questionctrl">
+			                        <div id="questionctrldiv_0" style="display: inline-block; padding-left: 10px; font-size: 18px;">Góc nhọn</div>
+		                        </label>
+	                        </div>
                         </div>
                     </div>
                     <br class="clearfix" />
@@ -29,28 +36,39 @@
                     </div>
                     <div id="result-dialog" class="dialog-message" title="Kết quả">
                     </div>
+
+                    <div id="incorrect-dialog" class="dialog-message answer question" title="Chưa chính xác">
+
+                    </div>
                     <script type="text/javascript">
                         // Ready function - get data
                         jQuery(document).ready(function () {
-                            var phamvi = $('#hdfPhamVi').val();
                             var thuockhoilop = $('#hdfKhoiLop').val();
-                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan2SoHang/' + phamvi + '/' + thuockhoilop;
-                            ajaxGet(RequestUrl, $('#question-content'));
+                            var sodoituong = $('#hdfSoLuongDoiTuong').val();
+                            var phamvi = $('#hdfPhamVi').val();
+                            var loaicauhoi = $('#hdfLoaiCauHoi').val();
+
+                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanThemBot/' + thuockhoilop + '/' + sodoituong + '/' + phamvi + '/' + loaicauhoi;
+                            ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                            ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                         });
 
                         $('#btnOtherQuestion').click(function () {
-                            var phamvi = $('#hdfPhamVi').val();
                             var thuockhoilop = $('#hdfKhoiLop').val();
-                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan2SoHang/' + phamvi + '/' + thuockhoilop;
+                            var sodoituong = $('#hdfSoLuongDoiTuong').val();
+                            var phamvi = $('#hdfPhamVi').val();
+                            var loaicauhoi = $('#hdfLoaiCauHoi').val();
+
+                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanThemBot/' + thuockhoilop + '/' + sodoituong + '/' + phamvi + '/' + loaicauhoi;
                             //Increase question number
                             increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                            ajaxGet(RequestUrl, $('#question-content'));
+                            ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                         });
                         // Button send result click
                         $('#btnResult').click(function () {
                             var phamvi = $('#hdfPhamVi').val();
                             var thuockhoilop = $('#hdfKhoiLop').val();
-                            var RequestUrl = '/FLuyenToanLopMot/GetOnePhepToan2SoHang/' + phamvi + '/' + thuockhoilop;
+                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanThemBot/' + phamvi + '/' + thuockhoilop;
                             var resultdialog = $("#result-dialog");
                             resultdialog.empty();
                             var dapan = $('#hdfDapAn').val();
@@ -76,7 +94,7 @@
                                             $(this).dialog("close");
                                             //Increase question number
                                             increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                                            ajaxGet(RequestUrl, $('#question-content'));
+                                            ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                                         }
                                     }
                                 });
@@ -104,7 +122,7 @@
                                 buttons: {
                                     Ok: function () {
                                         $(this).dialog("close");
-                                        ajaxGet(RequestUrl, $('#question-content'));
+                                        ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                                     }
                                 }
                             });

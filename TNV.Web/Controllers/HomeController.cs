@@ -106,7 +106,94 @@ namespace TNV.Web.Controllers
             Response.End();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult TempAuthen(string memvar1)
+        {
+            bool LogInCheck = false;
+            if (!String.IsNullOrEmpty(memvar1))
+            {
+                if (memvar1.Trim() == "LogOn")
+                {
+                    string UserName = Request.Form["UserNameLogin"];
+                    string PassWord = Request.Form["PasswordLogin"];
+                    bool Remember = true;
+                    string RememberView = Request.Form["RememberMe"];
+                    if (RememberView == "false")
+                    {
+                        Remember = false;
+                    }
+                    if (MembershipService.ValidateUser(UserName, PassWord))
+                    {
+                        UserModel OneUser = MembershipService.GetOneUserByUserName(UserName);
+                        if (OneUser != null)
+                        {
+                            //Kiểm tra xem tài khoản này có bị khóa hay không? Khóa: 0, Không khoa: 1
+                            if (OneUser.Prevent == 0)
+                            {
+                                ViewData["ThongBao"] = "Thông báo: Tài khoản của bạn đã bị khóa! <br /><br /> Bạn vui lòng liên hệ với ban quản trị để mở khóa tài khoản!";
+                                return View("ThongBao");
+                            }
+                            else if (OneUser.RoleNames.Trim().ToLower() == "smartuser" || OneUser.RoleNames.Trim().ToLower() == "specialuser")
+                            {
+                                //Kiểm tra xem tài khoản đã hết hạn sử dụng hay chưa? 
+                                if (!AllToolShare.CheckExpiredDate(OneUser.ExpiredDate))
+                                {
+                                    ViewData["ThongBao"] = "Thông báo: Tài khoản của bạn đã hết hạn sử dụng! <br /> Hệ thống sẽ tự động không cho bạn sử dụng các chức năng tính phí! <br />Bạn vui lòng nộp tiền để được dùng không giới hạn chức năng!";
+                                    Roles.RemoveUserFromRole(OneUser.UserName, "SmartUser");
+                                    Roles.AddUserToRole(OneUser.UserName, "NormalUser");
+                                    FormsService.SignIn(UserName, Remember);
+                                    MembershipService.CapNhatSoLanDangNhap(UserName);
+                                    LogInCheck = true;
+                                    return View("ThongBao");
+                                }
+                                else
+                                {
+                                    FormsService.SignIn(UserName, Remember);
+                                    LogInCheck = true;
+                                    //Tăng số lần đăng nhập lên 1 đơn vị
+                                    MembershipService.CapNhatSoLanDangNhap(UserName);
+                                }
 
+                            }
+                            else
+                            {
+                                FormsService.SignIn(UserName, Remember);
+                                LogInCheck = true;
+                                //Tăng số lần đăng nhập lên 1 đơn vị
+                                MembershipService.CapNhatSoLanDangNhap(UserName);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ViewData["Error"] = "Sai mật khẩu hoặc tên đăng nhập!";
+                        ViewData["UserName"] = UserName;
+                        ViewData["Password"] = PassWord;
+                    }
+                }
+                else
+                {
+                    ViewData["UserName"] = "";
+                    ViewData["Password"] = "";
+                    ViewData["Error"] = "";
+                }
+            }
+            if (LogInCheck)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                //Đây là người dùng nặc danh, chuyển về trang chủ Website
+                NewsContentModel FirstNewsItem = ToolNewsCategory.GetFirstNewsContent();
+                ViewData["NewsTitle"] = FirstNewsItem.NewsTitle;
+                ViewData["NewsId"] = FirstNewsItem.NewsId;
+                ViewData["NewsImage"] = FirstNewsItem.PathNewsImage;
+                ViewData["NewsNarration"] = FirstNewsItem.NewsNarration;
+                List<NewsContentModel> ListNewsItem = ToolNewsCategory.GetListNewsContent(1, 5);
+                ViewData["MainListNews"] = ListNewsItem;
+                return View();
+            }
+        }
         public ActionResult Index(string memvar1)
         {
             bool LogInCheck = false;

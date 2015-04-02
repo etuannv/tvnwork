@@ -11,12 +11,15 @@ namespace TNV.Web.Controllers
 {
     public class FLuyenToanLopMotController : Controller
     {
+        #region Initialize
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
         public ShareService AllToolShare { get; set; }
         public TinhHuyenService ToolTinhHuyen { get; set; }
         public NewsCategoryService ToolNewsCategory { get; set; }
         public PhepToanHaiSoHangService ToolPhepToanHaiSoHang { get; set; }
+        public PhepToanBaSoHangService ToolPhepToanBaSoHang { get; set; }
+        public DoiTuongHonKemNhauService ToolBaiToanDoiTuongHonKemNhau { get; set; }
         public SystemManagerService ToolSystemManager { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
@@ -27,6 +30,8 @@ namespace TNV.Web.Controllers
             if (ToolTinhHuyen == null) { ToolTinhHuyen = new TinhHuyenClass(); }
             if (ToolNewsCategory == null) { ToolNewsCategory = new NewsCategoryClass(); }
             if (ToolPhepToanHaiSoHang == null) { ToolPhepToanHaiSoHang = new PhepToanHaiSoHangClass(); }
+            if (ToolPhepToanBaSoHang == null) { ToolPhepToanBaSoHang = new PhepToanBaSoHangClass(); }
+            if (ToolBaiToanDoiTuongHonKemNhau == null) { ToolBaiToanDoiTuongHonKemNhau = new DoiTuongHonKemNhauClass(); }
             if (ToolSystemManager == null) { ToolSystemManager = new SystemManagerClass(); }
 
 
@@ -69,6 +74,9 @@ namespace TNV.Web.Controllers
                 ViewData["KindMenu"] = "0";
             }
         }
+
+        #endregion
+
         /// <summary>
         /// Hiển thị form chọn dạng toán
         /// </summary>
@@ -78,17 +86,19 @@ namespace TNV.Web.Controllers
             return View("FDanhSachToanLopMot");
         }
 
+        #region Phep toan 2 so hang
         /// <summary>
-        /// Hiển thị bài luyện tập
+        /// Hiển thị bài luyện tập phep toan 2 so hang
         /// </summary>
         /// <param name="memvar1">Phạm vi phép toán</param>
         /// <param name="memvar2">Thuộc khối lớp</param>
         /// <returns></returns>
         public ActionResult PhepToanHaiSoHang(string memvar1, string memvar2)
         {
+            ViewData["Title"] = "Phép toán 2 số hạng";
             //Gán thuộc khối lớp sang view
-            ViewData["PhamVi"] = memvar1;
-            ViewData["ThuocKhoiLop"] = memvar2;
+            ViewData["PhamVi"] = string.IsNullOrEmpty(memvar1) ? "CongPhamVi10" : memvar1;
+            ViewData["ThuocKhoiLop"] = string.IsNullOrEmpty(memvar2) ? "CLS1847290691" : memvar2;
             
 
             //Đọc danh sách các phép toán hai số hạng
@@ -98,16 +108,84 @@ namespace TNV.Web.Controllers
         }
 
         /// <summary>
-        /// Hiển thị 1 bài luyện tập
+        /// Hiển thị 1 bài luyện tập phep toan 2 so hang
         /// </summary>
         /// <param name="memvar1">Phạm vi phép toán</param>
         /// <param name="memvar2">Thuộc khối lớp</param>
         /// <returns></returns>
-        public PartialViewResult GetNextQuestion(string memvar1, string memvar2)
+        public JsonResult GetOnePhepToan2SoHang(string memvar1, string memvar2)
         {
             PhepToanHaiSoHangModel BaiToan = ToolPhepToanHaiSoHang.RandomQuesOneOperator(memvar2, memvar1);
-            return PartialView("HienThiCauHoi", BaiToan);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
         }
+
+        #endregion
+
+        #region Phep toan ba so hang
+        /// <summary>
+        /// Hiển thị bài luyện tập phep toan 3 so hang
+        /// </summary>
+        /// <param name="memvar1">Phạm vi phép toán</param>
+        /// <param name="memvar2">Thuộc khối lớp</param>
+        /// <returns></returns>
+        public ActionResult PhepToanBaSoHang(string memvar1, string memvar2)
+        {
+            ViewData["Title"] = "Phép toán 3 số hạng";
+            //Gán thuộc khối lớp sang view
+            ViewData["PhamVi"] = string.IsNullOrEmpty(memvar1) ? "CongTruPhamVi10" : memvar1;
+            ViewData["ThuocKhoiLop"] = string.IsNullOrEmpty(memvar2) ? "CLS1847290691" : memvar2;
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập phep toan 2 so hang
+        /// </summary>
+        /// <param name="memvar1">Phạm vi phép toán</param>
+        /// <param name="memvar2">Thuộc khối lớp</param>
+        /// <returns></returns>
+        public JsonResult GetOnePhepToan3SoHang(string memvar1, string memvar2)
+        {
+            PhepToanBaSoHangModel BaiToan = ToolPhepToanBaSoHang.RandomQuesTwoOperator(memvar2, memvar1);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Bai Toan Them bot
+        /// <summary>
+        /// Hiển thị bài luyện tập phep toan 3 so hang
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public ActionResult BaiToanThemBot(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            ViewData["Title"] = "Phép toán 3 số hạng";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = string.IsNullOrEmpty(memvar1) ? "CLS1847290691" : memvar1;
+            ViewData["SoLuongDoiTuong"] = string.IsNullOrEmpty(memvar2) ? "1": memvar2;
+            ViewData["PhamVi"] = string.IsNullOrEmpty(memvar3) ? "PhamVi10" : memvar3;
+            ViewData["LoaiCauHoi"] = string.IsNullOrEmpty(memvar4) ? "ThemSoLuongDoiTuong" : memvar4;
+            
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan them bot
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanThemBot(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            int SoLuongDoiTuong = int.Parse(memvar2);
+            DoiTuongHonKemNhauModel BaiToan = ToolBaiToanDoiTuongHonKemNhau.GetOneBaiToanThemBot(memvar1, SoLuongDoiTuong, memvar3, memvar4);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
 
     }
 }
