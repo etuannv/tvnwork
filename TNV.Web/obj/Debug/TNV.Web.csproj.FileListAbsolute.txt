@@ -13,8 +13,3 @@ D:\Working\coding\Github\tvnwork\TNV.Web\bin\TNV.Web.pdb
 D:\Working\coding\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.dll
 D:\Working\coding\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.pdb
 D:\Working\coding\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.csprojResolveAssemblyReference.cache
-D:\SETUP\OnlineLocation\OneDrive\WorkingProjects\Github\tvnwork\TNV.Web\bin\TNV.Web.dll
-D:\SETUP\OnlineLocation\OneDrive\WorkingProjects\Github\tvnwork\TNV.Web\bin\TNV.Web.pdb
-D:\SETUP\OnlineLocation\OneDrive\WorkingProjects\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.dll
-D:\SETUP\OnlineLocation\OneDrive\WorkingProjects\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.pdb
-D:\SETUP\OnlineLocation\OneDrive\WorkingProjects\Github\tvnwork\TNV.Web\obj\Debug\TNV.Web.csprojResolveAssemblyReference.cache

@@ -187,5 +187,83 @@ namespace TNV.Web.Controllers
         }
         #endregion
 
+
+
+        #region Bai Toan hai doi tuong
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan 3 doi tuong
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public ActionResult BaiToanHaiDoiTuong(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            ViewData["Title"] = "Phép toán 3 số hạng";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = string.IsNullOrEmpty(memvar1) ? "CLS1847290691" : memvar1;
+            ViewData["SoLuongDoiTuong"] = string.IsNullOrEmpty(memvar2) ? "2" : memvar2;
+            ViewData["PhamVi"] = string.IsNullOrEmpty(memvar3) ? "PhamVi10" : memvar3;
+            ViewData["LoaiCauHoi"] = string.IsNullOrEmpty(memvar4) ? "TongHaiDoiTuong" : memvar4;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan them bot
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanHaiDoiTuong(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            int SoLuongDoiTuong = int.Parse(memvar2);
+            DoiTuongHonKemNhauModel BaiToan = ToolBaiToanDoiTuongHonKemNhau.GetOneBaiToanThemBot(memvar1, SoLuongDoiTuong, memvar3, memvar4);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+        #region Bai Toan ba doi tuong
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan 3 doi tuong
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public ActionResult BaiToanBaDoiTuong(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            ViewData["Title"] = "Phép toán 3 số hạng";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = string.IsNullOrEmpty(memvar1) ? "CLS1847290691" : memvar1;
+            ViewData["SoLuongDoiTuong"] = string.IsNullOrEmpty(memvar2) ? "2" : memvar2;
+            ViewData["PhamVi"] = string.IsNullOrEmpty(memvar3) ? "PhamVi10" : memvar3;
+            ViewData["LoaiCauHoi"] = string.IsNullOrEmpty(memvar4) ? "TongHaiDoiTuong" : memvar4;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan ba đối tượng
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanBaDoiTuong(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            int SoLuongDoiTuong = int.Parse(memvar2);
+            DoiTuongHonKemNhauModel BaiToan = ToolBaiToanDoiTuongHonKemNhau.GetOneBaiToanThemBot(memvar1, SoLuongDoiTuong, memvar3, memvar4);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
     }
 }

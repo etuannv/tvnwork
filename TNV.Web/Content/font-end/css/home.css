@@ -41,20 +41,6 @@
 text-decoration:underline;
 }
 
-
-.question-content
-{
-	line-height:20px;
-	font-size: 20px;
-	margin-top: 20px;
-}
-.question-content input
-{
-	width: 25px;
-	margin-top: 1px;
-}
-
-
 .feature h2{
             font-size: 22px;
             color: #090;

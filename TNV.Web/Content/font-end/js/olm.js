@@ -26,6 +26,8 @@ function displayPhepToan2SoHang(data, displayTarget) {
     var jsondata = JSON.parse(data);
     displayTarget.empty();
     var question = '';
+	question += '<h2>Điền số hoặc dấu thích hợp vào ô trống ? </h2>'
+	question += '<h2>';
     if (jsondata.SoHangThuNhat == '?') {
         question += '<input type="text" value="" name="txtDapSo" id="txtDapSo">';
     }
@@ -74,6 +76,7 @@ function displayPhepToan2SoHang(data, displayTarget) {
     question += '<input type="hidden" id="hdfDapAn" value="';
     question += jsondata.DapAn;
     question += '" />';
+	question += '</h2>';
     displayTarget.append(question);
     $('#txtDapSo').focus();
 }
@@ -90,7 +93,7 @@ function ajaxGetPhepToan3SoHang(pUrl, displayTarget, answerTarget) {
     })
     .success(function (result, target) {
         displayPhepToan3SoHang(result, displayTarget);
-		generateAnswer(result, answerTarget)
+		generateAnswerPhepToan3SoHang(result, answerTarget)
     })
     .error(function (xhr, status) {
         alert(status);
@@ -103,6 +106,9 @@ function displayPhepToan3SoHang(data, displayTarget) {
     displayTarget.empty();
     var question = '';
 	var dapSoNum = 1;
+	
+	question += '<h2>Điền số hoặc dấu thích hợp vào ô trống ? </h2>'
+	question += '<h2>';
     if (jsondata.SoHangThuNhat == '?') {
         question += '<input type="text" value="" name="txtDapSo" id="txtDapSo'
 		question += dapSoNum;
@@ -194,13 +200,13 @@ function displayPhepToan3SoHang(data, displayTarget) {
 	question += '<input type="hidden" id="hdfDapAn2" value="';
     question += jsondata.DapAnThuHai;
     question += '" />';
-	
+	question += '</h2>';
     displayTarget.append(question);
     $('#txtDapSo1').focus();
 }
 
 
-function generateAnswer(data, answerTarget) {
+function generateAnswerPhepToan3SoHang(data, answerTarget) {
 
     var jsondata = JSON.parse(data);
     answerTarget.empty();
@@ -318,11 +324,6 @@ function generateAnswer(data, answerTarget) {
 
 
 
-
-
-
-
-
 function ajaxGetBaiToanThemBot(pUrl, displayTarget, answerTarget) {
     $.ajax({
         url: pUrl,
@@ -339,24 +340,126 @@ function ajaxGetBaiToanThemBot(pUrl, displayTarget, answerTarget) {
     })
 }
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function gen3SoKhac(soDauVao)
+{
+	var dauVao = parseInt(soDauVao);
+	var So1;
+	var So2;
+	var So3;
+	var KetQua = [];
+	var MinRange = 0 - dauVao;
+	var MaxRange = dauVao;
+	if(dauVao < 2) { MinRange = 0; MaxRange = 5;}
+	if(2 < dauVao && dauVao > 30){ MinRange = 0-dauVao; MaxRange = dauVao;}
+	if(dauVao > 30){ MinRange = -30; MaxRange = 30;}
+	
+	SoRandom = getRandomInt(MinRange, MaxRange);
+	if(SoRandom == 0) SoRandom += 1;
+	So1 = dauVao + SoRandom;
+	do
+	{
+		SoRandom = getRandomInt(MinRange, MaxRange);
+		if(SoRandom == 0) SoRandom += 1;
+		So2 = dauVao + SoRandom;
+	}
+	while(So2 == So1)
+	
+	do
+	{
+		SoRandom = getRandomInt(MinRange, MaxRange);
+		if(SoRandom == 0) SoRandom += 1;
+		So3 = dauVao + SoRandom;
+	}
+	while(So3 == So1 || So3 == So2)
+	
+	KetQua.push(So1);
+	KetQua.push(So2);
+	KetQua.push(So3);
+
+	return KetQua;
+}
+
+
+
+function sinhCauTraLoiBaiToanThemBot(dapAnDung){
+	var KetQuaTemp1 ='';
+	var KetQuaTemp2 ='';
+	var KetQuaTemp3 ='';
+	var arrString = dapAnDung.split("$"); 
+	var arrKetQua = [];
+
+	for(j = 0; j < arrString.length; j++)
+	{
+		if(j != 0)
+		{
+			KetQuaTemp1 += ' ; ';
+			KetQuaTemp2 += ' ; ';
+			KetQuaTemp3 += ' ; ';
+		}
+		var arr3SoKhac = gen3SoKhac(arrString[j]);
+		KetQuaTemp1 += String(arr3SoKhac[0]);
+		KetQuaTemp2 += String(arr3SoKhac[1]);
+		KetQuaTemp3 += String(arr3SoKhac[2]);
+	}
+	arrKetQua.push(KetQuaTemp1);
+	arrKetQua.push(KetQuaTemp2);
+	arrKetQua.push(KetQuaTemp3);
+	return arrKetQua;
+}
+
 function displayBaiToanThemBot(data, displayTarget) {
 
     var jsondata = JSON.parse(data);
     displayTarget.empty();
     var question = '';
-	var dapSoNum = 1;
+	var ViTriDapAn = getRandomInt(0, 3);
+	var dapAn = jsondata.DapAnCauHoi;
+	var htmlBuffer = [];
     // Sinh noi dung cau hoi
-	question += '<p>';
-	question += jsondata.NoiDungCauHoi;
-	question += '</p>';
+	htmlBuffer.push('<h2>');
+	htmlBuffer.push(jsondata.NoiDungCauHoi);
+	htmlBuffer.push('</h2>');
+	
 	// Sinh noi dung cau tra loi
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>Chọn câu trả lời:</h2>');
+	htmlBuffer.push('<div id="questionctrl">');
+	var temp = dapAn;
+	var BoDapAnKhac = sinhCauTraLoiBaiToanThemBot(dapAn);
+	var flagDapAnDung = 0;
+	for (i = 0; i < 4; i++) {
+		htmlBuffer.push('	<label class="qradio">');
+		htmlBuffer.push('		<input type="radio" id="');
+		htmlBuffer.push(i);
+		htmlBuffer.push('" name="questionctrl" value="');
+		if(i == ViTriDapAn)
+		{
+			temp = dapAn.replace("$"," ; ");
+			flagDapAnDung = 1
+		}
+		else
+		{
+			if(flagDapAnDung == 1) temp = BoDapAnKhac[i-1];
+			 else temp = BoDapAnKhac[i];
+		}
+		htmlBuffer.push(temp);
+		htmlBuffer.push('"/>');
+		htmlBuffer.push('		<div style="display: inline-block; padding-left: 10px; font-size: 18px;">');
+		htmlBuffer.push(temp);
+		htmlBuffer.push('</div>');	
+		htmlBuffer.push('	</label>');
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="');
+    htmlBuffer.push(dapAn.replace("$"," ; "));
+    htmlBuffer.push('" />');
 	
 	
-    question += '<input type="hidden" id="hdfDapAn" value="';
-    question += jsondata.KetLuanCauHoi;
-    question += '" />';
-	
-    displayTarget.append(question);
+    displayTarget.append(htmlBuffer.join('\n'));
 }
 
 

@@ -34,8 +34,8 @@
 
 .question{
 	padding: 15px  10px 10px 25px;
-
 }
+
 #question{min-height: 300px;}
 .qcontainer:focus, input:focus,div:focus{outline: none;}
 

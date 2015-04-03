@@ -14,9 +14,7 @@
                         <div class="question" id="question">
                             <input type="hidden" id="hdfPhamVi" value="<%=ViewData["PhamVi"] %>" />
                             <input type="hidden" id="hdfKhoiLop" value="<%=ViewData["ThuocKhoiLop"] %>" />
-                            <h3>
-                                Điền số hoặc dấu thích hợp vào ô trống ?</h3>
-                            <div id="question-content" class="question-content">
+                            <div id="question-content" class="question">
                             </div>
                         </div>
                     </div>

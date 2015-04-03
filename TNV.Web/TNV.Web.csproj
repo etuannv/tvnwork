@@ -1015,6 +1015,8 @@
     <Content Include="Views\BaiToanTimSo\HinhTronBaSo.ascx" />
     <Content Include="Views\DoiTuongHonKemNhau\DanhSachCauHoi.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanThemBot.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanHaiDoiTuong.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanBaDoiTuong.aspx" />
     <Content Include="Views\FLuyenToanLopMot\PhepToanBaSoHang.aspx" />
     <Content Include="Views\FLuyenToanLopMot\FDanhSachToanLopMot.aspx" />
     <Content Include="Views\FLuyenToanLopMot\HienThiCauHoi.ascx" />
