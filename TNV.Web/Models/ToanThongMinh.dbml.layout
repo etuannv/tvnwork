@@ -181,7 +181,7 @@
         <elementListCompartment Id="964f0ca3-7202-405e-b82d-acabd127393c" absoluteBounds="3.515, 2.085, 1.9700000000000002, 1.5222371419270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.19314697265625); (3.5 : 2.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 2.13025024414063); (3.5 : 2.13025024414063)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ToanThongMinhDataContext/NewsCategory/NewsCategory_NewsContent" />
       <nodes>
         <classShapeMoniker Id="38936965-de89-4439-8952-8c6e08cd5f5a" />
@@ -296,19 +296,6 @@
         <elementListCompartment Id="323c160b-496e-4052-84c2-dcff9a412ad3" absoluteBounds="19.515, 7.085, 1.9700000000000002, 1.5222371419270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cddc82f1-d7ed-4c38-869b-b81d464287f5" absoluteBounds="17, 10.625, 2, 2.9039737955729166">
-      <DataClassMoniker Name="/ToanThongMinhDataContext/BaiToanDaySo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="76627a5b-a7f8-4c0b-88f3-a0aa189894db" absoluteBounds="17.015, 11.085, 1.9700000000000002, 2.3439737955729165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(14.3124975 : 2.07859537760417); (14.3124975 : 12.2796541341146); (14.3229179166667 : 12.2796541341146 : JumpStart); (14.4895845833333 : 12.2796541341146 : JumpEnd); (17 : 12.2796541341146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/ToanThongMinhDataContext/ClassList/ClassList_BaiToanDaySo" />
-      <nodes>
-        <classShapeMoniker Id="d647fc61-9e2b-4f7d-94a5-93b20d9b6518" />
-        <classShapeMoniker Id="cddc82f1-d7ed-4c38-869b-b81d464287f5" />
-      </nodes>
-    </associationConnector>
     <classShape Id="04f631ca-d693-490a-9f14-515ef8408ac2" absoluteBounds="20.25, 10.875, 2, 2.0822371419270844">
       <DataClassMoniker Name="/ToanThongMinhDataContext/BaiToanThoiGian" />
       <nestedChildShapes>
@@ -359,6 +346,19 @@
       <nodes>
         <classShapeMoniker Id="d647fc61-9e2b-4f7d-94a5-93b20d9b6518" />
         <classShapeMoniker Id="f50ef576-283f-4709-9763-c4671acba5fc" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a4da5470-54bb-4e50-be4e-e72b360a7723" absoluteBounds="17.375, 11.25, 2, 3.0683211263020831">
+      <DataClassMoniker Name="/ToanThongMinhDataContext/BaiToanDaySo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4e9fea1-2a93-4e7e-a8ab-ee871998f58b" absoluteBounds="17.39, 11.71, 1.9700000000000002, 2.508321126302083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.3124975 : 1.92484781901042); (14.3124975 : 12.784160563151); (14.3229179166667 : 12.784160563151 : JumpStart); (14.4895845833333 : 12.784160563151 : JumpEnd); (17.375 : 12.784160563151)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ToanThongMinhDataContext/ClassList/ClassList_BaiToanDaySo" />
+      <nodes>
+        <classShapeMoniker Id="d647fc61-9e2b-4f7d-94a5-93b20d9b6518" />
+        <classShapeMoniker Id="a4da5470-54bb-4e50-be4e-e72b360a7723" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

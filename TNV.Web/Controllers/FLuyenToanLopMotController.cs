@@ -20,6 +20,7 @@ namespace TNV.Web.Controllers
         public PhepToanHaiSoHangService ToolPhepToanHaiSoHang { get; set; }
         public PhepToanBaSoHangService ToolPhepToanBaSoHang { get; set; }
         public DoiTuongHonKemNhauService ToolBaiToanDoiTuongHonKemNhau { get; set; }
+        public BaiToanDaySoService ToolBaiToanDaySo { get; set; }
         public SystemManagerService ToolSystemManager { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
@@ -32,6 +33,7 @@ namespace TNV.Web.Controllers
             if (ToolPhepToanHaiSoHang == null) { ToolPhepToanHaiSoHang = new PhepToanHaiSoHangClass(); }
             if (ToolPhepToanBaSoHang == null) { ToolPhepToanBaSoHang = new PhepToanBaSoHangClass(); }
             if (ToolBaiToanDoiTuongHonKemNhau == null) { ToolBaiToanDoiTuongHonKemNhau = new DoiTuongHonKemNhauClass(); }
+            if (ToolBaiToanDaySo == null) { ToolBaiToanDaySo = new BaiToanDaySoClass(); }
             if (ToolSystemManager == null) { ToolSystemManager = new SystemManagerClass(); }
 
 
@@ -187,8 +189,6 @@ namespace TNV.Web.Controllers
         }
         #endregion
 
-
-
         #region Bai Toan hai doi tuong
         /// <summary>
         /// Hiển thị bài luyện tap bai toan 3 doi tuong
@@ -226,7 +226,6 @@ namespace TNV.Web.Controllers
         }
         #endregion
 
-
         #region Bai Toan ba doi tuong
         /// <summary>
         /// Hiển thị bài luyện tap bai toan 3 doi tuong
@@ -260,6 +259,41 @@ namespace TNV.Web.Controllers
         {
             int SoLuongDoiTuong = int.Parse(memvar2);
             DoiTuongHonKemNhauModel BaiToan = ToolBaiToanDoiTuongHonKemNhau.GetOneBaiToanThemBot(memvar1, SoLuongDoiTuong, memvar3, memvar4);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+        #region Bai Toan dãy số
+        /// <summary>
+        /// Hiển thị bài luyện tap bai dãy số
+        /// </summary>
+        /// <param name="memvar1">Thuộc khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Phân loại dãy số</param>
+        /// <returns></returns>
+        public ActionResult BaiToanDaySo(string memvar1, string memvar2, string memvar3)
+        {
+            ViewData["Title"] = "Phép toán 3 số hạng";
+            //Gán thuộc khối lớp sang view
+
+            ViewData["ThuocKhoiLop"] = memvar1;
+            ViewData["PhamVi"] = memvar2;
+            ViewData["PhanLoaiDaySo"] = memvar3;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan ba đối tượng
+        /// </summary>
+        /// <param name="memvar1">Thuộc khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Phân loại dãy số</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanDaySo(string memvar1, string memvar2, string memvar3)
+        {
+            BaiToanDaySoModel BaiToan = ToolBaiToanDaySo.GetOneDaySo(memvar1, memvar2, memvar3);
             return Json(BaiToan, JsonRequestBehavior.AllowGet);
         }
         #endregion

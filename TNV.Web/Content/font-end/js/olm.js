@@ -344,6 +344,16 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function replaceAll(find, replace, str) 
+{
+  while( str.indexOf(find) > -1)
+  {
+	str = str.replace(find, replace);
+  }
+  return str;
+}
+
+
 function gen3SoKhac(soDauVao)
 {
 	var dauVao = parseInt(soDauVao);
@@ -432,13 +442,15 @@ function displayBaiToanThemBot(data, displayTarget) {
 	var BoDapAnKhac = sinhCauTraLoiBaiToanThemBot(dapAn);
 	var flagDapAnDung = 0;
 	for (i = 0; i < 4; i++) {
-		htmlBuffer.push('	<label class="qradio">');
+		htmlBuffer.push('	<label class="qradio');
+		if(i==0) htmlBuffer.push(' checked');
+		htmlBuffer.push('">');
 		htmlBuffer.push('		<input type="radio" id="');
 		htmlBuffer.push(i);
 		htmlBuffer.push('" name="questionctrl" value="');
 		if(i == ViTriDapAn)
 		{
-			temp = dapAn.replace("$"," ; ");
+			temp = replaceAll('$', ' ; ', dapAn);
 			flagDapAnDung = 1
 		}
 		else
@@ -465,6 +477,114 @@ function displayBaiToanThemBot(data, displayTarget) {
 
 
 function generateBaiToanThemBotAnswer(data, answerTarget) {
+
+    var jsondata = JSON.parse(data);
+    answerTarget.empty();
+    var question = '';
+	var dapSoNum = 1;
+	
+	question += ('<h3>Lời giải</h3>');
+	question += '<p>';
+	question += jsondata.LoiGiaiCauHoi;
+	question += '</p>';
+	
+	
+	question += ('<h3>Đáp án</h3>');
+	question += '<p>';
+	question += jsondata.KetLuanCauHoi;
+	question += '</p>';
+    answerTarget.append(question);    
+}
+
+
+
+
+
+function ajaxGetBaiToanDaySo(pUrl, displayTarget, answerTarget) {
+    $.ajax({
+        url: pUrl,
+        contentType: 'application/html; charset=utf-8',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .success(function (result, target) {
+        displayBaiToanDaySo(result, displayTarget);
+		generateBaiToanDaySoAnswer(result, answerTarget)
+    })
+    .error(function (xhr, status) {
+        alert(status);
+    })
+}
+
+
+
+function displayBaiToanDaySo(data, displayTarget) {
+
+    var jsondata = JSON.parse(data);
+    displayTarget.empty();
+    var question = '';
+	var ViTriDapAn = getRandomInt(0, 3);
+	var dapAn = jsondata.NoiDungDapAn;
+	var dapAnSai = jsondata.NoiDungDapAnSai;
+	var htmlBuffer = [];
+    // Sinh noi dung cau hoi
+	htmlBuffer.push('<h2>');
+	htmlBuffer.push(jsondata.CauHoiHienThi);
+	htmlBuffer.push('</h2>');
+	
+	htmlBuffer.push('<h2>');
+	var noiDungDay = replaceAll( '~', ' ; ' , jsondata.NoiDungDaySo)
+	
+	noiDungDay = replaceAll('...', '<img alt="Điền số thích hợp vào ô trống" title="Điền số thích hợp vào ô trống" class="otrong"  src="/Content/Image/OTrong.png") onmouseout="this.style.opacity=100" onmouseover="this.style.opacity=0.5" />', noiDungDay);
+	
+	
+	htmlBuffer.push(noiDungDay);
+	htmlBuffer.push('</h2>');
+	
+	// Sinh noi dung cau tra loi
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>Chọn câu trả lời:</h2>');
+	htmlBuffer.push('<div id="questionctrl">');
+	var temp = dapAn;
+	var BoDapAnKhac = dapAnSai.split('#');
+	var flagDapAnDung = 0;
+	for (i = 0; i < 4; i++) {
+		htmlBuffer.push('	<label class="qradio');
+		if(i==0) htmlBuffer.push(' checked');
+		htmlBuffer.push('">');
+		htmlBuffer.push('		<input type="radio" id="');
+		htmlBuffer.push(i);
+		htmlBuffer.push('" name="questionctrl" value="');
+		if(i == ViTriDapAn)
+		{
+			temp = dapAn;
+			flagDapAnDung = 1
+		}
+		else
+		{
+			if(flagDapAnDung == 1) temp = BoDapAnKhac[i-1];
+			 else temp = BoDapAnKhac[i];
+		}
+		temp = replaceAll('~', ' ; ', temp);
+		htmlBuffer.push(temp);
+		htmlBuffer.push('"/>');
+		htmlBuffer.push('		<div style="display: inline-block; padding-left: 10px; font-size: 18px;">');
+		htmlBuffer.push(temp);
+		htmlBuffer.push('</div>');	
+		htmlBuffer.push('	</label>');
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="');
+    htmlBuffer.push( replaceAll("~" , " ; " , dapAn));
+    htmlBuffer.push('" />');
+	
+	
+    displayTarget.append(htmlBuffer.join('\n'));
+}
+
+
+
+function generateBaiToanDaySoAnswer(data, answerTarget) {
 
     var jsondata = JSON.parse(data);
     answerTarget.empty();

@@ -701,21 +701,47 @@
                                     </script>
                                     <div id="baitoandayso">
                                         <h3>
-                                            C1. Phạm vi 10</h3>
+                                            F1. Phạm vi 10</h3>
                                         <div>
                                             <ol class="skill-tree-skills">
-                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanThemBot/CLS1847290691/1/PhamVi10/ThemSoLuongDoiTuong">
-                                                    <span class="skill-tree-skill-number">C.11</span><span class="skill-tree-skill-name">Thêm
-                                                        số lượng đối tượng</span></a></li>
-                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanThemBot/CLS1847290691/1/PhamVi10/BotSoLuongDoiTuong">
-                                                    <span class="skill-tree-skill-number">C.12</span><span class="skill-tree-skill-name">Bớt
-                                                        số lượng đối tượng</span></a></li>
-                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanThemBot/CLS1847290691/1/PhamVi10/TimSoDoiTuongBanDauDangMot">
-                                                    <span class="skill-tree-skill-number">C.13</span><span class="skill-tree-skill-name">Tìm
-                                                        số lượng ban đầu (dạng 1)</span></a></li>
-                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanThemBot/CLS1847290691/1/PhamVi10/TimSoDoiTuongBanDauDangHai">
-                                                    <span class="skill-tree-skill-number">C.14</span><span class="skill-tree-skill-name">Tìm
-                                                        số lượng ban đầu (dạng 2)</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi10/DaySoDem">
+                                                    <span class="skill-tree-skill-number">F.11</span><span class="skill-tree-skill-name">Dãy số đếm</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi10/CapSoCong">
+                                                    <span class="skill-tree-skill-number">F.12</span><span class="skill-tree-skill-name">Cấp số cộng</span></a></li>
+                                            </ol>
+                                        </div>
+                                        <h3>
+                                            F2. Phạm vi 20</h3>
+                                        <div>
+                                            <ol class="skill-tree-skills">
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi20/DaySoDem">
+                                                    <span class="skill-tree-skill-number">F.21</span><span class="skill-tree-skill-name">Dãy số đếm</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi20/CapSoCong">
+                                                    <span class="skill-tree-skill-number">F.22</span><span class="skill-tree-skill-name">Cấp số cộng</span></a></li>
+                                            </ol>
+                                        </div>
+                                        <h3>
+                                            F3. Phạm vi 30</h3>
+                                        <div>
+                                            <ol class="skill-tree-skills">
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi30/DaySoDem">
+                                                    <span class="skill-tree-skill-number">F.31</span><span class="skill-tree-skill-name">Dãy số đếm</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi30/CapSoCong">
+                                                    <span class="skill-tree-skill-number">F.32</span><span class="skill-tree-skill-name">Cấp số cộng</span></a></li>
+                                            </ol>
+                                        </div>
+                                        <h3>
+                                            F4. Phạm vi từ 30 đến 100</h3>
+                                        <div>
+                                            <ol class="skill-tree-skills">
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi30_100/DaySoDem">
+                                                    <span class="skill-tree-skill-number">F.41</span><span class="skill-tree-skill-name">Dãy số đếm</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi30_100/CapSoCong">
+                                                    <span class="skill-tree-skill-number">F.42</span><span class="skill-tree-skill-name">Cấp số cộng</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi100/DayBoSo2So">
+                                                    <span class="skill-tree-skill-number">F.43</span><span class="skill-tree-skill-name">Dãy các bộ 2 số</span></a></li>
+                                                <li class="skill-tree-skill-node"><a class="skill-tree-skill-link" href="/FLuyenToanLopMot/BaiToanDaySo/CLS1847290691/PhamVi100/DayBoSo3So">
+                                                    <span class="skill-tree-skill-number">F.44</span><span class="skill-tree-skill-name">Dãy các bộ 3 số</span></a></li>
                                             </ol>
                                         </div>
                                     </div>

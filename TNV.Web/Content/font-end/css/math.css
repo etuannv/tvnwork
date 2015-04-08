@@ -1,3 +1,10 @@
+.otrong
+{
+	border: 2px solid #fffecf;
+	width: 23px;
+	margin-bottom: 5px;
+}
+
 .dialog-message{
 	display:none;
 }

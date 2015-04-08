@@ -1017,6 +1017,7 @@
     <Content Include="Views\FLuyenToanLopMot\BaiToanThemBot.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanHaiDoiTuong.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanBaDoiTuong.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanDaySo.aspx" />
     <Content Include="Views\FLuyenToanLopMot\PhepToanBaSoHang.aspx" />
     <Content Include="Views\FLuyenToanLopMot\FDanhSachToanLopMot.aspx" />
     <Content Include="Views\FLuyenToanLopMot\HienThiCauHoi.ascx" />

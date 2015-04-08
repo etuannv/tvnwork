@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Security.Principal;
 using System.Web.Security;
 using System.Data.Linq;
+using System.Text;
 
 namespace TNV.Web.Models
 {
@@ -28,6 +29,9 @@ namespace TNV.Web.Models
 
         [DisplayName("Nội dung đáp án:")]
         public string NoiDungDapAn { get; set; }
+
+        [DisplayName("Nội dung đáp án sai:")]
+        public string NoiDungDapAnSai { get; set; }
 
         [DisplayName("Số lượng đáp án:")]
         public int SoLuongDapAn { get; set; }
@@ -173,6 +177,7 @@ namespace TNV.Web.Models
         #region Dãy số mới
         List<BaiToanDaySoModel> DanhSachDaySo(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiDaySo);
         BaiToanDaySoModel DocDaySoDauTien(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiDaySo);
+        BaiToanDaySoModel GetOneDaySo(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiDaySo);
         BaiToanDaySoModel DocMotDaySo(string MaDaySo);
         string ThemMoiMotDaySo(BaiToanDaySoModel DaySo);
         string SuaCauHoi(BaiToanDaySoModel DaySo);
@@ -182,6 +187,8 @@ namespace TNV.Web.Models
 
         int SoBanGhiTrenMotTrang { get; }
         int BuocNhay { get; }
+
+        
     }
 
     public class BaiToanDaySoClass : BaiToanDaySoService
@@ -1925,6 +1932,9 @@ namespace TNV.Web.Models
                                     //Lấy đáp số của các phần tử bị ẩn
                                     modelItem.NoiDungDapAn = LayDapSo(DaySo, DSViTriAn[s].Trim(), Key, '!', true);
 
+                                    // Lấy đáp số sai
+                                    modelItem.NoiDungDapAnSai = LayDapSoSai(modelItem.NoiDungDapAn);
+
                                     //Lấy câu hỏi hiển thị
                                     modelItem.CauHoiHienThi = "Tìm các số thích hợp điền vào ô trống";
 
@@ -1974,6 +1984,9 @@ namespace TNV.Web.Models
 
                                     //Lấy đáp số của các phần tử bị ẩn
                                     modelItemDes.NoiDungDapAn = LayDapSo(DaySo, DSViTriAn[s].Trim(), Key, '!', false);
+
+                                    // Lấy đáp số sai
+                                    modelItemDes.NoiDungDapAnSai = LayDapSoSai(modelItemDes.NoiDungDapAn);
 
                                     //Lấy câu hỏi hiển thị
                                     modelItemDes.CauHoiHienThi = "Tìm các số thích hợp điền vào ô trống";
@@ -2037,6 +2050,9 @@ namespace TNV.Web.Models
                                         //Lấy đáp số của các phần tử bị ẩn
                                         modelItem.NoiDungDapAn = LayDapSo(DaySo, DSViTriAn[s].Trim(), Key, '!', true);
 
+                                        // Lấy đáp số sai
+                                        modelItem.NoiDungDapAnSai = LayDapSoSai(modelItem.NoiDungDapAn);
+
                                         //Lấy câu hỏi hiển thị
                                         modelItem.CauHoiHienThi = "Tìm các số thích hợp điền vào ô trống";
 
@@ -2086,6 +2102,9 @@ namespace TNV.Web.Models
 
                                         //Lấy đáp số của các phần tử bị ẩn
                                         modelItemDes.NoiDungDapAn = LayDapSo(DaySo, DSViTriAn[s].Trim(), Key, '!', false);
+
+                                        // Lấy đáp số sai
+                                        modelItemDes.NoiDungDapAnSai = LayDapSoSai(modelItemDes.NoiDungDapAn);
 
                                         //Lấy câu hỏi hiển thị
                                         modelItemDes.CauHoiHienThi = "Tìm các số thích hợp điền vào ô trống";
@@ -2203,6 +2222,9 @@ namespace TNV.Web.Models
                                         //Lấy đáp số của các phần tử bị ẩn
                                         modelItem.NoiDungDapAn = LayDapSo(DaySo, DSViTriAn[s].Trim(), KeyTrongDay, '!', true);
 
+                                        // Lấy đáp số sai
+                                        modelItem.NoiDungDapAnSai = LayDapSoSai(modelItem.NoiDungDapAn);
+
                                         //Lấy câu hỏi hiển thị
                                         modelItem.CauHoiHienThi = "Tìm các bộ số thích hợp còn thiếu điền vào ô trống";
 
@@ -2249,6 +2271,112 @@ namespace TNV.Web.Models
             // Sắp xếp các dãy số theo thứ tự tăng dần
             return DanhSachDay.OrderBy(m => m.SapXepThuTu).ToList<BaiToanDaySoModel>();
             
+        }
+
+
+
+
+        /// <summary>
+        /// Generate list dap an sai
+        /// Cần sinh ra 3 đáp án sai, phân cách bởi dấu #
+        /// </summary>
+        /// <param name="p">dap an ung</param>
+        /// <returns></returns>
+        private string LayDapSoSai(string dapAnDung)
+        {
+            
+            StringBuilder sbResult = new StringBuilder();
+            StringBuilder sbKetQua1 = new StringBuilder();
+            StringBuilder sbKetQua2 = new StringBuilder();
+            StringBuilder sbKetQua3 = new StringBuilder();
+            StringBuilder sbNumberTemp = new StringBuilder();
+
+            foreach (char c in dapAnDung)
+            {
+                if (Char.IsDigit(c))
+                {
+                    // Append so
+                    sbNumberTemp.Append(c);
+                }
+                else
+                {
+                    // Neu vua het chuoi so thi append so
+                    if (sbNumberTemp.Length > 0)
+                    {
+                        List<int> BaSoKhac = Generate3SoKhac(sbNumberTemp.ToString());
+                        sbKetQua1.Append(BaSoKhac[0]);
+                        sbKetQua2.Append(BaSoKhac[1]);
+                        sbKetQua3.Append(BaSoKhac[2]);
+                        sbNumberTemp.Clear();
+                    }
+                    // Append ki tu
+                    sbKetQua1.Append(c);
+                    sbKetQua2.Append(c);
+                    sbKetQua3.Append(c);
+                }
+            }
+            if (sbNumberTemp.Length > 0)
+            {
+                List<int> BaSoKhac = Generate3SoKhac(sbNumberTemp.ToString());
+                sbKetQua1.Append(BaSoKhac[0]);
+                sbKetQua2.Append(BaSoKhac[1]);
+                sbKetQua3.Append(BaSoKhac[2]);
+                sbNumberTemp.Clear();
+            }
+
+            return sbKetQua1.ToString() + "#" + sbKetQua2.ToString() + "#" + sbKetQua3.ToString();
+        }
+
+
+        /// <summary>
+        /// Generate ra 3 so tu nhien khac so dau vao va khac nhau
+        /// </summary>
+        /// <param name="soDauVao"></param>
+        /// <returns></returns>
+        private List<int> Generate3SoKhac(string soDauVao)
+        {
+            int SoDauVao = int.Parse(soDauVao);
+            List<int> Result = new List<int>();
+            int So1 = 0;
+            int So2 = 0;
+            int So3 = 0;
+            int MinRange = 0 - SoDauVao;
+            int MaxRange =SoDauVao;
+            Random rnd = new Random();
+            int SoRandom;
+
+            if (SoDauVao < 2) { MinRange = 0; MaxRange = 5; }
+            if (2 < SoDauVao && SoDauVao > 30) { MinRange = 0 - SoDauVao; MaxRange = SoDauVao; }
+            if (SoDauVao > 30) { MinRange = -30; MaxRange = 30; }
+
+            SoRandom = rnd.Next(MinRange, MaxRange);
+
+            // Generate so 1
+            if(SoRandom == 0) SoRandom += 1;
+	        So1 = SoDauVao + SoRandom;
+            
+            // Generate so 1
+            do
+            {
+                SoRandom = rnd.Next(MinRange, MaxRange);
+                if (SoRandom == 0) SoRandom += 1;
+                So2 = SoDauVao + SoRandom;
+            }
+            while (So2 == So1);
+            
+            // Generate so 3
+            do
+            {
+                SoRandom = rnd.Next(MinRange, MaxRange);
+                if (SoRandom == 0) SoRandom += 1;
+                So3 = SoDauVao + SoRandom;
+            }
+            while (So3 == So1 || So3 == So2);
+
+            Result.Add(So1);
+            Result.Add(So2);
+            Result.Add(So3);
+            return Result;
         }
 
         /// <summary>
@@ -2812,6 +2940,40 @@ namespace TNV.Web.Models
             return TatCaDanhSachDaySo;
         }
 
+
+
+        /// <summary>
+        /// Đọc random dãy số
+        /// </summary>
+        /// <param name="NewsCatId"></param>
+        /// <returns></returns>
+        public BaiToanDaySoModel GetOneDaySo(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiDaySo)
+        {
+            IEnumerable<BaiToanDaySoModel> ResultList = (from DaySo in ListData.BaiToanDaySos
+                                              where DaySo.ThuocKhoiLop == ThuocKhoiLop && DaySo.PhamViPhepToan == PhamViPhepToan && DaySo.PhanLoaiDaySo == PhanLoaiDaySo
+                                              orderby DaySo.SapXepThuTu descending
+                                              select new BaiToanDaySoModel
+                                              {
+                                                  MaDaySo = DaySo.MaDaySo,
+                                                  NoiDungDaySo = DaySo.NoiDungDaySo,
+                                                  CauHoiHienThi = DaySo.CauHoiHienThi,
+                                                  LoiGiaiCauHoi = DaySo.LoiGiaiCauHoi,
+                                                  NoiDungDapAn = DaySo.NoiDungDapAn,
+                                                  NoiDungDapAnSai = DaySo.NoiDungDapAnSai,
+                                                  SoLuongDapAn = DaySo.SoLuongDapAn,
+                                                  KetLuanCauHoi = DaySo.KetLuanCauHoi,
+                                                  SapXepThuTu = DaySo.SapXepThuTu,
+                                                  ThuocKhoiLop = DaySo.ThuocKhoiLop,
+                                                  PhamViPhepToan = DaySo.PhamViPhepToan,
+                                                  PhanLoaiDaySo = DaySo.PhanLoaiDaySo,
+                                                  SoLuongPhanTu = DaySo.SoLuongPhanTu,
+                                                  GoiYTraLoi = DaySo.GoiYTraLoi,
+                                              });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
+        }
+
+
         /// <summary>
         /// Đọc dãy số đầu tiên
         /// </summary>
@@ -2885,6 +3047,7 @@ namespace TNV.Web.Models
                 DaySoItem.CauHoiHienThi = DaySo.CauHoiHienThi;
                 DaySoItem.LoiGiaiCauHoi = DaySo.LoiGiaiCauHoi;
                 DaySoItem.NoiDungDapAn = DaySo.NoiDungDapAn;
+                DaySoItem.NoiDungDapAnSai = DaySo.NoiDungDapAnSai;
                 DaySoItem.SoLuongDapAn = DaySo.SoLuongDapAn;
                 DaySoItem.KetLuanCauHoi = DaySo.KetLuanCauHoi;
                 DaySoItem.ThuocKhoiLop = DaySo.ThuocKhoiLop;
