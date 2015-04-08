@@ -467,7 +467,7 @@ function displayBaiToanThemBot(data, displayTarget) {
 	}
 	htmlBuffer.push('</div>');
     htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="');
-    htmlBuffer.push(dapAn.replace("$"," ; "));
+    htmlBuffer.push( replaceAll("$"," ; ", dapAn));
     htmlBuffer.push('" />');
 	
 	
@@ -515,6 +515,8 @@ function ajaxGetBaiToanDaySo(pUrl, displayTarget, answerTarget) {
         alert(status);
     })
 }
+
+
 
 
 
@@ -600,6 +602,163 @@ function generateBaiToanDaySoAnswer(data, answerTarget) {
 	question += ('<h3>Đáp án</h3>');
 	question += '<p>';
 	question += jsondata.KetLuanCauHoi;
+	question += '</p>';
+    answerTarget.append(question);    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ajaxGetBaiToanThoiGian(pUrl, displayTarget, answerTarget) {
+    $.ajax({
+        url: pUrl,
+        contentType: 'application/html; charset=utf-8',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .success(function (result, target) {
+        displayBaiToanThoiGian(result, displayTarget);
+		generateBaiToanThoiGianAnswer(result, answerTarget)
+    })
+    .error(function (xhr, status) {
+        alert(status);
+    })
+}
+
+function displayBaiToanThoiGian(data, displayTarget) {
+
+    var jsondata = JSON.parse(data);
+    displayTarget.empty();
+    var question = '';
+	var ViTriDapAn = getRandomInt(0, 3);
+	var dapAn = jsondata.DapAn;
+	var dapAnSai = jsondata.DapAnSai;
+	var htmlBuffer = [];
+	
+	var seconds = jsondata.Giay;
+	var mins = jsondata.Phut;
+	var hours = jsondata.Gio;
+	// Tinh vong quay cho giay
+	
+	var sdegree = seconds * 6;
+	var srotate = "rotate(" + sdegree + "deg)";
+	var scss	= '-moz-transform:' + srotate + ';-webkit-transform:' + srotate;
+	
+	// Tinh vong quay cho phut
+	
+	var mdegree = mins * 6;
+	var mrotate = "rotate(" + mdegree + "deg)";
+	var mcss	= '-moz-transform:' + mrotate + ';-webkit-transform:' + mrotate;
+	
+	// Tinh vong quay cho gio
+	
+	var hdegree = hours * 30 + (mins / 2);
+	var hrotate = "rotate(" + hdegree + "deg)";
+	var hcss	= '-moz-transform:' + hrotate + ';-webkit-transform:' + hrotate;
+	
+    // Sinh noi dung cau hoi
+	htmlBuffer.push('<h2>');
+	htmlBuffer.push('Đồng hồ đang chỉ mấy giờ?');
+	htmlBuffer.push('</h2>');
+	
+	htmlBuffer.push('<h2>');
+	
+	htmlBuffer.push('<ul class="clock">');
+	htmlBuffer.push('	<li id="hour>" class="hour" style="');
+	htmlBuffer.push(hcss);
+	htmlBuffer.push('"></li>');
+	htmlBuffer.push('	<li id="min>" class="min" style="');
+	htmlBuffer.push(mcss);
+	htmlBuffer.push('"></li>');
+	htmlBuffer.push('	<li id="sec" class="sec" style="');
+	htmlBuffer.push(scss);
+	htmlBuffer.push('"></li>');
+	htmlBuffer.push('</ul>');
+	
+	
+	htmlBuffer.push('</h2>');
+	
+	// Sinh noi dung cau tra loi
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>Chọn câu trả lời:</h2>');
+	htmlBuffer.push('<div id="questionctrl">');
+	var temp = dapAn;
+	var BoDapAnKhac = dapAnSai.split('#');
+	var flagDapAnDung = 0;
+	for (i = 0; i < 4; i++) {
+		htmlBuffer.push('	<label class="qradio');
+		if(i==0) htmlBuffer.push(' checked');
+		htmlBuffer.push('">');
+		htmlBuffer.push('		<input type="radio" id="');
+		htmlBuffer.push(i);
+		htmlBuffer.push('" name="questionctrl" value="');
+		if(i == ViTriDapAn)
+		{
+			temp = dapAn;
+			flagDapAnDung = 1
+		}
+		else
+		{
+			if(flagDapAnDung == 1) temp = BoDapAnKhac[i-1];
+			 else temp = BoDapAnKhac[i];
+		}
+		temp = replaceAll('~', ' ; ', temp);
+		htmlBuffer.push(temp);
+		htmlBuffer.push('"/>');
+		htmlBuffer.push('		<div style="display: inline-block; padding-left: 10px; font-size: 18px;">');
+		htmlBuffer.push(temp);
+		htmlBuffer.push('</div>');	
+		htmlBuffer.push('	</label>');
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="');
+    htmlBuffer.push( replaceAll("~" , " ; " , dapAn));
+    htmlBuffer.push('" />');
+	
+	
+    displayTarget.append(htmlBuffer.join('\n'));
+}
+
+
+
+function generateBaiToanThoiGianAnswer(data, answerTarget) {
+
+    var jsondata = JSON.parse(data);
+    answerTarget.empty();
+    var question = '';
+	var dapSoNum = 1;
+	
+	
+	question += ('<h3>Đáp án</h3>');
+	question += '<p>';
+	question += jsondata.DapAn;
 	question += '</p>';
     answerTarget.append(question);    
 }

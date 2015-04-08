@@ -21,6 +21,9 @@ namespace TNV.Web.Controllers
         public PhepToanBaSoHangService ToolPhepToanBaSoHang { get; set; }
         public DoiTuongHonKemNhauService ToolBaiToanDoiTuongHonKemNhau { get; set; }
         public BaiToanDaySoService ToolBaiToanDaySo { get; set; }
+
+        public BaiToanThoiGianService ToolBaiVeThoiGian { get; set; }
+
         public SystemManagerService ToolSystemManager { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
@@ -34,6 +37,7 @@ namespace TNV.Web.Controllers
             if (ToolPhepToanBaSoHang == null) { ToolPhepToanBaSoHang = new PhepToanBaSoHangClass(); }
             if (ToolBaiToanDoiTuongHonKemNhau == null) { ToolBaiToanDoiTuongHonKemNhau = new DoiTuongHonKemNhauClass(); }
             if (ToolBaiToanDaySo == null) { ToolBaiToanDaySo = new BaiToanDaySoClass(); }
+            if (ToolBaiVeThoiGian == null) { ToolBaiVeThoiGian = new BaiToanThoiGianClass(); }
             if (ToolSystemManager == null) { ToolSystemManager = new SystemManagerClass(); }
 
 
@@ -294,6 +298,45 @@ namespace TNV.Web.Controllers
         public JsonResult GetOneBaiToanDaySo(string memvar1, string memvar2, string memvar3)
         {
             BaiToanDaySoModel BaiToan = ToolBaiToanDaySo.GetOneDaySo(memvar1, memvar2, memvar3);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+
+
+        #region BaiToanVeThoiGian
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan ve thoi gian
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public ActionResult BaiToanVeThoiGian(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            ViewData["Title"] = "Bài toán về thời gian";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = string.IsNullOrEmpty(memvar1) ? "CLS1847290691" : memvar1;
+            ViewData["SoLuongDoiTuong"] = string.IsNullOrEmpty(memvar2) ? "2" : memvar2;
+            ViewData["PhamVi"] = string.IsNullOrEmpty(memvar3) ? "PhamVi10" : memvar3;
+            ViewData["LoaiCauHoi"] = string.IsNullOrEmpty(memvar4) ? "TongHaiDoiTuong" : memvar4;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan them bot
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Số lượng đối tượng</param>
+        /// <param name="memvar3">Phạm vi phép toán</param>
+        /// <param name="memvar4">Loại câu hỏi</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanVeThoiGian(string memvar1, string memvar2, string memvar3, string memvar4)
+        {
+            BaiToanThoiGianModel BaiToan = ToolBaiVeThoiGian.GetOneBaiToanVeThoiGian(memvar1);
             return Json(BaiToan, JsonRequestBehavior.AllowGet);
         }
         #endregion

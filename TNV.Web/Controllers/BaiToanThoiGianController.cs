@@ -10,6 +10,7 @@ using System.Web.Security;
 using TNV.Web.Models;
 using System.Data;
 using System.IO;
+using System.Text;
 
 namespace TNV.Web.Controllers
 {
@@ -24,6 +25,7 @@ namespace TNV.Web.Controllers
         public SystemManagerService ToolSystemManager { get; set; }
         public BaiToanDaySoService ToolBaiToanDaySo { get; set; }
         public BaiToanThoiGianService ToolBaiToanThoiGian { get; set; }
+        public static Random rnd = new Random();
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -194,36 +196,36 @@ namespace TNV.Web.Controllers
                         BaiToanMoi.Phut = j;
                         BaiToanMoi.Giay = rd.Next(12, 48);
                         string DapAn = "";
-                        if (i < 10)
+                        if (j < 30)
                         {
-                            DapAn += "0" + i.ToString().Trim() + " giờ ";
+                            if (i < 10)
+                            {
+                                DapAn += "0" + i.ToString().Trim() + " giờ ";
+                            }
+                            else
+                            {
+                                DapAn += i.ToString().Trim() + " giờ ";
+                            }
+                            if (j < 10)
+                            {
+                                DapAn += "0" + j.ToString().Trim() + " phút ";
+                            }
+                            else
+                            {
+                                DapAn += j.ToString().Trim() + " phút ";
+                            }
+                            if (BaiToanMoi.Giay < 10)
+                            {
+                                DapAn += "0" + BaiToanMoi.Giay.ToString().Trim() + " giây ";
+                            }
+                            else
+                            {
+                                DapAn += BaiToanMoi.Giay.ToString().Trim() + " giây ";
+                            }
                         }
                         else
                         {
-                            DapAn += i.ToString().Trim() + " giờ ";
-                        }
-                        if (j < 10)
-                        {
-                            DapAn += "0" + j.ToString().Trim() + " phút ";
-                        }
-                        else
-                        {
-                            DapAn += j.ToString().Trim() + " phút ";
-                        }
-                        if (BaiToanMoi.Giay < 10)
-                        {
-                            DapAn += "0" + BaiToanMoi.Giay.ToString().Trim() + " giây ";
-                        }
-                        else
-                        {
-                            DapAn += BaiToanMoi.Giay.ToString().Trim() + " giây ";
-                        }
-
-                        if (j > 30)
-                        {
-                            BaiToanMoi.SoDapAn = 2;
-                            DapAn += "$";
-                            if (i+1 < 10)
+                            if (i + 1 < 10)
                             {
                                 DapAn += "0" + (i + 1).ToString().Trim() + " giờ kém ";
                             }
@@ -235,7 +237,7 @@ namespace TNV.Web.Controllers
                                 }
                                 else
                                 {
-                                    DapAn += (i+1).ToString().Trim() + " giờ kém ";
+                                    DapAn += (i + 1).ToString().Trim() + " giờ kém ";
                                 }
                             }
 
@@ -256,13 +258,13 @@ namespace TNV.Web.Controllers
                             {
                                 DapAn += (60 - BaiToanMoi.Giay).ToString().Trim() + " giây ";
                             }
-                            
                         }
-                        else
-                        {
-                            BaiToanMoi.SoDapAn = 1;
-                        }
+                        
+                        BaiToanMoi.SoDapAn = 1;
+
                         BaiToanMoi.DapAn = DapAn;
+
+                        BaiToanMoi.DapAnSai = LayDapSoSai(DapAn);
 
                         BaiToanMoi.ThuTuSapXep = rd.Next(2639, 92568);
 
@@ -286,6 +288,107 @@ namespace TNV.Web.Controllers
                 return RedirectToAction("Warning", "Home");
             }
         }
+
+
+
+        /// <summary>
+        /// Generate list dap an sai
+        /// Cần sinh ra 3 đáp án sai, phân cách bởi dấu #
+        /// </summary>
+        /// <param name="p">dap an ung</param>
+        /// <returns></returns>
+        private string LayDapSoSai(string dapAnDung)
+        {
+
+            StringBuilder sbResult = new StringBuilder();
+            StringBuilder sbKetQua1 = new StringBuilder();
+            StringBuilder sbKetQua2 = new StringBuilder();
+            StringBuilder sbKetQua3 = new StringBuilder();
+            StringBuilder sbNumberTemp = new StringBuilder();
+            bool IsGio = true;
+            List<int> BaSoKhac;
+            foreach (char c in dapAnDung)
+            {
+                if (Char.IsDigit(c))
+                {
+                    // Append so
+                    sbNumberTemp.Append(c);
+                }
+                else
+                {
+                    // Neu vua het chuoi so thi append so
+                    if (sbNumberTemp.Length > 0)
+                    {
+
+                        if (IsGio)
+                        {
+                            BaSoKhac = Generate3SoKhac(0, 13);
+                            IsGio = false;
+                        }
+                        else
+                        {
+                            BaSoKhac = Generate3SoKhac(0, 30);
+                        }
+                        sbKetQua1.Append(BaSoKhac[0]);
+                        sbKetQua2.Append(BaSoKhac[1]);
+                        sbKetQua3.Append(BaSoKhac[2]);
+                        sbNumberTemp.Clear();
+                    }
+                    // Append ki tu
+                    sbKetQua1.Append(c);
+                    sbKetQua2.Append(c);
+                    sbKetQua3.Append(c);
+                }
+            }
+            if (sbNumberTemp.Length > 0)
+            {
+                BaSoKhac = Generate3SoKhac(0, 30);
+                sbKetQua1.Append(BaSoKhac[0]);
+                sbKetQua2.Append(BaSoKhac[1]);
+                sbKetQua3.Append(BaSoKhac[2]);
+                sbNumberTemp.Clear();
+            }
+
+            return sbKetQua1.ToString() + "#" + sbKetQua2.ToString() + "#" + sbKetQua3.ToString();
+        }
+
+
+        /// <summary>
+        /// Generate ra 3 so tu nhien khac so dau vao va khac nhau
+        /// </summary>
+        /// <param name="soDauVao"></param>
+        /// <returns></returns>
+        private List<int> Generate3SoKhac(int min, int max)
+        {
+            
+            List<int> Result = new List<int>();
+            int So1 = 0;
+            int So2 = 0;
+            int So3 = 0;
+
+            // Generate so 1 - la gio nen phai lon hon 1 nho hon 12
+            So1 = rnd.Next(min, max);
+
+            // Generate so 2 - la phu nen phai lon hon 0 nho hon 30
+            do
+            {
+                So2 = rnd.Next(min, max);
+            }
+            while (So2 == So1);
+
+            // Generate so 3
+            do
+            {
+                So3 = rnd.Next(min, max);
+            }
+            while (So3 == So1 || So3 == So2);
+
+            Result.Add(So1);
+            Result.Add(So2);
+            Result.Add(So3);
+            return Result;
+        }
+
 
         /// <summary>
         /// Xóa tất cả các bài toán thời gian

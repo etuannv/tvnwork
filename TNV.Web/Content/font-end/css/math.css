@@ -1,3 +1,43 @@
+.divClook 
+{
+	width:200px;
+	height:200px;
+	text-align:center;
+}
+.clock 
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: url(../img/clockface.png) no-repeat;
+    list-style: none;
+}
+.sec, .min, .hour 
+{
+    position: absolute;
+    width: 10px;
+    height: 200px;
+    top: 0px;
+    left: 95px;
+}
+.sec 
+{
+    background: url(../img/sechand.png);
+    z-index: 3;
+}
+           
+.min 
+{
+    background: url(../img/minhand.png);
+    z-index: 2;
+}
+           
+.hour 
+{
+	background: url(../img/hourhand.png);
+	z-index: 1;
+}
+
 .otrong
 {
 	border: 2px solid #fffecf;

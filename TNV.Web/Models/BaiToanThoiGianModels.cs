@@ -31,6 +31,9 @@ namespace TNV.Web.Models
 
         [DisplayName("Nội dung đáp án:")]
         public string DapAn { get; set; }
+        
+        [DisplayName("Nội dung đáp án sai:")]
+        public string DapAnSai { get; set; }
 
         [DisplayName("Số lượng đáp án:")]
         public int SoDapAn { get; set; }
@@ -49,6 +52,7 @@ namespace TNV.Web.Models
         #region Quản lý bài toán thời gian
         List<BaiToanThoiGianModel> DanhSachBaiToanThoiGian(string ThuocKhoiLop);
         BaiToanThoiGianModel BaiToanThoiGianDauTien(string ThuocKhoiLop);
+        BaiToanThoiGianModel GetOneBaiToanVeThoiGian(string ThuocKhoiLop);
         BaiToanThoiGianModel DocMotBaiToanThoiGian(string MaCauHoi);
         string ThemMoiMotBaiToanThoiGian(BaiToanThoiGianModel BaiToan);
         string SuaCauHoi(BaiToanThoiGianModel BaiToan);
@@ -129,6 +133,33 @@ namespace TNV.Web.Models
             return MotBaiToanThoiGianDauTien;
         }
 
+
+        /// <summary>
+        /// Doc random bai toan ve thoi gian
+        /// </summary>
+        /// <param name="ThuocKhoiLop"></param>
+        /// <returns></returns>
+        public BaiToanThoiGianModel GetOneBaiToanVeThoiGian(string ThuocKhoiLop)
+        {
+            IEnumerable<BaiToanThoiGianModel> ResultList = (from BaiToan in ListData.BaiToanThoiGians
+                                                            where BaiToan.ThuocKhoiLop == ThuocKhoiLop
+                                                            orderby BaiToan.ThuTuSapXep descending
+                                                            select new BaiToanThoiGianModel
+                                                            {
+                                                                MaCauHoi = BaiToan.MaCauHoi,
+                                                                Gio = BaiToan.Gio,
+                                                                Phut = BaiToan.Phut,
+                                                                Giay = BaiToan.Giay,
+                                                                DapAn = BaiToan.DapAn,
+                                                                DapAnSai = BaiToan.DapAnSai,
+                                                                SoDapAn = BaiToan.SoDapAn,
+                                                                ThuTuSapXep = BaiToan.ThuTuSapXep,
+                                                                ThuocKhoiLop = BaiToan.ThuocKhoiLop,
+                                                            });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
+        }
+
         /// <summary>
         /// Đọc một bài toán thời gian
         /// </summary>
@@ -168,6 +199,7 @@ namespace TNV.Web.Models
                 BaiToanThoiGianItem.Phut = BaiToan.Phut;
                 BaiToanThoiGianItem.Giay = BaiToan.Giay;
                 BaiToanThoiGianItem.DapAn = BaiToan.DapAn;
+                BaiToanThoiGianItem.DapAnSai = BaiToan.DapAnSai;
                 BaiToanThoiGianItem.SoDapAn = BaiToan.SoDapAn;
                 BaiToanThoiGianItem.ThuTuSapXep = BaiToan.ThuTuSapXep;
                 BaiToanThoiGianItem.ThuocKhoiLop = BaiToan.ThuocKhoiLop;

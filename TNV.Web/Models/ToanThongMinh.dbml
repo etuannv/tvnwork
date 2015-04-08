@@ -263,11 +263,11 @@
       <Association Name="ClassList_MotPhepToan" Member="MotPhepToans" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="MotPhepToan" />
       <Association Name="ClassList_PhepToanBaSoHang" Member="PhepToanBaSoHangs" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="PhepToanBaSoHang" />
       <Association Name="ClassList_DoiTuongHonKemNhau" Member="DoiTuongHonKemNhaus" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="DoiTuongHonKemNhau" />
-      <Association Name="ClassList_BaiToanThoiGian" Member="BaiToanThoiGians" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanThoiGian" />
       <Association Name="ClassList_BaiToanGhepO" Member="BaiToanGhepOs" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanGhepO" />
       <Association Name="ClassList_BaiToanTimSo" Member="BaiToanTimSos" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanTimSo" />
       <Association Name="ClassList_BaiToanDemHinh" Member="BaiToanDemHinhs" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanDemHinh" />
       <Association Name="ClassList_BaiToanDaySo" Member="BaiToanDaySos" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanDaySo" />
+      <Association Name="ClassList_BaiToanThoiGian" Member="BaiToanThoiGians" ThisKey="ClassListId" OtherKey="ThuocKhoiLop" Type="BaiToanThoiGian" />
     </Type>
   </Table>
   <Table Name="dbo.MotPhepToan" Member="MotPhepToans">
@@ -338,19 +338,6 @@
       <Column Name="SoHuu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.BaiToanThoiGian" Member="BaiToanThoiGians">
-    <Type Name="BaiToanThoiGian">
-      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Gio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Phut" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Giay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DapAn" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="SoDapAn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="ClassList_BaiToanThoiGian" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.BaiToanGhepO" Member="BaiToanGhepOs">
     <Type Name="BaiToanGhepO">
       <Column Name="MaBaiToan" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -409,6 +396,20 @@
       <Column Name="KetLuanCauHoi" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="GoiYTraLoi" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="ClassList_BaiToanDaySo" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaiToanThoiGian" Member="BaiToanThoiGians">
+    <Type Name="BaiToanThoiGian">
+      <Column Name="MaCauHoi" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Gio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Phut" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Giay" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DapAn" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DapAnSai" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="SoDapAn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ThuTuSapXep" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ThuocKhoiLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ClassList_BaiToanThoiGian" Member="ClassList" ThisKey="ThuocKhoiLop" OtherKey="ClassListId" Type="ClassList" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

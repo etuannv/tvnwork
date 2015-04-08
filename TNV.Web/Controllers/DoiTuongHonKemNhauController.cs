@@ -3139,8 +3139,6 @@ namespace TNV.Web.Controllers
                 #endregion
 
 
-                
-
                 #region Ba đối tượng
 
                 #region Tạo các bài toán tổng ba đối tượng phạm vi 10 khối lớp 1
@@ -3184,7 +3182,7 @@ namespace TNV.Web.Controllers
                                     OneItem.ThuocKhoiLop = ThuocKhoiLop;
                                     OneItem.LoiGiaiCauHoi = "Cả ba " + MotDoiTuong.TienToChuNgu.ToLower() + " " + MotDoiTuong.SoHuu + " số " + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + " là:<b> "
                                                             + SoHangThuNhat.ToString().Trim() + " + " + SoHangThuHai.ToString().Trim() + " + " + SoHangThuBa.ToString().Trim() + " = " + (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "</b>" + " (" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")"; ;
-                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai).ToString();
+                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString();
                                     OneItem.KetLuanCauHoi =(SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "(" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")";
                                     OneItem.PhamViPhepToan = PhamViPhepToan;
                                     OneItem.LoaiCauHoi = LoaiCauHoi;
@@ -3238,7 +3236,7 @@ namespace TNV.Web.Controllers
                                     OneItem.ThuocKhoiLop = ThuocKhoiLop;
                                     OneItem.LoiGiaiCauHoi = "Cả ba " + MotDoiTuong.TienToChuNgu.ToLower() + " " + MotDoiTuong.SoHuu + " số " + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + " là:<b> "
                                                             + SoHangThuNhat.ToString().Trim() + " + " + SoHangThuHai.ToString().Trim() + " + " + SoHangThuBa.ToString().Trim() + " = " + (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "</b>" + " (" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")"; ;
-                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai).ToString();
+                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString();
                                     OneItem.KetLuanCauHoi =(SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "(" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")";
                                     OneItem.PhamViPhepToan = PhamViPhepToan;
                                     OneItem.LoaiCauHoi = LoaiCauHoi;
@@ -3292,7 +3290,7 @@ namespace TNV.Web.Controllers
                                     OneItem.ThuocKhoiLop = ThuocKhoiLop;
                                     OneItem.LoiGiaiCauHoi = "Cả ba " + MotDoiTuong.TienToChuNgu.ToLower() + " " + MotDoiTuong.SoHuu + " số " + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + " là:<b> "
                                                             + SoHangThuNhat.ToString().Trim() + " + " + SoHangThuHai.ToString().Trim() + " + " + SoHangThuBa.ToString().Trim() + " = " + (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "</b>" + " (" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")"; ;
-                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai).ToString();
+                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString();
                                     OneItem.KetLuanCauHoi =(SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "(" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")";
                                     OneItem.PhamViPhepToan = PhamViPhepToan;
                                     OneItem.LoaiCauHoi = LoaiCauHoi;
@@ -3346,7 +3344,7 @@ namespace TNV.Web.Controllers
                                     OneItem.ThuocKhoiLop = ThuocKhoiLop;
                                     OneItem.LoiGiaiCauHoi = "Cả ba " + MotDoiTuong.TienToChuNgu.ToLower() + " " + MotDoiTuong.SoHuu + " số " + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + " là:<b> "
                                                             + SoHangThuNhat.ToString().Trim() + " + " + SoHangThuHai.ToString().Trim() + " + " + SoHangThuBa.ToString().Trim() + " = " + (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "</b>" + " (" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")"; ;
-                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai).ToString();
+                                    OneItem.DapAnCauHoi = (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString();
                                     OneItem.KetLuanCauHoi = (SoHangThuNhat + SoHangThuHai + SoHangThuBa).ToString() + "(" + MotDoiTuong.DonViTinh + " " + MotDoiTuong.TenDoiTuong + ")";
                                     OneItem.PhamViPhepToan = PhamViPhepToan;
                                     OneItem.LoaiCauHoi = LoaiCauHoi;

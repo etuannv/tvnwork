@@ -1817,6 +1817,113 @@ namespace TNV.Web.Models
             return ReturnValue;
         }
 
+
+        /// <summary>
+        /// Generate list dap an sai
+        /// Cần sinh ra 3 đáp án sai, phân cách bởi dấu #
+        /// </summary>
+        /// <param name="p">dap an ung</param>
+        /// <returns></returns>
+        private string LayDapSoSai(string dapAnDung)
+        {
+
+            StringBuilder sbResult = new StringBuilder();
+            StringBuilder sbKetQua1 = new StringBuilder();
+            StringBuilder sbKetQua2 = new StringBuilder();
+            StringBuilder sbKetQua3 = new StringBuilder();
+            StringBuilder sbNumberTemp = new StringBuilder();
+
+            foreach (char c in dapAnDung)
+            {
+                if (Char.IsDigit(c))
+                {
+                    // Append so
+                    sbNumberTemp.Append(c);
+                }
+                else
+                {
+                    // Neu vua het chuoi so thi append so
+                    if (sbNumberTemp.Length > 0)
+                    {
+                        List<int> BaSoKhac = Generate3SoKhac(sbNumberTemp.ToString());
+                        sbKetQua1.Append(BaSoKhac[0]);
+                        sbKetQua2.Append(BaSoKhac[1]);
+                        sbKetQua3.Append(BaSoKhac[2]);
+                        sbNumberTemp.Clear();
+                    }
+                    // Append ki tu
+                    sbKetQua1.Append(c);
+                    sbKetQua2.Append(c);
+                    sbKetQua3.Append(c);
+                }
+            }
+            if (sbNumberTemp.Length > 0)
+            {
+                List<int> BaSoKhac = Generate3SoKhac(sbNumberTemp.ToString());
+                sbKetQua1.Append(BaSoKhac[0]);
+                sbKetQua2.Append(BaSoKhac[1]);
+                sbKetQua3.Append(BaSoKhac[2]);
+                sbNumberTemp.Clear();
+            }
+
+            return sbKetQua1.ToString() + "#" + sbKetQua2.ToString() + "#" + sbKetQua3.ToString();
+        }
+
+
+        /// <summary>
+        /// Generate ra 3 so tu nhien khac so dau vao va khac nhau
+        /// </summary>
+        /// <param name="soDauVao"></param>
+        /// <returns></returns>
+        private List<int> Generate3SoKhac(string soDauVao)
+        {
+            int SoDauVao = int.Parse(soDauVao);
+            List<int> Result = new List<int>();
+            int So1 = 0;
+            int So2 = 0;
+            int So3 = 0;
+            int MinRange = 0 - SoDauVao;
+            int MaxRange = SoDauVao;
+            Random rnd = new Random();
+            int SoRandom;
+
+            if (SoDauVao < 2) { MinRange = 0; MaxRange = 5; }
+            if (2 < SoDauVao && SoDauVao > 30) { MinRange = 0 - SoDauVao; MaxRange = SoDauVao; }
+            if (SoDauVao > 30) { MinRange = -30; MaxRange = 30; }
+
+            SoRandom = rnd.Next(MinRange, MaxRange);
+
+            // Generate so 1
+            if (SoRandom == 0) SoRandom += 1;
+            So1 = SoDauVao + SoRandom;
+
+            // Generate so 1
+            do
+            {
+                SoRandom = rnd.Next(MinRange, MaxRange);
+                if (SoRandom == 0) SoRandom += 1;
+                So2 = SoDauVao + SoRandom;
+            }
+            while (So2 == So1);
+
+            // Generate so 3
+            do
+            {
+                SoRandom = rnd.Next(MinRange, MaxRange);
+                if (SoRandom == 0) SoRandom += 1;
+                So3 = SoDauVao + SoRandom;
+            }
+            while (So3 == So1 || So3 == So2);
+
+            Result.Add(So1);
+            Result.Add(So2);
+            Result.Add(So3);
+            return Result;
+        }
+
+
+
+
         /// <summary>
         /// Lấy đáp số của một dãy số 
         /// </summary>
@@ -2271,112 +2378,6 @@ namespace TNV.Web.Models
             // Sắp xếp các dãy số theo thứ tự tăng dần
             return DanhSachDay.OrderBy(m => m.SapXepThuTu).ToList<BaiToanDaySoModel>();
             
-        }
-
-
-
-
-        /// <summary>
-        /// Generate list dap an sai
-        /// Cần sinh ra 3 đáp án sai, phân cách bởi dấu #
-        /// </summary>
-        /// <param name="p">dap an ung</param>
-        /// <returns></returns>
-        private string LayDapSoSai(string dapAnDung)
-        {
-            
-            StringBuilder sbResult = new StringBuilder();
-            StringBuilder sbKetQua1 = new StringBuilder();
-            StringBuilder sbKetQua2 = new StringBuilder();
-            StringBuilder sbKetQua3 = new StringBuilder();
-            StringBuilder sbNumberTemp = new StringBuilder();
-
-            foreach (char c in dapAnDung)
-            {
-                if (Char.IsDigit(c))
-                {
-                    // Append so
-                    sbNumberTemp.Append(c);
-                }
-                else
-                {
-                    // Neu vua het chuoi so thi append so
-                    if (sbNumberTemp.Length > 0)
-                    {
-                        List<int> BaSoKhac = Generate3SoKhac(sbNumberTemp.ToString());
-                        sbKetQua1.Append(BaSoKhac[0]);
-                        sbKetQua2.Append(BaSoKhac[1]);
-                        sbKetQua3.Append(BaSoKhac[2]);
-                        sbNumberTemp.Clear();
-                    }
-                    // Append ki tu
-                    sbKetQua1.Append(c);
-                    sbKetQua2.Append(c);
-                    sbKetQua3.Append(c);
-                }
-            }
-            if (sbNumberTemp.Length > 0)
-            {
-                List<int> BaSoKhac = Generate3SoKhac(sbNumberTemp.ToString());
-                sbKetQua1.Append(BaSoKhac[0]);
-                sbKetQua2.Append(BaSoKhac[1]);
-                sbKetQua3.Append(BaSoKhac[2]);
-                sbNumberTemp.Clear();
-            }
-
-            return sbKetQua1.ToString() + "#" + sbKetQua2.ToString() + "#" + sbKetQua3.ToString();
-        }
-
-
-        /// <summary>
-        /// Generate ra 3 so tu nhien khac so dau vao va khac nhau
-        /// </summary>
-        /// <param name="soDauVao"></param>
-        /// <returns></returns>
-        private List<int> Generate3SoKhac(string soDauVao)
-        {
-            int SoDauVao = int.Parse(soDauVao);
-            List<int> Result = new List<int>();
-            int So1 = 0;
-            int So2 = 0;
-            int So3 = 0;
-            int MinRange = 0 - SoDauVao;
-            int MaxRange =SoDauVao;
-            Random rnd = new Random();
-            int SoRandom;
-
-            if (SoDauVao < 2) { MinRange = 0; MaxRange = 5; }
-            if (2 < SoDauVao && SoDauVao > 30) { MinRange = 0 - SoDauVao; MaxRange = SoDauVao; }
-            if (SoDauVao > 30) { MinRange = -30; MaxRange = 30; }
-
-            SoRandom = rnd.Next(MinRange, MaxRange);
-
-            // Generate so 1
-            if(SoRandom == 0) SoRandom += 1;
-	        So1 = SoDauVao + SoRandom;
-            
-            // Generate so 1
-            do
-            {
-                SoRandom = rnd.Next(MinRange, MaxRange);
-                if (SoRandom == 0) SoRandom += 1;
-                So2 = SoDauVao + SoRandom;
-            }
-            while (So2 == So1);
-            
-            // Generate so 3
-            do
-            {
-                SoRandom = rnd.Next(MinRange, MaxRange);
-                if (SoRandom == 0) SoRandom += 1;
-                So3 = SoDauVao + SoRandom;
-            }
-            while (So3 == So1 || So3 == So2);
-
-            Result.Add(So1);
-            Result.Add(So2);
-            Result.Add(So3);
-            return Result;
         }
 
         /// <summary>
