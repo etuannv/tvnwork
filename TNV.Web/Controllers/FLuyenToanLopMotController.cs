@@ -24,6 +24,8 @@ namespace TNV.Web.Controllers
 
         public BaiToanThoiGianService ToolBaiVeThoiGian { get; set; }
 
+        public BaiToanGhepOService ToolBaiToanGhepO { get; set; }
+
         public SystemManagerService ToolSystemManager { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
@@ -38,6 +40,7 @@ namespace TNV.Web.Controllers
             if (ToolBaiToanDoiTuongHonKemNhau == null) { ToolBaiToanDoiTuongHonKemNhau = new DoiTuongHonKemNhauClass(); }
             if (ToolBaiToanDaySo == null) { ToolBaiToanDaySo = new BaiToanDaySoClass(); }
             if (ToolBaiVeThoiGian == null) { ToolBaiVeThoiGian = new BaiToanThoiGianClass(); }
+            if (ToolBaiToanGhepO == null) { ToolBaiToanGhepO = new BaiToanGhepOClass(); }
             if (ToolSystemManager == null) { ToolSystemManager = new SystemManagerClass(); }
 
 
@@ -267,7 +270,6 @@ namespace TNV.Web.Controllers
         }
         #endregion
 
-
         #region Bai Toan dãy số
         /// <summary>
         /// Hiển thị bài luyện tap bai dãy số
@@ -301,9 +303,6 @@ namespace TNV.Web.Controllers
             return Json(BaiToan, JsonRequestBehavior.AllowGet);
         }
         #endregion
-
-
-
 
         #region BaiToanVeThoiGian
         /// <summary>
@@ -341,6 +340,90 @@ namespace TNV.Web.Controllers
         }
         #endregion
 
+        #region BaiToanGhepO
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan ghep o
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Chiều ngang</param>
+        /// <param name="memvar4">Chiều dọc</param>
+        /// <param name="memvar5">Loai bai toan</param>
+        /// <returns></returns>
+        public ActionResult BaiToanGhepO(string memvar1, string memvar2, string memvar3, string memvar4, string memvar5)
+        {
+            ViewData["Title"] = "Bài toán về thời gian";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = memvar1;
+            ViewData["PhamVi"] = memvar2;
+            ViewData["ChieuNgang"] = memvar3;
+            ViewData["ChieuDoc"] = memvar4;
+            ViewData["LoaiBaiToan"] = memvar5;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan them bot
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Chiều ngang</param>
+        /// <param name="memvar4">Chiều dọc</param>
+        /// <param name="memvar5">Loai bai toan</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanGhepO(string memvar1, string memvar2, string memvar3, string memvar4, string memvar5)
+        {
+            int ChieuNgang = int.Parse(memvar3);
+            int ChieuDoc = int.Parse(memvar4);
+            BaiToanGhepOModel BaiToan = ToolBaiToanGhepO.GetOneBaiToanGhepO(memvar1, memvar2, ChieuNgang, ChieuDoc, memvar5);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+
+
+        #region BaiToan Sap xep
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan sap xep
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Chiều ngang</param>
+        /// <param name="memvar4">Chiều dọc</param>
+        /// <param name="memvar5">Loai bai toan</param>
+        /// <returns></returns>
+        public ActionResult BaiToanSapXep(string memvar1, string memvar2, string memvar3, string memvar4, string memvar5)
+        {
+            ViewData["Title"] = "Bài toán sắp xếp";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = memvar1;
+            ViewData["PhamVi"] = memvar2;
+            ViewData["ChieuNgang"] = memvar3;
+            ViewData["ChieuDoc"] = memvar4;
+            ViewData["LoaiBaiToan"] = memvar5;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan sap xep
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Chiều ngang</param>
+        /// <param name="memvar4">Chiều dọc</param>
+        /// <param name="memvar5">Loai bai toan</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanSapXep(string memvar1, string memvar2, string memvar3, string memvar4, string memvar5)
+        {
+            int ChieuNgang = int.Parse(memvar3);
+            int ChieuDoc = int.Parse(memvar4);
+            BaiToanGhepOModel BaiToan = ToolBaiToanGhepO.GetOneBaiToanGhepO(memvar1, memvar2, ChieuNgang, ChieuDoc, memvar5);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
 
     }
 }

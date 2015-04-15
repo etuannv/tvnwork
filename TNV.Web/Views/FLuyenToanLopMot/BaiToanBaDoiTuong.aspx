@@ -52,11 +52,55 @@
                             var sodoituong = $('#hdfSoLuongDoiTuong').val();
                             var phamvi = $('#hdfPhamVi').val();
                             var loaicauhoi = $('#hdfLoaiCauHoi').val();
+                            var resultdialog = $("#result-dialog");
+                            resultdialog.empty();
 
                             var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanThemBot/' + thuockhoilop + '/' + sodoituong + '/' + phamvi + '/' + loaicauhoi;
-                            //Increase question number
-                            increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                            ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                            resultdialog.append('<h3>Bạn chắc chắn muốn đổi câu hỏi khác ?<h3>');
+                            resultdialog.dialog({
+                                position: {
+                                    my: 'top',
+                                    at: 'top',
+                                    of: $('#question')
+                                },
+                                width: 'auto', // overcomes width:'auto' and maxWidth bug
+                                maxWidth: 600,
+                                height: 'auto',
+                                modal: true,
+                                buttons: {
+                                    "Đóng lại và tiếp tục": function () {
+                                        $(this).dialog("close");
+                                        $("#txtDapSo").focus();
+                                    },
+                                    "Xem đáp án và đổi câu khác": function () {
+                                        $(this).dialog("close");
+                                        $("#incorrect-dialog").dialog({
+                                            position: {
+                                                my: 'top',
+                                                at: 'top',
+                                                of: $('#question')
+                                            },
+                                            closeOnEscape: false,
+                                            width: 300, // overcomes width:'auto' and maxWidth bug
+                                            height: 'auto',
+                                            title: 'Đáp án',
+                                            close: function () {
+                                                // functionality goes here
+                                                $(this).dialog("close");
+                                                //Increase question number
+                                                increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
+                                                ajaxGetBaiToanThemBot(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                                            },
+                                            modal: true,
+                                            buttons: {
+                                                "OK": function () {
+                                                    $(this).dialog("close");
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            });
                         });
                         // Button send result click
                         $('#btnResult').click(function () {

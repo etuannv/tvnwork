@@ -83,6 +83,7 @@ namespace TNV.Web.Models
         string ThemMoiMotBaiToanGhepO(BaiToanGhepOModel BaiToan);
         BaiToanGhepOModel DocMotBaiToanGhepO(string MaBaiToan);
         BaiToanGhepOModel BaiToanGhepODauTien(string ThuocKhoiLop, string PhamViPhepToan, int ChieuNgang, int ChieuDoc,  string LoaiBaiToan);
+        BaiToanGhepOModel GetOneBaiToanGhepO(string ThuocKhoiLop, string PhamViPhepToan, int ChieuNgang, int ChieuDoc, string LoaiBaiToan);
         List<BaiToanGhepOModel> DanhSachBaiToanGhepO(string ThuocKhoiLop, string PhamViPhepToan, int ChieuNgang, int ChieuDoc, string LoaiBaiToan);
         string DocDanhSachDapAn(List<DanhSachDapAnModel> DanhSachDapAn);
         List<DanhSachDapAnModel> DocDanhSachDapAn(string DanhSachDapAn);
@@ -408,6 +409,34 @@ namespace TNV.Web.Models
                                                        LoaiBaiToan = BaiToan.LoaiBaiToan,
                                                    }).ToList<BaiToanGhepOModel>();
             return TatCaDanhSach;
+        }
+
+
+        /// <summary>
+        /// Đọc bài toán ghép o bat ky
+        /// </summary>
+        /// <param name="ThuocKhoiLop"></param>
+        /// <returns></returns>
+        public BaiToanGhepOModel GetOneBaiToanGhepO(string ThuocKhoiLop, string PhamViPhepToan, int ChieuNgang, int ChieuDoc, string LoaiBaiToan)
+        {
+            IEnumerable<BaiToanGhepOModel> ResultList = (from BaiToan in ListData.BaiToanGhepOs
+                                                         where BaiToan.ThuocKhoiLop == ThuocKhoiLop && BaiToan.PhamViPhepToan == PhamViPhepToan && BaiToan.ChieuNgang == ChieuNgang && BaiToan.ChieuDoc == ChieuDoc && BaiToan.LoaiBaiToan == LoaiBaiToan
+                                                         orderby BaiToan.ThuTuSapXep descending
+                                                         select new BaiToanGhepOModel
+                                                         {
+                                                             MaBaiToan = BaiToan.MaBaiToan,
+                                                             NoiDungBaiToan = BaiToan.NoiDungBaiToan,
+                                                             NoiDungDapAn = BaiToan.NoiDungDapAn,
+                                                             ChieuDoc = BaiToan.ChieuDoc,
+                                                             ChieuNgang = BaiToan.ChieuNgang,
+                                                             PhamViPhepToan = BaiToan.PhamViPhepToan,
+                                                             ThuTuSapXep = BaiToan.ThuTuSapXep,
+                                                             ThuocKhoiLop = BaiToan.ThuocKhoiLop,
+                                                             NoiDungGiaTri = BaiToan.NoiDungGiaTri,
+                                                             LoaiBaiToan = BaiToan.LoaiBaiToan,
+                                                         });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
         }
 
         /// <summary>

@@ -1019,6 +1019,8 @@
     <Content Include="Views\FLuyenToanLopMot\BaiToanBaDoiTuong.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanDaySo.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanVeThoiGian.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanGhepO.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanSapXep.aspx" />
     <Content Include="Views\FLuyenToanLopMot\PhepToanBaSoHang.aspx" />
     <Content Include="Views\FLuyenToanLopMot\FDanhSachToanLopMot.aspx" />
     <Content Include="Views\FLuyenToanLopMot\HienThiCauHoi.ascx" />
@@ -1028,7 +1030,17 @@
     <Content Include="Views\PhepToanBaSoHang\PhepToanBaSoHang.aspx" />
     <Content Include="Views\PhepToanBaSoHang\ThemPhepToanBaSoHang.aspx" />
     <Content Include="Views\PhepToanHaiSoHang\ThemPhepToanHaiSoHang.aspx" />
+    <Content Include="Views\Shared\ucDSBaiToanSapXep.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanDocSo.ascx" />
     <Content Include="Views\Shared\FCacDangToanLopMot.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanBaDoiTuong.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanDaySo.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanGhepOCungGiaTri.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanHaiDoiTuong.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanThemBot.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanVeThoiGian.ascx" />
+    <Content Include="Views\Shared\ucDSPhepToan2SoHang.ascx" />
+    <Content Include="Views\Shared\ucDSPhepToan3SoHang.ascx" />
     <Content Include="Views\Shared\ViewError.aspx" />
     <Content Include="Views\Shared\NewPage.ascx" />
     <Content Include="Views\Shared\MenuQuanTriToanLopMot.ascx" />

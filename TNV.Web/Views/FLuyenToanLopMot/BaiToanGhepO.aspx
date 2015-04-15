@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/FontEnd.Master" Inherits="System.Web.Mvc.ViewPage<TNV.Web.Models.DoiTuongHonKemNhauModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/FontEnd.Master" Inherits="System.Web.Mvc.ViewPage<TNV.Web.Models.BaiToanThoiGianModel>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
     <div class="container action">
         <div class="row">
             <div class="span10 col-lg">
@@ -8,15 +9,18 @@
                     <div style="margin-bottom: 10px;" class="bc bc-math">
                         <span class="bc-item bc-first"><a href="/"><img class="bc-logo" src="/Content/font-end/img/bc-olm.png">Học toán</a></span>
                         <span class="bc-item"><a href="/FLuyenToanLopMot/FDanhSachToanLopMot">Lớp một</a></span>
-                        <span class="bc-item"><b><a href="/FLuyenToanLopMot/BaiToanDaySo/<%=ViewData["ThuocKhoiLop"] %>/<%=ViewData["PhamVi"] %>/<%=ViewData["PhanLoaiDaySo"] %>">Bài toán đối tượng hơn kém nhau</a></b></span>
+                        <span class="bc-item"><b><a href="/FLuyenToanLopMot/BaiToanThoiGian/<%=ViewData["ThuocKhoiLop"] %>/<%=ViewData["PhamVi"] %>/<%=ViewData["PhanLoaiDaySo"] %>">Bài toán đối tượng hơn kém nhau</a></b></span>
                     </div>
                     <div>
                         <div class="question" id="question">
                             <input type="hidden" id="hdfKhoiLop" value="<%=ViewData["ThuocKhoiLop"] %>" />
                             <input type="hidden" id="hdfPhamVi" value="<%=ViewData["PhamVi"] %>" />
-                            <input type="hidden" id="hdfPhanLoaiDaySo" value="<%=ViewData["PhanLoaiDaySo"] %>" />
+                            <input type="hidden" id="hdfChieuNgang" value="<%=ViewData["ChieuNgang"] %>" />
+                            <input type="hidden" id="hdfChieuDoc" value="<%=ViewData["ChieuDoc"] %>" />
+                            <input type="hidden" id="hdfLoaiBaiToan" value="<%=ViewData["LoaiBaiToan"] %>" />
                             
                             <div id="question-content" class="question-content">
+                                
                             </div>
                             <br />
                             
@@ -40,20 +44,25 @@
                         jQuery(document).ready(function () {
                             var thuockhoilop = $('#hdfKhoiLop').val();
                             var phamvi = $('#hdfPhamVi').val();
-                            var phanloaidayso = $('#hdfPhanLoaiDaySo').val();
+                            var chieungang = $('#hdfChieuNgang').val();
+                            var chieudoc = $('#hdfChieuDoc').val();
+                            var loaibaitoan = $('#hdfLoaiBaiToan').val();
 
-                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanDaySo/' + thuockhoilop + '/' + phamvi + '/' + phanloaidayso;
-                            ajaxGetBaiToanDaySo(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanGhepO/' + thuockhoilop + '/' + phamvi + '/' + chieungang + '/' + chieudoc + '/' + loaibaitoan;
+                            ajaxGetBaiToanGhepO(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                         });
 
                         $('#btnOtherQuestion').click(function () {
                             var thuockhoilop = $('#hdfKhoiLop').val();
                             var phamvi = $('#hdfPhamVi').val();
-                            var phanloaidayso = $('#hdfPhanLoaiDaySo').val();
+                            var chieungang = $('#hdfChieuNgang').val();
+                            var chieudoc = $('#hdfChieuDoc').val();
+                            var loaibaitoan = $('#hdfLoaiBaiToan').val();
                             var resultdialog = $("#result-dialog");
                             resultdialog.empty();
 
-                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanDaySo/' + thuockhoilop + '/' + phamvi + '/' + phanloaidayso;
+                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanGhepO/' + thuockhoilop + '/' + phamvi + '/' + chieungang + '/' + chieudoc + '/' + loaibaitoan;
+                            
                             resultdialog.append('<h3>Bạn chắc chắn muốn đổi câu hỏi khác ?<h3>');
                             resultdialog.dialog({
                                 position: {
@@ -87,7 +96,7 @@
                                                 $(this).dialog("close");
                                                 //Increase question number
                                                 increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                                                ajaxGetBaiToanDaySo(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                                                ajaxGetBaiToanGhepO(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                                             },
                                             modal: true,
                                             buttons: {
@@ -104,14 +113,16 @@
                         $('#btnResult').click(function () {
                             var thuockhoilop = $('#hdfKhoiLop').val();
                             var phamvi = $('#hdfPhamVi').val();
-                            var phanloaidayso = $('#hdfPhanLoaiDaySo').val();
+                            var chieungang = $('#hdfChieuNgang').val();
+                            var chieudoc = $('#hdfChieuDoc').val();
+                            var loaibaitoan = $('#hdfLoaiBaiToan').val();
 
-                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanDaySo/' + thuockhoilop + '/' + phamvi + '/' + phanloaidayso;
+                            var RequestUrl = '/FLuyenToanLopMot/GetOneBaiToanGhepO/' + thuockhoilop + '/' + phamvi + '/' + chieungang + '/' + chieudoc + '/' + loaibaitoan;
                             var resultdialog = $("#result-dialog");
                             resultdialog.empty();
                             var dapan = $('#hdfDapAn').val();
-                            var dapso = $('input[name="questionctrl"]:checked').val();
-                            if (dapso == '' || dapso == null) {
+                            var dapSoString = '';
+                            if (!IsTraLoi()) {
                                 resultdialog.append('<h3>Bạn chưa trả lời ?<h3>');
                                 resultdialog.dialog({
                                     position: {
@@ -128,11 +139,32 @@
                                             $(this).dialog("close");
                                             $("#txtDapSo").focus();
                                         },
-                                        "Bỏ qua câu này": function () {
+                                        "Xem đáp án": function () {
                                             $(this).dialog("close");
-                                            //Increase question number
-                                            increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
-                                            ajaxGetBaiToanDaySo(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                                            $("#incorrect-dialog").dialog({
+                                                position: {
+                                                    my: 'top',
+                                                    at: 'top',
+                                                    of: $('#question')
+                                                },
+                                                closeOnEscape: false,
+                                                width: 300, // overcomes width:'auto' and maxWidth bug
+                                                height: 'auto',
+                                                title: 'Đáp án',
+                                                close: function () {
+                                                    // functionality goes here
+                                                    $(this).dialog("close");
+                                                    //Increase question number
+                                                    increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
+                                                    ajaxGetBaiToanGhepO(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                                                },
+                                                modal: true,
+                                                buttons: {
+                                                    "OK": function () {
+                                                        $(this).dialog("close");
+                                                    }
+                                                }
+                                            });
                                         }
                                     }
                                 });
@@ -140,11 +172,18 @@
                                 return;
                             }
 
-                            if (dapan != dapso) {
+                            dapSoString = '';
+                            dapSoString = getDapSoString();
+
+                            if (dapan != dapSoString) {
                                 //resultdialog.append('<h3>Chưa chính xác</h3><p style="color:red;">Đáp án là: ' + dapan + '</p>');
                                 resultdialog = $('#incorrect-dialog');
+                                resultdialog.dialog({
+                                    title: "Chưa chính xác"
+                                })
                             }
                             else {
+                                var resultdialog = $("#result-dialog");
                                 resultdialog.append('<h3>Đúng</h3>');
                                 increaseNum($('#hdfscore_input'), $('#scoreval'), 10);
                             }
@@ -158,10 +197,12 @@
                                 width: '300px', // overcomes width:'auto' and maxWidth bug
                                 maxWidth: 600,
                                 modal: true,
+                                close: function () {
+                                    ajaxGetBaiToanGhepO(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
+                                },
                                 buttons: {
                                     Ok: function () {
                                         $(this).dialog("close");
-                                        ajaxGetBaiToanDaySo(RequestUrl, $('#question-content'), $('#incorrect-dialog'));
                                     }
                                 }
                             });
@@ -169,8 +210,26 @@
                             increaseNum($('#hdfQuestionCount'), $('#questionval'), 1);
                         });
 
+                        function IsTraLoi() {
+                            var dapsoArr = $('.dapso');
+                            for (a = 0; a < dapsoArr.length; a++) {
+                                if (dapsoArr[a].value == '')
+                                    return false;
+                            }
+                            return true;
+                        }
 
-                        
+                        function getDapSoString() {
+                            var dapsoArr = $('.dapso');
+                            var dapsoString = '';
+                            for (a = 0; a < dapsoArr.length; a = a + 2) {
+                                dapsoString += dapsoArr[a].value;
+                                dapsoString += ';';
+                                dapsoString += dapsoArr[a + 1].value;
+                                dapsoString += '$';
+                            }
+                            return dapsoString.substr(0, dapsoString.length - 1);
+                        }                
                     </script>
                 </div>
             </div>

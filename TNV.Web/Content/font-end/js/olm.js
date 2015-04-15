@@ -607,35 +607,6 @@ function generateBaiToanDaySoAnswer(data, answerTarget) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function ajaxGetBaiToanThoiGian(pUrl, displayTarget, answerTarget) {
     $.ajax({
         url: pUrl,
@@ -746,8 +717,6 @@ function displayBaiToanThoiGian(data, displayTarget) {
     displayTarget.append(htmlBuffer.join('\n'));
 }
 
-
-
 function generateBaiToanThoiGianAnswer(data, answerTarget) {
 
     var jsondata = JSON.parse(data);
@@ -763,6 +732,247 @@ function generateBaiToanThoiGianAnswer(data, answerTarget) {
     answerTarget.append(question);    
 }
 
+
+function ajaxGetBaiToanGhepO(pUrl, displayTarget, answerTarget) {
+    $.ajax({
+        url: pUrl,
+        contentType: 'application/html; charset=utf-8',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .success(function (result, target) {
+        displayBaiToanGhepO(result, displayTarget);
+		generateBaiToanGhepOAnswer(result, answerTarget)
+    })
+    .error(function (xhr, status) {
+        alert(status);
+    })
+}
+
+function displayBaiToanGhepO(data, displayTarget) {
+
+    var jsondata = JSON.parse(data);
+    displayTarget.empty();
+    var question = '';
+	var htmlBuffer = [];
+	var dem = 0;
+	var m = 0;
+	var n = 0;
+	var chieudoc = jsondata.ChieuDoc;
+	var chieungang = jsondata.ChieuNgang;
+	var bieuThucArr = jsondata.NoiDungBaiToan.split('$');
+	
+	
+    // Sinh noi dung cau hoi
+	htmlBuffer.push('<h2 style="overflow:hidden;">');
+	
+	for(m = 1; m <= chieudoc; m++)
+	{
+		for(n = 1; n <= chieungang; n++)
+		{
+			dem++;
+			
+			htmlBuffer.push('	<div class="HopBieuThuc">');
+			htmlBuffer.push('		<div class="STTHop" title="Biểu thức này có số thứ tự là '); htmlBuffer.push(dem); htmlBuffer.push('">')
+			htmlBuffer.push(dem)
+			htmlBuffer.push('		</div>');
+			htmlBuffer.push('		<div class="BieuThuc" title="Biểu thức này có số thứ tự là '); htmlBuffer.push(dem); htmlBuffer.push('">')
+			htmlBuffer.push(bieuThucArr[dem-1]);
+			htmlBuffer.push('</div>');
+			htmlBuffer.push('	</div>');
+			
+		}
+	}
+	htmlBuffer.push('</h2>');
+	
+	// Sinh noi dung cau tra loi
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>');
+	htmlBuffer.push('Điền các ô có kết quả phép toán bằng nhau?');
+	htmlBuffer.push('</h2>');
+	htmlBuffer.push('<div id="questionctrl" style="padding-bottom: 50px; float:left;">');
+	for(m = 1; m <= (chieudoc * chieungang) / 2; m++)
+	{
+			htmlBuffer.push('	<div class="HopDapAn">');
+			
+			htmlBuffer.push('	<input type="text" class="dapso" value="" name="txtDapSo"' + 'id="txtDapSo' + m + '1' + '">');
+			htmlBuffer.push('bằng')
+			htmlBuffer.push('	<input type="text" class="dapso" value="" name="txtDapSo"' + 'id="txtDapSo' + m + '2' + '">');
+			htmlBuffer.push('	</div>');
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="' + jsondata.NoiDungDapAn + '" />');
+
+    displayTarget.append(htmlBuffer.join('\n'));
+	$('#txtDapSo11').focus();
+}
+
+
+
+function generateBaiToanGhepOAnswer(data, answerTarget) {
+	var jsondata = JSON.parse(data);
+	var m = 0;
+	var n = 0;
+	var chieudoc = jsondata.ChieuDoc;
+	var chieungang = jsondata.ChieuNgang;
+    var htmlBuffer = [];
+	var dapAnArr = jsondata.NoiDungDapAn.split('$');
+	
+	answerTarget.empty();
+	htmlBuffer.push('<h3>Đáp án đúng là:</h3>');
+	for(m = 1; m <= (chieudoc * chieungang) / 2; m++)
+	{
+			var MangPhanTu = dapAnArr[m-1].split(';')
+			htmlBuffer.push('	<div class="HopDapAn">');
+			
+			htmlBuffer.push('	<input type="text" class="dapan" readonly value="' + MangPhanTu[0] + '" name="txtDapSo"' + 'id="txtDapSo' + m + '1' + '">');
+			htmlBuffer.push('bằng')
+			htmlBuffer.push('	<input type="text" class="dapan" readonly value="' + MangPhanTu[1] + '" name="txtDapSo"' + 'id="txtDapSo' + m + '2' + '">');
+			htmlBuffer.push('	</div>');
+			
+	}
+	htmlBuffer.push('</div>');
+	
+    answerTarget.append(htmlBuffer.join('\n'));    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ajaxGetBaiToanSapXep(pUrl, displayTarget, answerTarget) {
+    $.ajax({
+        url: pUrl,
+        contentType: 'application/html; charset=utf-8',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .success(function (result, target) {
+        displayBaiToanSapXep(result, displayTarget);
+		generateBaiToanSapXepAnswer(result, answerTarget)
+    })
+    .error(function (xhr, status) {
+        alert(status);
+    })
+}
+
+function displayBaiToanSapXep(data, displayTarget) {
+
+    var jsondata = JSON.parse(data);
+    displayTarget.empty();
+    var question = '';
+	var htmlBuffer = [];
+	var dem = 0;
+	var m = 0;
+	var n = 0;
+	var chieudoc = jsondata.ChieuDoc;
+	var chieungang = jsondata.ChieuNgang;
+	var bieuThucArr = jsondata.NoiDungBaiToan.split('$');
+	
+	
+    // Sinh noi dung cau hoi
+	htmlBuffer.push('<h2 style="overflow:hidden;">');
+	
+	for(m = 1; m <= chieudoc; m++)
+	{
+		for(n = 1; n <= chieungang; n++)
+		{
+			dem++;
+			
+			htmlBuffer.push('	<div class="HopBieuThuc">');
+			htmlBuffer.push('		<div class="STTHop" title="Biểu thức này có số thứ tự là '); htmlBuffer.push(dem); htmlBuffer.push('">')
+			htmlBuffer.push(dem)
+			htmlBuffer.push('		</div>');
+			htmlBuffer.push('		<div class="BieuThuc" title="Biểu thức này có số thứ tự là '); htmlBuffer.push(dem); htmlBuffer.push('">')
+			htmlBuffer.push(bieuThucArr[dem-1]);
+			htmlBuffer.push('</div>');
+			htmlBuffer.push('	</div>');
+			
+		}
+	}
+	htmlBuffer.push('</h2>');
+	
+	// Sinh noi dung cau tra loi
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>');
+	htmlBuffer.push('Điền các thứ tự các ô có kết quả biểu thức từ bé đến lớn?');
+	htmlBuffer.push('</h2>');
+	htmlBuffer.push('<div id="questionctrl" style="padding-bottom: 50px; float:left;">');
+	for(m = 1; m <= (chieudoc * chieungang); m++)
+	{
+			htmlBuffer.push('	<div class="HopDapAnSapXep">');
+			htmlBuffer.push('	<input type="text" class="dapso" value="" name="txtDapSo"' + 'id="txtDapSo' + m + '1' + '">');
+			htmlBuffer.push('	</div>');
+			if(m !=  (chieudoc * chieungang))
+			{
+				htmlBuffer.push('<div style="float:left; font-size:38px; padding: 2px;"><</div>')
+			}
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="' + jsondata.NoiDungDapAn + '" />');
+	
+    displayTarget.append(htmlBuffer.join('\n'));
+	$('#txtDapSo11').focus();
+}
+
+
+
+function generateBaiToanSapXepAnswer(data, answerTarget) {
+	var jsondata = JSON.parse(data);
+	var m = 0;
+	var n = 0;
+	var chieudoc = jsondata.ChieuDoc;
+	var chieungang = jsondata.ChieuNgang;
+    var htmlBuffer = [];
+	var dapAnArr = jsondata.NoiDungDapAn.split('$');
+	
+	answerTarget.empty();
+	htmlBuffer.push('<h3>Đáp án đúng là:</h3>');
+	for(m = 1; m <= (chieudoc * chieungang); m++)
+	{
+			htmlBuffer.push('	<div class="HopDapAnSapXep">');
+			htmlBuffer.push('	<input type="text" class="dapan" readonly value="' + dapAnArr[m-1] + '" name="txtDapSo"' + 'id="txtDapSo' + m + '1' + '">');
+			htmlBuffer.push('	</div>');
+			if(m !=  (chieudoc * chieungang))
+			{
+				htmlBuffer.push('<div style="float:left; font-size:38px; padding: 2px;"><</div>')
+			}
+	}
+	htmlBuffer.push('</div>');
+	
+    answerTarget.append(htmlBuffer.join('\n'));    
+}
 
 
 
