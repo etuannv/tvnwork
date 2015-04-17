@@ -98,6 +98,14 @@
                         <% Html.RenderPartial("ucDSBaiToanSapXep"); %>
                     </div>
                 </div>
+                <div class="row">
+                    <div style="" class="span5">
+                        <% Html.RenderPartial("ucDSBaiToanTimSo"); %>
+                    </div>
+                    <div style="" class="span5">
+                      <% Html.RenderPartial("ucDSBaiToanDemHinh"); %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

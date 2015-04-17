@@ -74,6 +74,7 @@ namespace TNV.Web.Models
     {
         List<BaiToanTimSoModel> DanhSachBaiToanTimSo(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiBaiToan);
         BaiToanTimSoModel BaiToanTimSoDauTien(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiBaiToan);
+        BaiToanTimSoModel GetOneBaiToanTimSo(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiBaiToan);
         BaiToanTimSoModel DocMotBaiToanTimSo(string MaCauHoi);
         string ThemMoiMotBaiToanTimSo(BaiToanTimSoModel BaiToan);
         string SuaCauHoi(BaiToanTimSoModel BaiToan);
@@ -1315,6 +1316,33 @@ namespace TNV.Web.Models
             return TatCaDanhSach;
         }
 
+
+        /// <summary>
+        /// Đọc bài toán tìm số bat ky
+        /// </summary>
+        /// <param name="ThuocKhoiLop"></param>
+        /// <returns></returns>
+        public BaiToanTimSoModel GetOneBaiToanTimSo(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiBaiToan)
+        {
+            IEnumerable<BaiToanTimSoModel> ResultList = (from BaiToan in ListData.BaiToanTimSos
+                                                        where BaiToan.ThuocKhoiLop == ThuocKhoiLop && BaiToan.PhamViPhepToan == PhamViPhepToan && BaiToan.PhanLoaiBaiToan.Contains(PhanLoaiBaiToan)
+                                                        select new BaiToanTimSoModel
+                                                        {
+                                                            MaCauHoi = BaiToan.MaCauHoi,
+                                                            ChuoiSoHienThi = BaiToan.ChuoiSoHienThi,
+                                                            DapAn = BaiToan.DapAn,
+                                                            PhamViPhepToan = BaiToan.PhamViPhepToan,
+                                                            PhanLoaiBaiToan = BaiToan.PhanLoaiBaiToan,
+                                                            UserControlName = BaiToan.UserControlName,
+                                                            ThuTuSapXep = BaiToan.ThuTuSapXep,
+                                                            ThuocKhoiLop = BaiToan.ThuocKhoiLop,
+                                                            LoiGiaiBaiToan = BaiToan.LoiGiaiBaiToan,
+                                                        });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
+        }
+
+
         /// <summary>
         /// Đọc bài toán tìm số đầu tiên
         /// </summary>
@@ -1323,7 +1351,7 @@ namespace TNV.Web.Models
         public BaiToanTimSoModel BaiToanTimSoDauTien(string ThuocKhoiLop, string PhamViPhepToan, string PhanLoaiBaiToan)
         {
             BaiToanTimSoModel MotBaiToanTimSoDauTien = (from BaiToan in ListData.BaiToanTimSos
-                                                        where BaiToan.ThuocKhoiLop == ThuocKhoiLop && BaiToan.PhanLoaiBaiToan == PhamViPhepToan && BaiToan.PhanLoaiBaiToan == PhanLoaiBaiToan
+                                                        where BaiToan.ThuocKhoiLop == ThuocKhoiLop && BaiToan.PhamViPhepToan == PhamViPhepToan && BaiToan.PhanLoaiBaiToan == PhanLoaiBaiToan
                                                         orderby BaiToan.ThuTuSapXep descending
                                                         select new BaiToanTimSoModel
                                                         {

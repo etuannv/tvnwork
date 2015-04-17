@@ -836,41 +836,6 @@ function generateBaiToanGhepOAnswer(data, answerTarget) {
     answerTarget.append(htmlBuffer.join('\n'));    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function ajaxGetBaiToanSapXep(pUrl, displayTarget, answerTarget) {
     $.ajax({
         url: pUrl,
@@ -974,11 +939,473 @@ function generateBaiToanSapXepAnswer(data, answerTarget) {
     answerTarget.append(htmlBuffer.join('\n'));    
 }
 
+function ajaxGetBaiToanTimSo(pUrl, displayTarget, answerTarget) {
+    $.ajax({
+        url: pUrl,
+        contentType: 'application/html; charset=utf-8',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .success(function (result, target) {
+        displayBaiToanTimSo(result, displayTarget);
+		generateBaiToanTimSoAnswer(result, answerTarget)
+    })
+    .error(function (xhr, status) {
+        alert(status);
+    })
+}
+
+function displayBaiToanTimSo(data, displayTarget) {
+
+    var jsondata = JSON.parse(data);
+    displayTarget.empty();
+	var htmlBuffer = [];
+	var controlString = '';
+	var dapAn = jsondata.DapAn;
+    // Sinh noi dung cau hoi
+	htmlBuffer.push('<h2 style="overflow:hidden; line-height:17px;">');
+	
+	switch (jsondata.UserControlName) {
+		case 'BonSoHinhVuong':
+			controlString = buildBonSoHinhVuongString(jsondata);
+		break;
+		
+		case 'BonSoHinhVuong1':
+			controlString = buildBonSoHinhVuong1String(jsondata);
+		break;
+		
+		case 'ElipNamSo':
+			controlString = buildElipNamSoString(jsondata);
+		break;
+		
+		case 'HinhTronBaSo':
+			controlString = buildHinhTronBaSoString(jsondata);
+		break;
+		
+		case 'HinhTronBonSo':
+			controlString = buildHinhTronBonSoString(jsondata);
+		break;
+		
+		case 'HinhTronBonSoChiaTu':
+			controlString = buildHinhTronBonSoChiaTuString(jsondata);
+		break;
+		
+		case 'HinhVuongNamSo':
+			controlString = buildHinhVuongNamSoString(jsondata);
+		break;
+		
+		case 'HinhVuongTamGiac':
+			controlString = buildHinhVuongTamGiacString(jsondata);
+		break;
+		
+		case 'LucGiacBaySo':
+			controlString = buildLucGiacBaySoString(jsondata);
+		break;
+		
+		case 'TamGiacHinhTronBonSo':
+			controlString = buildTamGiacHinhTronBonSoString(jsondata);
+		break;
+		
+		case 'TamGiacNoiTiepBonSo':
+			controlString = buildTamGiacNoiTiepBonSoString(jsondata);
+		break;
+		
+		case 'VongTronLucGiacBaySo':
+			controlString = buildVongTronLucGiacBaySoString(jsondata);
+		break;
+	}
+	
+	htmlBuffer.push(controlString);
+	
+	htmlBuffer.push('</h2>');
+	
+	// Sinh noi dung cau tra loi
+	
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>Chọn câu trả lời:</h2>');
+	htmlBuffer.push('<div id="questionctrl">');
+	var temp = dapAn;
+	var ViTriDapAn = getRandomInt(0, 3);
+	var BoDapAnKhac = gen3SoKhac(dapAn);
+	var flagDapAnDung = 0;
+	for (i = 0; i < 4; i++) {
+		htmlBuffer.push('	<label class="qradio');
+		if(i==0) htmlBuffer.push(' checked');
+		htmlBuffer.push('">');
+		htmlBuffer.push('		<input type="radio" id="');
+		htmlBuffer.push(i);
+		htmlBuffer.push('" name="questionctrl" value="');
+		if(i == ViTriDapAn)
+		{
+			temp = dapAn
+			flagDapAnDung = 1
+		}
+		else
+		{
+			if(flagDapAnDung == 1) temp = BoDapAnKhac[i-1];
+			 else temp = BoDapAnKhac[i];
+		}
+		htmlBuffer.push(temp);
+		htmlBuffer.push('"/>');
+		htmlBuffer.push('		<div style="display: inline-block; padding-left: 10px; font-size: 18px;">');
+		htmlBuffer.push(temp);
+		htmlBuffer.push('</div>');	
+		htmlBuffer.push('	</label>');
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="');
+    htmlBuffer.push(dapAn);
+    htmlBuffer.push('" />');
+	
+	
+    displayTarget.append(htmlBuffer.join('\n'));
+}
+
+
+
+function generateBaiToanTimSoAnswer(data, answerTarget) {
+	var jsondata = JSON.parse(data);
+    var htmlBuffer = [];
+	answerTarget.empty();
+	
+	htmlBuffer.push('<h3>Lời giải</h3>');
+	htmlBuffer.push('<p>' + jsondata.LoiGiaiBaiToan + '</p>');
+	htmlBuffer.push('<h3>Đáp án</h3>');
+	htmlBuffer.push('<p>' + jsondata.DapAn + '</p>');
+    answerTarget.append(htmlBuffer.join('\n')); 
+
+}
+
+
+function buildBonSoHinhVuongString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="BonSoHinhVuong">');
+		MyBuffer.push('		<div class="BonSoHinhVuong_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="BonSoHinhVuong_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="BonSoHinhVuong_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="BonSoHinhVuong_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+
+
+function buildBonSoHinhVuong1String(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="BonSoHinhVuong1">');
+		MyBuffer.push('		<div class="BonSoHinhVuong1_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="BonSoHinhVuong1_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="BonSoHinhVuong1_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="BonSoHinhVuong1_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+
+function buildElipNamSoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="ElipNamSo">');
+		MyBuffer.push('		<div class="ElipNamSo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="ElipNamSo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="ElipNamSo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="ElipNamSo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('		<div class="ElipNamSo_So5">' + CacSo[4] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildHinhTronBaSoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="HinhTronBaSo">');
+		MyBuffer.push('		<div class="HinhTronBaSo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBaSo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBaSo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildHinhTronBonSoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="HinhTronBonSo">');
+		MyBuffer.push('		<div class="HinhTronBonSo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBonSo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBonSo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBonSo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	
+	return MyBuffer.join('\n');
+}
+function buildHinhTronBonSoChiaTuString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="HinhTronBonSoChiaTu">');
+		MyBuffer.push('		<div class="HinhTronBonSoChiaTu_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBonSoChiaTu_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBonSoChiaTu_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="HinhTronBonSoChiaTu_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildHinhVuongNamSoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="HinhVuongNamSo">');
+		MyBuffer.push('		<div class="HinhVuongNamSo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="HinhVuongNamSo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="HinhVuongNamSo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="HinhVuongNamSo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('		<div class="HinhVuongNamSo_So5">' + CacSo[4] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildHinhVuongTamGiacString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="HinhVuongTamGiac">');
+		MyBuffer.push('		<div class="HinhVuongTamGiac_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="HinhVuongTamGiac_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="HinhVuongTamGiac_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildLucGiacBaySoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="LucGiacBaySo">');
+		MyBuffer.push('		<div class="LucGiacBaySo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="LucGiacBaySo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="LucGiacBaySo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="LucGiacBaySo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('		<div class="LucGiacBaySo_So5">' + CacSo[4] + '</div>');
+		MyBuffer.push('		<div class="LucGiacBaySo_So6">' + CacSo[5] + '</div>');
+		MyBuffer.push('		<div class="LucGiacBaySo_So7">' + CacSo[6] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildTamGiacHinhTronBonSoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="TamGiacHinhTronBonSo">');
+		MyBuffer.push('		<div class="TamGiacHinhTronBonSo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="TamGiacHinhTronBonSo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="TamGiacHinhTronBonSo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="TamGiacHinhTronBonSo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildTamGiacNoiTiepBonSoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="TamGiacNoiTiepBonSo">');
+		MyBuffer.push('		<div class="TamGiacNoiTiepBonSo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="TamGiacNoiTiepBonSo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="TamGiacNoiTiepBonSo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="TamGiacNoiTiepBonSo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
+function buildVongTronLucGiacBaySoString(data){
+	var MyBuffer =[];
+	var CacDay = data.ChuoiSoHienThi.split('$');
+	for(i =0; i < CacDay.length; i++)
+	{
+		var CacSo = CacDay[i].split(';');
+		MyBuffer.push('<div class="VongTronLucGiacBaySo">');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So1">' + CacSo[0] + '</div>');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So2">' + CacSo[1] + '</div>');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So3">' + CacSo[2] + '</div>');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So4">' + CacSo[3] + '</div>');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So5">' + CacSo[4] + '</div>');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So6">' + CacSo[5] + '</div>');
+		MyBuffer.push('		<div class="VongTronLucGiacBaySo_So7">' + CacSo[6] + '</div>');
+		MyBuffer.push('</div>');
+	}
+	return MyBuffer.join('\n');
+}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ajaxGetBaiToanDemHinh(pUrl, displayTarget, answerTarget) {
+    $.ajax({
+        url: pUrl,
+        contentType: 'application/html; charset=utf-8',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .success(function (result, target) {
+        displayBaiToanDemHinh(result, displayTarget);
+		generateBaiToanDemHinhAnswer(result, answerTarget)
+    })
+    .error(function (xhr, status) {
+        alert(status);
+    })
+}
+
+function displayBaiToanDemHinh(data, displayTarget) {
+
+    var jsondata = JSON.parse(data);
+    displayTarget.empty();
+	var htmlBuffer = [];
+	var controlString = '';
+	var dapAn = jsondata.DapAnBaiToan;
+    // Sinh noi dung cau hoi
+	htmlBuffer.push('<h2 style="overflow:hidden; line-height:27px;">');
+	htmlBuffer.push(jsondata.NoiDungBaiToan);
+	htmlBuffer.push('</h2>');
+	
+	// Sinh noi dung cau tra loi
+	
+	htmlBuffer.push('<br\>');
+	htmlBuffer.push('<h2>Chọn câu trả lời:</h2>');
+	htmlBuffer.push('<div id="questionctrl">');
+	var temp = dapAn;
+	var ViTriDapAn = getRandomInt(0, 3);
+	var BoDapAnKhac = gen3SoKhac(dapAn);
+	var flagDapAnDung = 0;
+	for (i = 0; i < 4; i++) {
+		htmlBuffer.push('	<label class="qradio');
+		if(i==0) htmlBuffer.push(' checked');
+		htmlBuffer.push('">');
+		htmlBuffer.push('		<input type="radio" id="');
+		htmlBuffer.push(i);
+		htmlBuffer.push('" name="questionctrl" value="');
+		if(i == ViTriDapAn)
+		{
+			temp = dapAn
+			flagDapAnDung = 1
+		}
+		else
+		{
+			if(flagDapAnDung == 1) temp = BoDapAnKhac[i-1];
+			 else temp = BoDapAnKhac[i];
+		}
+		htmlBuffer.push(temp);
+		htmlBuffer.push('"/>');
+		htmlBuffer.push('		<div style="display: inline-block; padding-left: 10px; font-size: 18px;">');
+		htmlBuffer.push(temp);
+		htmlBuffer.push('</div>');	
+		htmlBuffer.push('	</label>');
+	}
+	htmlBuffer.push('</div>');
+    htmlBuffer.push('<input type="hidden" id="hdfDapAn" value="');
+    htmlBuffer.push(dapAn);
+    htmlBuffer.push('" />');
+	
+    displayTarget.append(htmlBuffer.join('\n'));
+}
+
+
+
+function generateBaiToanDemHinhAnswer(data, answerTarget) {
+	var jsondata = JSON.parse(data);
+    var htmlBuffer = [];
+	answerTarget.empty();
+	
+	if( jsondata.LoiGiaiBaiToan != '')
+	{
+		htmlBuffer.push('<h3>Lời giải</h3>');
+		htmlBuffer.push('<p>' + jsondata.LoiGiaiBaiToan + '</p>');
+	}
+	htmlBuffer.push('<h3>Đáp án</h3>');
+	htmlBuffer.push('<p>' + jsondata.DapAnBaiToan + '</p>');
+    answerTarget.append(htmlBuffer.join('\n')); 
+
+}
 
 //(function () {
 //    var IM = {}, base_uri = $("body").attr("data-base"), ELM = $("#imessage"), loaded = false;

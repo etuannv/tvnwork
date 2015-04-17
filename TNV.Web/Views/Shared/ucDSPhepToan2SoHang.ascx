@@ -9,6 +9,7 @@
                 $(function () {
                     $("#haisohang").accordion({
                         collapsible: true,
+                        active: 'none',
                         heightStyle: "content"
                     });
                 });

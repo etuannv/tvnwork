@@ -1,7 +1,604 @@
+.HinhTronBaSo 
+{
+    background: url(../img/BaiToanTimSo/HinhTronBaSo.png) no-repeat;
+    width:100px;
+    height:102px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.HinhTronBaSo_So1
+{
+    font-size: 14px;
+    font-weight: bold;
+    left: 19px;
+    position: absolute;
+    top: 30px;
+}
+.HinhTronBaSo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 28px;
+    top: 29px;
+}
+
+.HinhTronBaSo_So3
+{
+	bottom: 19px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 43px;
+    position: absolute;
+}
+
+.HinhVuongTamGiac 
+{
+    background: url(../img/BaiToanTimSo/HinhVuongTamGiac.png) no-repeat;
+    width:100px;
+    height:99px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.HinhVuongTamGiac_So1
+{
+    font-size: 14px;
+    font-weight: bold;
+    left: 11px;
+    position: absolute;
+    top: 12px;
+}
+.HinhVuongTamGiac_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 23px;
+    top: 12px;
+}
+
+.HinhVuongTamGiac_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 39px;
+    position: absolute;
+    top: 55px;
+}
+
+.BonSoHinhVuong
+{
+    background: url(../img/BaiToanTimSo/BonSoHinhVuong.png) no-repeat;
+    width:100px;
+    height:101px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.BonSoHinhVuong_So1
+{
+    font-size: 14px;
+    font-weight: bold;
+    left: 19px;
+    position: absolute;
+    top: 16px;
+}
+.BonSoHinhVuong_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 25px;
+    top: 16px;
+}
+
+.BonSoHinhVuong_So3
+{
+	bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 16px;
+    position: absolute;
+}
+
+.BonSoHinhVuong_So4
+{
+	bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 24px;
+}
+
+.BonSoHinhVuong1
+{
+    background: url(../img/BaiToanTimSo/BonSoHinhVuong1.png) no-repeat;
+    width:100px;
+    height:106px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.BonSoHinhVuong1_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 13px;
+    position: absolute;
+    top: 43px;
+}
+.BonSoHinhVuong1_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 44px;
+    position: absolute;
+    top: 14px;
+}
+
+.BonSoHinhVuong1_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 24px;
+    top: 43px;
+}
+
+.BonSoHinhVuong1_So4
+{
+	bottom: 21px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 43px;
+    position: absolute;
+}
+
+.HinhTronBonSo
+{
+    background: url(../img/BaiToanTimSo/HinhTronBonSo.png) no-repeat;
+    width:100px;
+    height:103px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.HinhTronBonSo_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 13px;
+    position: absolute;
+    top: 32px;
+}
+.HinhTronBonSo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 21px;
+    top: 32px;
+}
+
+.HinhTronBonSo_So3
+{
+	bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 41px;
+    position: absolute;
+}
+
+.HinhTronBonSo_So4
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 43px;
+    position: absolute;
+    top: 43px;
+}
+
+
+.HinhTronBonSoChiaTu
+{
+    background: url(../img/BaiToanTimSo/HinhTronBonSoChiaTu.png) no-repeat;
+    width:100px;
+    height:96px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.HinhTronBonSoChiaTu_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 23px;
+    position: absolute;
+    top: 20px;
+}
+.HinhTronBonSoChiaTu_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 28px;
+    top: 20px;
+}
+
+.HinhTronBonSoChiaTu_So3
+{
+	bottom: 26px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 23px;
+    position: absolute;
+}
+
+.HinhTronBonSoChiaTu_So4
+{
+	bottom: 27px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 29px;
+}
+
+
+.TamGiacHinhTronBonSo
+{
+    background: url(../img/BaiToanTimSo/TamGiacHinhTronBonSo.png) no-repeat;
+    width:100px;
+    height:95px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.TamGiacHinhTronBonSo_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 44px;
+    position: absolute;
+    top: 9px;
+}
+.TamGiacHinhTronBonSo_So2
+{
+	bottom: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 18px;
+}
+
+.TamGiacHinhTronBonSo_So3
+{
+	bottom: 13px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 11px;
+    position: absolute;
+}
+
+.TamGiacHinhTronBonSo_So4
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 44px;
+    position: absolute;
+    top: 47px;
+}
+
+.TamGiacNoiTiepBonSo
+{
+    background: url(../img/BaiToanTimSo/TamGiacNoiTiepBonSo.png) no-repeat;
+    width:100px;
+    height:103px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.TamGiacNoiTiepBonSo_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 11px;
+    position: absolute;
+    top: 31px;
+    
+}
+.TamGiacNoiTiepBonSo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 19px;
+    top: 27px;
+}
+
+.TamGiacNoiTiepBonSo_So3
+{
+	bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 43px;
+    position: absolute;
+}
+
+.TamGiacNoiTiepBonSo_So4
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 44px;
+    position: absolute;
+    top: 43px;
+}
+
+.HinhVuongNamSo
+{
+    background: url(../img/BaiToanTimSo/HinhVuongNamSo.png) no-repeat;
+    width:100px;
+    height:99px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.HinhVuongNamSo_So1
+{
+    font-size: 14px;
+    font-weight: bold;
+    left: 13px;
+    position: absolute;
+    top: 8px;
+}
+.HinhVuongNamSo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 18px;
+    top: 8px;
+}
+
+.HinhVuongNamSo_So3
+{
+	bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 18px;
+}
+
+.HinhVuongNamSo_So4
+{
+	bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 11px;
+    position: absolute;
+}
+
+.HinhVuongNamSo_So5
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 43px;
+    position: absolute;
+    top: 39px;
+}
+
+.ElipNamSo
+{
+    background: url(../img/BaiToanTimSo/ElipNamSo.png) no-repeat;
+    width:100px;
+    height:98px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.ElipNamSo_So1
+{
+    font-size: 14px;
+    font-weight: bold;
+	left: 47px;
+	top: 8px;
+	position: absolute;
+}
+.ElipNamSo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+	position: absolute;
+	right: 17px;
+    top: 38px;
+}
+
+.ElipNamSo_So3
+{
+	bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 45px;
+	
+}
+
+.ElipNamSo_So4
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 12px;
+    position: absolute;
+    top: 38px;
+}
+
+.ElipNamSo_So5
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 44px;
+    position: absolute;
+    top: 38px;
+}
+
+.LucGiacBaySo
+{
+    background: url(../img/BaiToanTimSo/LucGiacBaySo.png) no-repeat;
+    width:159px;
+    height:160px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.LucGiacBaySo_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 49px;
+    position: absolute;
+    top: 32px;
+}
+.LucGiacBaySo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 53px;
+    top: 31px;
+}
+
+.LucGiacBaySo_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 32px;
+    top: 67px;
+}
+
+.LucGiacBaySo_So4
+{
+	bottom: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 51px;
+}
+
+.LucGiacBaySo_So5
+{
+	bottom: 34px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 48px;
+    position: absolute;
+}
+
+.LucGiacBaySo_So6
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 28px;
+    position: absolute;
+    top: 67px;
+}
+
+.LucGiacBaySo_So7
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 77px;
+    position: absolute;
+    top: 68px;
+}
+
+.VongTronLucGiacBaySo
+{
+    background: url(../img/BaiToanTimSo/VongTronLucGiacBaySo.png) no-repeat;
+    width:160px;
+    height:149px;
+	float: left;
+	margin: 15px;
+	position: relative;
+}
+
+.VongTronLucGiacBaySo_So1
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 44px;
+    position: absolute;
+    top: 13px;
+}
+.VongTronLucGiacBaySo_So2
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 49px;
+    top: 14px;
+}
+
+.VongTronLucGiacBaySo_So3
+{
+	font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 19px;
+    top: 66px;
+}
+
+.VongTronLucGiacBaySo_So4
+{
+	bottom: 13px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 49px;
+}
+
+.VongTronLucGiacBaySo_So5
+{
+	bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    left: 42px;
+    position: absolute;
+}
+
+.VongTronLucGiacBaySo_So6
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 16px;
+    position: absolute;
+    top: 64px;
+}
+
+.VongTronLucGiacBaySo_So7
+{
+	font-size: 14px;
+    font-weight: bold;
+    left: 74px;
+    position: absolute;
+    top: 66px;
+}
+
 .HopDapAnSapXep{
 	float: left;
 }
-
 
 .HopDapAn {
 	float: left;

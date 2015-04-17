@@ -46,6 +46,7 @@ namespace TNV.Web.Models
         #region Quản trị bài toán đếm hình
         List<BaiToanDemHinhModel> DanhSachBaiToanDemHinh(string ThuocKhoiLop, string PhanLoaiBaiToan);
         BaiToanDemHinhModel BaiToanDemHinhDauTien(string ThuocKhoiLop, string PhanLoaiBaiToan);
+        BaiToanDemHinhModel GetOneBaiToanDemHinh(string ThuocKhoiLop, string PhanLoaiBaiToan);
         BaiToanDemHinhModel DocMotBaiToanDemHinh(string MaBaiToan);
         string ThemMoiBaiToanDemHinh(BaiToanDemHinhModel BaiToan);
         string SuaBaiToanDemHinh(BaiToanDemHinhModel BaiToan);
@@ -118,6 +119,32 @@ namespace TNV.Web.Models
                                                             PhanLoaiBaiToan=BaiToanDemhinhItem.PhanLoaiBaiToan
                                                         }).First<BaiToanDemHinhModel>();
             return BaiToanDemHinhDauTien;
+        }
+
+
+        /// <summary>
+        /// Bài toán đếm hình bat ky
+        /// </summary>
+        /// <param name="ThuocKhoiLop">Thuộc khối lớp</param>
+        /// <param name="PhanLoaiBaiToan">Phân loại bài toán</param>
+        /// <returns></returns>
+        public BaiToanDemHinhModel GetOneBaiToanDemHinh(string ThuocKhoiLop, string PhanLoaiBaiToan)
+        {
+            IEnumerable<BaiToanDemHinhModel> ResultList = (from BaiToanDemhinhItem in LinqContext.BaiToanDemHinhs
+                                                         where BaiToanDemhinhItem.ThuocKhoiLop == ThuocKhoiLop && BaiToanDemhinhItem.PhanLoaiBaiToan == PhanLoaiBaiToan
+                                                         orderby BaiToanDemhinhItem.SapXepThuTu ascending
+                                                         select new BaiToanDemHinhModel
+                                                         {
+                                                             MaBaiToan = BaiToanDemhinhItem.MaBaiToan,
+                                                             NoiDungBaiToan = BaiToanDemhinhItem.NoiDungBaiToan,
+                                                             LoiGiaiBaiToan = BaiToanDemhinhItem.LoiGiaiBaiToan,
+                                                             DapAnBaiToan = BaiToanDemhinhItem.DapAnBaiToan,
+                                                             ThuocKhoiLop = BaiToanDemhinhItem.ThuocKhoiLop,
+                                                             SapXepThuTu = BaiToanDemhinhItem.SapXepThuTu,
+                                                             PhanLoaiBaiToan = BaiToanDemhinhItem.PhanLoaiBaiToan
+                                                         });
+            int rnd = new Random().Next(ResultList.Count());
+            return ResultList.Skip(rnd).Take(1).SingleOrDefault();
         }
 
         /// <summary>

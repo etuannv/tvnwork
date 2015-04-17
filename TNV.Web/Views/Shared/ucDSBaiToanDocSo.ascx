@@ -9,6 +9,7 @@
                 $(function () {
                     $("#baitoandocso").accordion({
                         collapsible: true,
+                        active: 'none',
                         heightStyle: "content"
                     });
                 });

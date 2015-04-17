@@ -9,6 +9,7 @@
                 $(function () {
                     $("#baitoanhaidoituong").accordion({
                         collapsible: true,
+                        active: 'none',
                         heightStyle: "content"
                     });
                 });

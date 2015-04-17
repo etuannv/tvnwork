@@ -21,11 +21,10 @@ namespace TNV.Web.Controllers
         public PhepToanBaSoHangService ToolPhepToanBaSoHang { get; set; }
         public DoiTuongHonKemNhauService ToolBaiToanDoiTuongHonKemNhau { get; set; }
         public BaiToanDaySoService ToolBaiToanDaySo { get; set; }
-
         public BaiToanThoiGianService ToolBaiVeThoiGian { get; set; }
-
         public BaiToanGhepOService ToolBaiToanGhepO { get; set; }
-
+        public BaiToanTimSoService ToolBaiToanTimSo { get; set; }
+        public BaiToanDemHinhService ToolBaiToanDemHinh { get; set; }
         public SystemManagerService ToolSystemManager { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
@@ -41,6 +40,8 @@ namespace TNV.Web.Controllers
             if (ToolBaiToanDaySo == null) { ToolBaiToanDaySo = new BaiToanDaySoClass(); }
             if (ToolBaiVeThoiGian == null) { ToolBaiVeThoiGian = new BaiToanThoiGianClass(); }
             if (ToolBaiToanGhepO == null) { ToolBaiToanGhepO = new BaiToanGhepOClass(); }
+            if (ToolBaiToanTimSo == null) { ToolBaiToanTimSo = new BaiToanTimSoClass(); }
+            if (ToolBaiToanDemHinh == null) { ToolBaiToanDemHinh = new BaiToanDemHinhClass(); }
             if (ToolSystemManager == null) { ToolSystemManager = new SystemManagerClass(); }
 
 
@@ -381,9 +382,6 @@ namespace TNV.Web.Controllers
         }
         #endregion
 
-
-
-
         #region BaiToan Sap xep
         /// <summary>
         /// Hiển thị bài luyện tap bai toan sap xep
@@ -421,6 +419,74 @@ namespace TNV.Web.Controllers
             int ChieuNgang = int.Parse(memvar3);
             int ChieuDoc = int.Parse(memvar4);
             BaiToanGhepOModel BaiToan = ToolBaiToanGhepO.GetOneBaiToanGhepO(memvar1, memvar2, ChieuNgang, ChieuDoc, memvar5);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region BaiToan Tim so
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan sap xep
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Loai Bai Toan</param>
+        
+        /// <returns></returns>
+        public ActionResult BaiToanTimSo(string memvar1, string memvar2, string memvar3)
+        {
+            ViewData["Title"] = "Bài toán sắp xếp";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = memvar1;
+            ViewData["PhamVi"] = memvar2;
+            ViewData["PhanLoaiBaiToan"] = memvar3;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan sap xep
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Phạm vi phép toán</param>
+        /// <param name="memvar3">Loai Bai Toan</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanTimSo(string memvar1, string memvar2, string memvar3)
+        {
+            
+            BaiToanTimSoModel BaiToan = ToolBaiToanTimSo.GetOneBaiToanTimSo(memvar1, memvar2, memvar3);
+            return Json(BaiToan, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+        #region BaiToan Đếm hình
+        /// <summary>
+        /// Hiển thị bài luyện tap bai toan đếm hình
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar3">Loai Bai Toan</param>
+
+        /// <returns></returns>
+        public ActionResult BaiToanDemHinh(string memvar1, string memvar2)
+        {
+            ViewData["Title"] = "Bài toán đếm hình";
+            //Gán thuộc khối lớp sang view
+            ViewData["ThuocKhoiLop"] = memvar1;
+            ViewData["PhanLoaiBaiToan"] = memvar2;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Hiển thị 1 bài luyện tập bai toan sap xep
+        /// </summary>
+        /// <param name="memvar1">Khối lớp</param>
+        /// <param name="memvar2">Loai Bai Toan</param>
+        /// <returns></returns>
+        public JsonResult GetOneBaiToanDemHinh(string memvar1, string memvar2)
+        {
+
+            BaiToanDemHinhModel BaiToan = ToolBaiToanDemHinh.GetOneBaiToanDemHinh(memvar1, memvar2);
             return Json(BaiToan, JsonRequestBehavior.AllowGet);
         }
         #endregion

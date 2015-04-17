@@ -1021,6 +1021,8 @@
     <Content Include="Views\FLuyenToanLopMot\BaiToanVeThoiGian.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanGhepO.aspx" />
     <Content Include="Views\FLuyenToanLopMot\BaiToanSapXep.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanTimSo.aspx" />
+    <Content Include="Views\FLuyenToanLopMot\BaiToanDemHinh.aspx" />
     <Content Include="Views\FLuyenToanLopMot\PhepToanBaSoHang.aspx" />
     <Content Include="Views\FLuyenToanLopMot\FDanhSachToanLopMot.aspx" />
     <Content Include="Views\FLuyenToanLopMot\HienThiCauHoi.ascx" />
@@ -1030,6 +1032,8 @@
     <Content Include="Views\PhepToanBaSoHang\PhepToanBaSoHang.aspx" />
     <Content Include="Views\PhepToanBaSoHang\ThemPhepToanBaSoHang.aspx" />
     <Content Include="Views\PhepToanHaiSoHang\ThemPhepToanHaiSoHang.aspx" />
+    <Content Include="Views\Shared\ucDSBaiToanDemHinh.ascx" />
+    <Content Include="Views\Shared\ucDSBaiToanTimSo.ascx" />
     <Content Include="Views\Shared\ucDSBaiToanSapXep.ascx" />
     <Content Include="Views\Shared\ucDSBaiToanDocSo.ascx" />
     <Content Include="Views\Shared\FCacDangToanLopMot.ascx" />
@@ -1235,6 +1239,7 @@
     <None Include="Content\FckEditior\fckeditor\_samples\php\sampleposteddata.php" />
     <None Include="Content\FckEditior\fckeditor\_samples\py\sample01.py" />
     <None Include="Content\FckEditior\fckeditor\_samples\py\sampleposteddata.py" />
+    <None Include="Content\font-end\css\segoe.ttf" />
     <None Include="Content\Image\HeThong_DanhSachLoaiThucPham.psd" />
     <None Include="Content\Image\TopMenu\bghover.psd" />
     <None Include="Content\Retore\Backup41023470.bak" />
